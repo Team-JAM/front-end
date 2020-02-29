@@ -9,6 +9,7 @@ import SelectMode from './SelectMode';
 
 // Game Components
 import Map from './Map';
+import RoomInfo from './RoomInfo';
 import Controls from './Controls';
 
-export { NavBar, Game, About, InputToken, SelectMode, Map, Controls };
+export { NavBar, Game, About, InputToken, SelectMode, Map, RoomInfo, Controls };
