@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+// import styled from 'styled-components';
 
 import { useDataContext } from '../contexts/DataContext';
 
 import Item from './Item';
+
+import { ComponentWrapper } from '../styled-components/StyledComponents';
 
 export default function PlayerStatus() {
 	const {
@@ -30,12 +33,12 @@ export default function PlayerStatus() {
 		getStatus();
 	}, []);
 
-	const handleClick = () => getStatus();
+	// const handleClick = () => getStatus();
 
 	return (
-		<div>
+		<ComponentWrapper>
 			<h3>STATUS AND INVENTORY</h3>
-			<button onClick={handleClick}>Update</button>
+			{/* <button onClick={handleClick}>Update</button> */}
 			<div>
 				<p>Name: {playerStatus.name}</p>
 				<p>Encumberance: {playerStatus.encumberance}</p>
@@ -58,6 +61,6 @@ export default function PlayerStatus() {
 						))}
 				</ul>
 			</div>
-		</div>
+		</ComponentWrapper>
 	);
 }

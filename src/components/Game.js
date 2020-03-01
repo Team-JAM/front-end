@@ -15,8 +15,8 @@ export default function Game() {
 	return (
 		<div>
 			<h2>GAME</h2>
-			<CooldownTimer />
 			<Map />
+			<CooldownTimer />
 			<RoomInfo />
 			<PlayerStatus />
 			<LambdaCoin />
