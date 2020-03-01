@@ -1,9 +1,12 @@
 import React from 'react';
+// import styled from 'styled-components';
+
+import { ComponentWrapper } from '../styled-components/StyledComponents';
 
 export default function Map() {
 	return (
-		<div>
+		<ComponentWrapper>
 			<h3>MAP</h3>
-		</div>
+		</ComponentWrapper>
 	);
 }

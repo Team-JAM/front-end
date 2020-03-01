@@ -1,6 +1,9 @@
 import React from 'react';
+// import styled from 'styled-components';
 
 import { useDataContext } from '../contexts/DataContext';
+
+import { ComponentWrapper } from '../styled-components/StyledComponents';
 
 export default function PlayerInfo() {
 	const {
@@ -10,8 +13,8 @@ export default function PlayerInfo() {
 	// console.log(playerInfo);
 
 	return (
-		<div>
+		<ComponentWrapper>
 			<h4>PLAYER INFO</h4>
-		</div>
+		</ComponentWrapper>
 	);
 }

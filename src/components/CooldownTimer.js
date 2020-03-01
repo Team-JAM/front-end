@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import { useDataContext } from '../contexts/DataContext';
 
+import { ComponentWrapper } from '../styled-components/StyledComponents';
+
 export default function CooldownTimer() {
 	const {
 		data: { cooldown, cooldownOver },
@@ -27,10 +29,10 @@ export default function CooldownTimer() {
 	});
 
 	return (
-		<div>
+		<ComponentWrapper>
 			<h3>COOLDOWN TIMER</h3>
 			<p>Cooldown: {cooldown}</p>
 			{timeLeft <= 0 ? <p>Go!</p> : <p>Remaining Time: {timeLeft}</p>}
-		</div>
+		</ComponentWrapper>
 	);
 }

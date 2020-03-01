@@ -1,6 +1,9 @@
 import React from 'react';
+// import styled from 'styled-components';
 
 import { useDataContext } from '../contexts/DataContext';
+
+import { ComponentWrapper } from '../styled-components/StyledComponents';
 
 export default function ItemInfo() {
 	const {
@@ -8,7 +11,7 @@ export default function ItemInfo() {
 	} = useDataContext();
 
 	return (
-		<div>
+		<ComponentWrapper>
 			<h4>ITEM INFO</h4>
 			<div>
 				<p>Name: {itemInfo.name}</p>
@@ -19,6 +22,6 @@ export default function ItemInfo() {
 				<p>Exp: {itemInfo.exp}</p>
 				<p>Attributes: {itemInfo.attributes}</p>
 			</div>
-		</div>
+		</ComponentWrapper>
 	);
 }

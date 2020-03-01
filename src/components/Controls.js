@@ -1,7 +1,10 @@
 import React from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+// import styled from 'styled-components';
 
 import { useDataContext } from '../contexts/DataContext';
+
+import { ComponentWrapper } from '../styled-components/StyledComponents';
 
 export default function Controls() {
 	const {
@@ -25,7 +28,7 @@ export default function Controls() {
 	};
 
 	return (
-		<div>
+		<ComponentWrapper>
 			<h3>CONTROLS</h3>
 			{cooldownOver && (
 				<div>
@@ -37,6 +40,6 @@ export default function Controls() {
 					<button onClick={() => handleMove('s')}>S</button>
 				</div>
 			)}
-		</div>
+		</ComponentWrapper>
 	);
 }

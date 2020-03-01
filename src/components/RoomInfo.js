@@ -4,6 +4,7 @@ import React from 'react';
 import { useDataContext } from '../contexts/DataContext';
 
 import { Item, Player } from './';
+import { ComponentWrapper } from '../styled-components/StyledComponents';
 
 export default function RoomInfo() {
 	const {
@@ -11,7 +12,7 @@ export default function RoomInfo() {
 	} = useDataContext();
 
 	return (
-		<div>
+		<ComponentWrapper>
 			<h3>ROOM</h3>
 			<div>
 				<p>
@@ -45,6 +46,6 @@ export default function RoomInfo() {
 						roomData.messages.map(message => <li key={message}>{message}</li>)}
 				</ul>
 			</div>
-		</div>
+		</ComponentWrapper>
 	);
 }
