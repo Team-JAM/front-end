@@ -3,7 +3,7 @@ import React from 'react';
 
 import { useDataContext } from '../contexts/DataContext';
 
-import Item from './Item';
+import { Item, Player } from './';
 
 export default function RoomInfo() {
 	const {
@@ -12,7 +12,7 @@ export default function RoomInfo() {
 
 	return (
 		<div>
-			<h3>ROOM INFO</h3>
+			<h3>ROOM</h3>
 			<div>
 				<p>
 					Room {roomData.room_id} {roomData.coordinates}: {roomData.title}
@@ -21,12 +21,18 @@ export default function RoomInfo() {
 				<p>Elevation: {roomData.elevation}</p>
 				<p>Terrain: {roomData.terrain}</p>
 				<p>Items:</p>
-				{roomData.items &&
-					roomData.items.map(item => <Item key={item} item={item} />)}
+				<ul>
+					{roomData.items &&
+						roomData.items.map(item => (
+							<Item key={item} item={item} action='take' />
+						))}
+				</ul>
 				<p>Players:</p>
 				<ul>
 					{roomData.players &&
-						roomData.players.map(player => <li key={player}>{player}</li>)}
+						roomData.players.map(player => (
+							<Player key={player} player={player} />
+						))}
 				</ul>
 				<p>Exits:</p>
 				<ul>

@@ -2,8 +2,10 @@ export const initialDataState = {
 	// token: '',
 	roomData: {},
 	playerStatus: {},
+	itemInfo: {},
+	playerInfo: {},
 	cooldown: 0,
-	canMove: false,
+	cooldownOver: false,
 	isLoading: false,
 	error: '',
 };
@@ -19,7 +21,7 @@ export const dataReducer = (state = initialDataState, action) => {
 				isLoading: false,
 				roomData: action.payload,
 				cooldown: action.payload.cooldown,
-				canMove: false,
+				cooldownOver: false,
 			};
 		case 'GET_DATA_FAILURE':
 			return {
@@ -28,24 +30,37 @@ export const dataReducer = (state = initialDataState, action) => {
 				isLoading: false,
 			};
 		case 'GET_STATUS_SUCCESS':
+			console.log('YO');
 			return {
 				...state,
 				error: '',
 				isLoading: false,
 				playerStatus: action.payload,
 				cooldown: action.payload.cooldown,
-				canMove: false,
+				cooldownOver: false,
 			};
-		case 'GET_STATUS_FAILURE':
+		case 'EXAMINE_ITEM_SUCCESS':
 			return {
 				...state,
-				error: 'Sorry, error retrieving player status and inventory',
+				error: '',
 				isLoading: false,
+				itemInfo: action.payload,
+				cooldown: action.payload.cooldown,
+				cooldownOver: false,
+			};
+		case 'EXAMINE_PLAYER_SUCCESS':
+			return {
+				...state,
+				error: '',
+				isLoading: false,
+				playerInfo: action.payload,
+				cooldown: action.payload.cooldown,
+				cooldownOver: false,
 			};
 		case 'SET_CAN_MOVE_TRUE':
 			return {
 				...state,
-				canMove: true,
+				cooldownOver: true,
 			};
 		default:
 			return state;

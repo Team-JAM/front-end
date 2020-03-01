@@ -4,15 +4,15 @@ import { useDataContext } from '../contexts/DataContext';
 
 export default function CooldownTimer() {
 	const {
-		data: { cooldown, canMove },
+		data: { cooldown, cooldownOver },
 		dispatch,
 	} = useDataContext();
 
 	const [timeLeft, setTimeLeft] = useState(cooldown);
 
 	useEffect(() => {
-		setTimeLeft(canMove ? 0 : cooldown);
-	}, [canMove]);
+		setTimeLeft(cooldownOver ? 0 : cooldown);
+	}, [cooldownOver]);
 
 	useEffect(() => {
 		const myInterval = setInterval(() => {

@@ -7,6 +7,8 @@ import {
 	PlayerStatus,
 	LambdaCoin,
 	Controls,
+	ItemInfo,
+	PlayerInfo,
 } from './';
 
 export default function Game() {
@@ -19,6 +21,8 @@ export default function Game() {
 			<PlayerStatus />
 			<LambdaCoin />
 			<Controls />
+			<ItemInfo />
+			<PlayerInfo />
 		</div>
 	);
 }

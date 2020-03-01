@@ -5,7 +5,7 @@ import { useDataContext } from '../contexts/DataContext';
 
 export default function Controls() {
 	const {
-		data: { canMove },
+		data: { cooldownOver },
 		dispatch,
 	} = useDataContext();
 
@@ -27,7 +27,7 @@ export default function Controls() {
 	return (
 		<div>
 			<h3>CONTROLS</h3>
-			{canMove && (
+			{cooldownOver && (
 				<div>
 					<button onClick={() => handleMove('n')}>N</button>
 					<div>
