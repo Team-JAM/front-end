@@ -32,6 +32,15 @@ export default function Item({ item, action }) {
 			.then(res => {
 				// console.log(res.data);
 				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
+				const message = res.data.messages[0];
+
+				if (action === 'take') {
+					const item = message.split('You have picked up ')[1];
+					dispatch({ type: 'TAKE_ITEM', payload: item });
+				} else if (action === 'drop') {
+					const item = message.split('You have dropped ')[1];
+					dispatch({ type: 'DROP_ITEM', payload: item });
+				}
 			})
 			.catch(err => {
 				console.log(err);

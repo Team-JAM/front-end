@@ -62,6 +62,24 @@ export const dataReducer = (state = initialDataState, action) => {
 				...state,
 				cooldownOver: true,
 			};
+		case 'TAKE_ITEM':
+			return {
+				...state,
+				playerStatus: {
+					...state.playerStatus,
+					inventory: [...state.playerStatus.inventory, action.payload],
+				},
+			};
+		case 'DROP_ITEM':
+			return {
+				...state,
+				playerStatus: {
+					...state.playerStatus,
+					inventory: state.playerStatus.inventory.filter(
+						item => item !== action.payload,
+					),
+				},
+			};
 		default:
 			return state;
 	}
