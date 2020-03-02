@@ -30,10 +30,16 @@ export default function CooldownTimer() {
 	});
 
 	return (
-		<ComponentWrapper>
+		<CooldownWrapper cooldownOver={cooldownOver} timeLeft={timeLeft}>
 			<h3>COOLDOWN TIMER</h3>
 			<p>Cooldown: {cooldown}</p>
 			{timeLeft <= 0 ? <p>Go!</p> : <p>Remaining Time: {timeLeft}</p>}
-		</ComponentWrapper>
+		</CooldownWrapper>
 	);
 }
+
+const CooldownWrapper = styled(ComponentWrapper)`
+	background-color: ${props => (props.timeLeft <= 0 ? '#33a532' : '#cc0605')};
+
+	color: white;
+`;
