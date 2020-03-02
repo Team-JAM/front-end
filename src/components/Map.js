@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 
 import MapRow from './MapRow';
 
@@ -12,9 +12,15 @@ export default function Map() {
 	useEffect(() => {}, []);
 
 	return (
-		<div>
-			<h3>MAP</h3>
+		<MapWrapper>
 			{mapData && mapData.map((row, index) => <MapRow row={row} key={index} />)}
-		</div>
+		</MapWrapper>
 	);
 }
+
+const MapWrapper = styled.div`
+	flex-grow: 1;
+	overflow: auto;
+
+	background-color: white;
+`;

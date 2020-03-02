@@ -4,15 +4,22 @@ import Game from './Game';
 import About from './About';
 
 // NavBar Components
+import Logo from './Logo';
 import InputToken from './InputToken';
 import SelectMode from './SelectMode';
 
 // Game Components
-import CooldownTimer from './CooldownTimer';
 import Map from './Map';
-import RoomInfo from './RoomInfo';
-import PlayerStatus from './PlayerStatus';
+import PanelRight from './PanelRight';
+import Footer from './Footer';
+
+// Right Panel Components
+import CooldownTimer from './CooldownTimer';
 import LambdaCoin from './LambdaCoin';
+import RoomInfo from './RoomInfo';
+
+// Footer Components
+import PlayerStatus from './PlayerStatus';
 import Controls from './Controls';
 import ItemInfo from './ItemInfo';
 import Item from './Item';
@@ -23,13 +30,16 @@ export {
 	NavBar,
 	Game,
 	About,
+	Logo,
 	InputToken,
 	SelectMode,
-	CooldownTimer,
 	Map,
+	PanelRight,
+	Footer,
+	CooldownTimer,
+	LambdaCoin,
 	RoomInfo,
 	PlayerStatus,
-	LambdaCoin,
 	Controls,
 	ItemInfo,
 	Item,
