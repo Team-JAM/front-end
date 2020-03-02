@@ -30,7 +30,6 @@ export const dataReducer = (state = initialDataState, action) => {
 				isLoading: false,
 			};
 		case 'GET_STATUS_SUCCESS':
-			console.log('YO');
 			return {
 				...state,
 				error: '',
