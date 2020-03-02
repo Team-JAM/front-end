@@ -11,7 +11,7 @@ export default function InputToken() {
 		dispatch({ type: 'GET_DATA_START' });
 
 		axiosWithAuth()
-			.get('/adv/init')
+			.get('/init')
 			.then(res => {
 				// console.log(res.data);
 				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
@@ -26,7 +26,7 @@ export default function InputToken() {
 		dispatch({ type: 'GET_DATA_START' });
 
 		axiosWithAuth()
-			.post('/adv/status')
+			.post('/status')
 			.then(res => {
 				// console.log(res.data);
 				dispatch({ type: 'GET_STATUS_SUCCESS', payload: res.data });

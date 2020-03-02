@@ -13,7 +13,7 @@ export default function Player({ player }) {
 		dispatch({ type: 'GET_DATA_START' });
 
 		axiosWithAuth()
-			.post('/adv/examine', { name })
+			.post('/examine', { name })
 			.then(res => {
 				console.log(res.data);
 				dispatch({ type: 'EXAMINE_PLAYER_SUCCESS', payload: res.data });
