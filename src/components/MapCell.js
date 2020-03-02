@@ -11,7 +11,7 @@ export default function MapCell({ cell }) {
 	// console.log('MAPCELL CELL', cell);
 	// console.log('MAPCELL ROOMDATA', roomData);
 
-	const isCurrentRoom = roomData.room_id === cell.room_id ? true : false;
+	const isCurrentRoom = roomData.room_id && roomData.room_id === cell.room_id;
 
 	return (
 		<StyledCell
