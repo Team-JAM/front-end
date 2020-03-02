@@ -4,8 +4,6 @@ import styled from 'styled-components';
 
 import MapRow from './MapRow';
 
-// import { dummyGrid } from '../data/dummyGrid';
-
 export default function Map() {
 	const [mapData, setMapData] = useState();
 
