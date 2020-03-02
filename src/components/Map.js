@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 // import styled from 'styled-components';
 
-import { ComponentWrapper } from '../styled-components/StyledComponents';
+import MapRow from './MapRow';
+
+import { dummyGrid } from '../data/dummyGrid';
 
 export default function Map() {
+	// const [mapData, setMapData] = useState();
+	const [mapData, setMapData] = useState(dummyGrid);
+
+	useEffect(() => {}, []);
+
 	return (
-		<ComponentWrapper>
+		<div>
 			<h3>MAP</h3>
-		</ComponentWrapper>
+			{mapData && mapData.map((row, index) => <MapRow row={row} key={index} />)}
+		</div>
 	);
 }
