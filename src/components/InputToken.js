@@ -52,8 +52,22 @@ export default function InputToken() {
 		getStatus();
 	};
 
+	// const handleSelect = e => {
+	// 	console.log(e.target.value);
+	// 	setToken(e.target.value);
+	// 	localStorage.setItem('token', e.target.value);
+	// 	getInitData();
+	// 	getStatus();
+	// };
+
 	return (
 		<div>
+			{/* <select id='players' name='players' onChange={handleSelect}>
+				<option>Please select a player:</option>
+				<option value={process.env.ALLISON_TOKEN}>Allison</option>
+				<option value={process.env.JONATHAN_TOKEN}>Jonathan</option>
+				<option value={process.env.MATTHEW_TOKEN}>Matthew</option>
+			</select> */}
 			<input
 				type='text'
 				name='token'

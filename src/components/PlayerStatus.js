@@ -56,8 +56,8 @@ export default function PlayerStatus() {
 				<p>Inventory:</p>
 				<ul>
 					{playerStatus.inventory &&
-						playerStatus.inventory.map(item => (
-							<Item key={item} item={item} action='drop' />
+						playerStatus.inventory.map((item, index) => (
+							<Item key={index} item={item} action='drop' />
 						))}
 				</ul>
 			</div>
