@@ -7,6 +7,6 @@ export default function MapCell({ cell }) {
 
 const StyledCell = styled.div`
 	border: 1px solid silver;
-	width: 3rem;
-	height: 3rem;
+	width: 6rem;
+	height: 6rem;
 `;

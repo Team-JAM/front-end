@@ -1,28 +1,21 @@
 import React from 'react';
+import styled from 'styled-components';
 
-import {
-	CooldownTimer,
-	Map,
-	RoomInfo,
-	PlayerStatus,
-	LambdaCoin,
-	Controls,
-	ItemInfo,
-	PlayerInfo,
-} from './';
+import { Map, PanelRight, Footer } from './';
 
 export default function Game() {
 	return (
 		<div>
-			<h2>GAME</h2>
-			<Map />
-			<CooldownTimer />
-			<RoomInfo />
-			<PlayerStatus />
-			<LambdaCoin />
-			<Controls />
-			<ItemInfo />
-			<PlayerInfo />
+			<GameWrapper>
+				<Map />
+				<PanelRight />
+			</GameWrapper>
+			<Footer />
 		</div>
 	);
 }
+
+const GameWrapper = styled.div`
+	display: flex;
+	height: 60vh;
+`;
