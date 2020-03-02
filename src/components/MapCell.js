@@ -28,11 +28,11 @@ const StyledCell = styled.div`
 	height: 6rem;
 
 	border: 1px solid lightskyblue;
-	border: ${props => props.terrain === 'NORMAL' && '1px solid brown'};
+	border: ${props => props.terrain === 'NORMAL' && '1px solid #baa369'};
 	border: ${props => props.isCurrentRoom && '2px solid red'};
 
 	background-color: lightcyan;
-	background-color: ${props => props.terrain === 'NORMAL' && '#feb950'};
+	background-color: ${props => props.terrain === 'NORMAL' && '#cdbf81'};
 	background-color: ${props => props.terrain === 'CAVE' && '#281300'};
 	background-color: ${props => props.terrain === 'MOUNTAIN' && '#991e00'};
 	background-color: ${props => props.terrain === 'TRAP' && 'red'};
