@@ -23,6 +23,6 @@ const NavBarWrapper = styled.div`
 	padding: 1rem 2rem;
 
 	background-color: #d73729;
-	color: #fdf5ea;
+	color: white;
 	border-bottom: 2px solid #b81e26;
 `;

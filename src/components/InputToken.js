@@ -22,9 +22,25 @@ export default function InputToken() {
 			});
 	};
 
+	const getStatus = () => {
+		dispatch({ type: 'GET_DATA_START' });
+
+		axiosWithAuth()
+			.post('/adv/status')
+			.then(res => {
+				// console.log(res.data);
+				dispatch({ type: 'GET_STATUS_SUCCESS', payload: res.data });
+			})
+			.catch(err => {
+				console.log(err);
+				dispatch({ type: 'GET_DATA_FAILURE' });
+			});
+	};
+
 	useEffect(() => {
 		if (localStorage.getItem('token')) {
 			getInitData();
+			getStatus();
 		}
 	}, []);
 
@@ -33,6 +49,7 @@ export default function InputToken() {
 	const handleClick = () => {
 		localStorage.setItem('token', token);
 		getInitData();
+		getStatus();
 	};
 
 	return (
