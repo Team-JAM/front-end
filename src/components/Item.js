@@ -13,7 +13,7 @@ export default function Item({ item, action }) {
 		dispatch({ type: 'GET_DATA_START' });
 
 		axiosWithAuth()
-			.post('/adv/examine', { name })
+			.post('/examine', { name })
 			.then(res => {
 				// console.log(res.data);
 				dispatch({ type: 'EXAMINE_ITEM_SUCCESS', payload: res.data });
@@ -28,7 +28,7 @@ export default function Item({ item, action }) {
 		dispatch({ type: 'GET_DATA_START' });
 
 		axiosWithAuth()
-			.post(`/adv/${action}`, { name })
+			.post(`/${action}`, { name })
 			.then(res => {
 				// console.log(res.data);
 				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });

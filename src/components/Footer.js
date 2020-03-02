@@ -6,9 +6,9 @@ import { ItemInfo, PlayerInfo, Controls, PlayerStatus } from './';
 export default function Footer() {
 	return (
 		<StyledFooter>
+			<Controls />
 			<ItemInfo />
 			<PlayerInfo />
-			<Controls />
 			<PlayerStatus />
 		</StyledFooter>
 	);

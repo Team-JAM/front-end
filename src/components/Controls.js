@@ -16,7 +16,7 @@ export default function Controls() {
 		dispatch({ type: 'GET_DATA_START' });
 
 		axiosWithAuth()
-			.post('/adv/move/', { direction })
+			.post('/move/', { direction })
 			.then(res => {
 				// console.log(res.data);
 				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
