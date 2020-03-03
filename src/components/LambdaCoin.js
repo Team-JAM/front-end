@@ -4,7 +4,10 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 import { useDataContext } from '../contexts/DataContext';
 
-import { ComponentWrapper } from '../styled-components/StyledComponents';
+import {
+	ComponentWrapper,
+	StatusHeader,
+} from '../styled-components/StyledComponents';
 
 export default function LambdaCoin() {
 	const {
@@ -12,7 +15,7 @@ export default function LambdaCoin() {
 		dispatch,
 	} = useDataContext();
 
-	useEffect(() => {
+	const getBalance = () => {
 		dispatch({ type: 'GET_DATA_START' });
 
 		axiosWithAuth()
@@ -28,11 +31,17 @@ export default function LambdaCoin() {
 				console.log(err);
 				dispatch({ type: 'GET_DATA_FAILURE' });
 			});
-	}, []);
+	};
+
+	// useEffect(() => {
+	// 	getBalance();
+	// }, []);
+
+	const handleClick = () => getBalance();
 
 	return (
 		<ComponentWrapper>
-			<h3>LAMBDA COIN BALANCE</h3>
+			<StatusHeader onClick={handleClick}>LAMBDA COIN BALANCE</StatusHeader>
 			<p>{coinBalance}</p>
 		</ComponentWrapper>
 	);
