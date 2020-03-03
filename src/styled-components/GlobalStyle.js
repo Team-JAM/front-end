@@ -18,6 +18,17 @@ body {
   font-family: 'Roboto', sans-serif;
   background-color: #d73729;
 }
+
+button {
+  cursor: pointer;
+  background-color: #fdf5ea;
+  font-family: inherit;
+  border: 2px solid #eb847d;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 0 1px #eb847d;
+  padding: 0.1rem 0.4rem;
+  margin: 0.2rem 0.3rem;
+}
 `;
 
 export default GlobalStyle;

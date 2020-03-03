@@ -1,15 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { ItemInfo, PlayerInfo, Controls, PlayerStatus } from './';
+import {
+	ItemInfo,
+	// PlayerInfo,
+	Controls,
+	PlayerStatus,
+	PlayerAbilities,
+	PlayerInventory,
+} from './';
 
 export default function Footer() {
 	return (
 		<StyledFooter>
 			<Controls />
 			<ItemInfo />
-			<PlayerInfo />
+			{/* <PlayerInfo /> */}
 			<PlayerStatus />
+			<PlayerAbilities />
+			<PlayerInventory />
 		</StyledFooter>
 	);
 }

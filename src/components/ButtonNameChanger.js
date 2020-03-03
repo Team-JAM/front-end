@@ -3,7 +3,7 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 import { useDataContext } from '../contexts/DataContext';
 
-export default function NameChanger() {
+export default function ButtonNameChanger() {
 	const {
 		data: { roomData },
 		dispatch,
@@ -17,7 +17,7 @@ export default function NameChanger() {
 		dispatch({ type: 'GET_DATA_START' });
 
 		axiosWithAuth()
-			.post('/change_name', { name: newName, confirm: 'aye' })
+			.post('/change_name/', { name: newName, confirm: 'aye' })
 			.then(res => {
 				console.log(res.data);
 				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
@@ -31,7 +31,7 @@ export default function NameChanger() {
 	return (
 		<div>
 			{roomData.room_id === 467 && (
-				<div>
+				<>
 					<input
 						type='text'
 						name='newName'
@@ -40,7 +40,7 @@ export default function NameChanger() {
 						onChange={handleChange}
 					/>
 					<button onClick={handleClick}>Submit</button>
-				</div>
+				</>
 			)}
 		</div>
 	);

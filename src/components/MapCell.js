@@ -69,7 +69,7 @@ const StyledCell = styled.div`
 	border: ${props => props.isCurrentRoom && '3px solid red'};
 
 	background-color: lightcyan;
-	background-color: ${props => props.terrain === 'NORMAL' && '#cdbf81'};
+	background-color: ${props => props.terrain === 'NORMAL' && '#567d46'};
 	background-color: ${props => props.terrain === 'CAVE' && '#202020'};
 	background-color: ${props => props.terrain === 'TRAP' && 'red'};
 	background-color: ${props =>

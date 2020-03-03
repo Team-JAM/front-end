@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { CooldownTimer, LambdaCoin, RoomInfo } from './';
+import { CooldownTimer, LambdaCoin, Messages, RoomInfo } from './';
 
 export default function PanelRight() {
 	return (
 		<PanelWrapper>
 			<CooldownTimer />
 			<LambdaCoin />
+			<Messages />
 			<RoomInfo />
 		</PanelWrapper>
 	);
