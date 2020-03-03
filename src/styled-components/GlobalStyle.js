@@ -29,6 +29,10 @@ button {
   padding: 0.1rem 0.4rem;
   margin: 0.2rem 0.3rem;
 }
+
+button:focus {
+  outline: 0;
+}
 `;
 
 export default GlobalStyle;

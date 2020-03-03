@@ -10,7 +10,7 @@ export default function ButtonPray() {
 		dispatch({ type: 'GET_DATA_START' });
 
 		axiosWithAuth()
-			.post('/pray/')
+			.post('/adv/pray/')
 			.then(res => {
 				console.log(res.data);
 				// dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });

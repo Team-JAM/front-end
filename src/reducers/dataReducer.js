@@ -5,6 +5,7 @@ export const initialDataState = {
 	itemInfo: {},
 	playerInfo: {},
 	rooms: {},
+	coinBalance: '',
 	cooldown: 0,
 	cooldownOver: false,
 	isLoading: false,
@@ -84,6 +85,12 @@ export const dataReducer = (state = initialDataState, action) => {
 			return {
 				...state,
 				rooms: action.payload,
+				isLoading: false,
+			};
+		case 'GET_BALANCE_SUCCESS':
+			return {
+				...state,
+				coinBalance: action.payload,
 				isLoading: false,
 			};
 		default:

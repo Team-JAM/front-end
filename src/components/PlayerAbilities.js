@@ -18,7 +18,7 @@ export default function PlayerAbilities() {
 		dispatch({ type: 'GET_DATA_START' });
 
 		axiosWithAuth()
-			.post('/status')
+			.post('/adv/status')
 			.then(res => {
 				console.log(res.data);
 				dispatch({ type: 'GET_STATUS_SUCCESS', payload: res.data });

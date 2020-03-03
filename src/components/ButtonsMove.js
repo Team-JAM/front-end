@@ -16,7 +16,7 @@ export default function Controls() {
 		const next_room_id = rooms[roomData.room_id].exits[direction].toString();
 
 		axiosWithAuth()
-			.post('/move/', { direction, next_room_id })
+			.post('/adv/move/', { direction, next_room_id })
 			.then(res => {
 				// console.log(res.data);
 				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
