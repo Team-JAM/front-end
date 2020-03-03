@@ -1,3 +1,10 @@
+## Environment Variables
+
+```
+REACT_APP_PUSHER_KEY
+REACT_APP_PUSHER_CLUSTER
+```
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
