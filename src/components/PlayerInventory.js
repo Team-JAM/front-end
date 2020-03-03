@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 // import styled from 'styled-components';
 
@@ -6,7 +6,7 @@ import { useDataContext } from '../contexts/DataContext';
 
 import Item from './Item';
 
-import { ComponentWrapper } from '../styled-components/StyledComponents';
+import { FooterComponentWrapper } from '../styled-components/StyledComponents';
 
 export default function PlayerInventory() {
 	const {
@@ -29,14 +29,14 @@ export default function PlayerInventory() {
 			});
 	};
 
-	useEffect(() => {
-		getStatus();
-	}, []);
+	// useEffect(() => {
+	// 	getStatus();
+	// }, []);
 
 	const handleClick = () => getStatus();
 
 	return (
-		<ComponentWrapper>
+		<FooterComponentWrapper>
 			<h3>INVENTORY</h3>
 			<button onClick={handleClick}>Update</button>
 			<div>
@@ -61,6 +61,6 @@ export default function PlayerInventory() {
 						))}
 				</ul>
 			</div>
-		</ComponentWrapper>
+		</FooterComponentWrapper>
 	);
 }

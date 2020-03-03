@@ -26,6 +26,7 @@ import ButtonPray from './ButtonPray';
 
 // Footer Components
 import PlayerStatus from './PlayerStatus';
+import PlayerAbilities from './PlayerAbilities';
 import PlayerInventory from './PlayerInventory';
 import Controls from './Controls';
 import ItemInfo from './ItemInfo';
@@ -51,6 +52,7 @@ export {
 	ButtonNameChanger,
 	ButtonPray,
 	PlayerStatus,
+	PlayerAbilities,
 	PlayerInventory,
 	Controls,
 	ItemInfo,

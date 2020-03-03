@@ -51,6 +51,6 @@ export default function RoomInfo() {
 }
 
 const RoomWrapper = styled(ComponentWrapper)`
-	max-height: 36vh;
+	max-height: 33vh;
 	overflow-y: auto;
 `;

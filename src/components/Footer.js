@@ -6,6 +6,7 @@ import {
 	// PlayerInfo,
 	Controls,
 	PlayerStatus,
+	PlayerAbilities,
 	PlayerInventory,
 } from './';
 
@@ -16,6 +17,7 @@ export default function Footer() {
 			<ItemInfo />
 			{/* <PlayerInfo /> */}
 			<PlayerStatus />
+			<PlayerAbilities />
 			<PlayerInventory />
 		</StyledFooter>
 	);

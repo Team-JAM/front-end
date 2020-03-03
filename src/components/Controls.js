@@ -3,7 +3,7 @@ import React from 'react';
 
 import { useDataContext } from '../contexts/DataContext';
 
-import { ComponentWrapper } from '../styled-components/StyledComponents';
+import { FooterComponentWrapper } from '../styled-components/StyledComponents';
 import { ButtonsMove, ButtonNameChanger, ButtonPray } from './';
 
 export default function Controls() {
@@ -12,15 +12,17 @@ export default function Controls() {
 	} = useDataContext();
 
 	return (
-		<ComponentWrapper>
+		<FooterComponentWrapper>
 			<h3>CONTROLS</h3>
 			{cooldownOver && (
 				<div>
 					<ButtonsMove />
-					<ButtonNameChanger />
-					<ButtonPray />
+					<div>
+						<ButtonNameChanger />
+						<ButtonPray />
+					</div>
 				</div>
 			)}
-		</ComponentWrapper>
+		</FooterComponentWrapper>
 	);
 }
