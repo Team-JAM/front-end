@@ -35,5 +35,5 @@ export default function Game() {
 
 const GameWrapper = styled.div`
 	display: flex;
-	height: 64vh;
+	height: 67vh;
 `;

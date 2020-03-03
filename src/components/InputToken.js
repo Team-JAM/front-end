@@ -40,7 +40,7 @@ export default function InputToken() {
 	useEffect(() => {
 		if (localStorage.getItem('token')) {
 			getInitData();
-			getStatus();
+			// getStatus();
 		}
 	}, []);
 
@@ -49,7 +49,7 @@ export default function InputToken() {
 	const handleClick = () => {
 		localStorage.setItem('token', token);
 		getInitData();
-		getStatus();
+		// getStatus();
 	};
 
 	// const handleSelect = e => {

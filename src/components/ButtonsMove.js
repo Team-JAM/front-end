@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { useDataContext } from '../contexts/DataContext';
 
-export default function ButtonsMove() {
+export default function ButtonsMove({ endpoint, header }) {
 	const {
 		data: { roomData, rooms },
 		dispatch,
@@ -21,7 +21,7 @@ export default function ButtonsMove() {
 			const next_room_id = exitsObj[direction].toString();
 
 			axiosWithAuth()
-				.post('/adv/move/', { direction, next_room_id })
+				.post(`/adv/${endpoint}/`, { direction, next_room_id })
 				.then(res => {
 					// console.log(res.data);
 					dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
@@ -30,12 +30,12 @@ export default function ButtonsMove() {
 					console.log(err);
 					dispatch({ type: 'GET_DATA_FAILURE' });
 				});
-			// }
 		}
 	};
 
 	return (
 		<MoveWrapper>
+			<h4>{header}</h4>
 			<div className='all-buttons'>
 				<MoveButton exits={exitsArr} exit='s' onClick={() => handleMove('s')}>
 					S
@@ -57,6 +57,9 @@ export default function ButtonsMove() {
 }
 
 const MoveWrapper = styled.div`
+	padding: 1rem;
+	margin-bottom: 1rem;
+
 	.all-buttons {
 		display: flex;
 		flex-direction: column;
