@@ -1,6 +1,5 @@
 import React from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-import styled from 'styled-components';
 
 import { useDataContext } from '../contexts/DataContext';
 
@@ -80,6 +79,21 @@ export default function Item({ item, action }) {
 			});
 	};
 
+	const handleEquipment = (action, name) => {
+		dispatch({ type: 'GET_DATA_START' });
+
+		axiosWithAuth()
+			.post(`/adv/${action}/`, { name })
+			.then(res => {
+				console.log(res.data);
+				dispatch({ type: 'GET_STATUS_SUCCESS', payload: res.data });
+			})
+			.catch(err => {
+				console.log(err);
+				dispatch({ type: 'GET_DATA_FAILURE' });
+			});
+	};
+
 	return (
 		<li>
 			{item}
@@ -93,6 +107,10 @@ export default function Item({ item, action }) {
 					{roomData.room_id === 1 && (
 						<button onClick={() => handleSell(item)}>Sell Item</button>
 					)}
+					<button onClick={() => handleEquipment('wear', item)}>Wear</button>
+					<button onClick={() => handleEquipment('undress', item)}>
+						Undress
+					</button>
 				</>
 			)}
 		</li>

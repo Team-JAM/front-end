@@ -4,9 +4,10 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 import { useDataContext } from '../contexts/DataContext';
 
-// import Item from './Item';
-
-import { FooterComponentWrapper } from '../styled-components/StyledComponents';
+import {
+	FooterComponentWrapper,
+	StatusHeader,
+} from '../styled-components/StyledComponents';
 
 export default function PlayerStatus() {
 	const {
@@ -37,8 +38,7 @@ export default function PlayerStatus() {
 
 	return (
 		<FooterComponentWrapper>
-			<h3>PLAYER STATUS</h3>
-			<button onClick={handleClick}>Update</button>
+			<StatusHeader onClick={handleClick}>PLAYER STATUS</StatusHeader>
 			<div>
 				<p>Name: {playerStatus.name}</p>
 				<p>Encumbrance: {playerStatus.encumbrance}</p>

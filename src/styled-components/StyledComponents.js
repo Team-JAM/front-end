@@ -18,3 +18,11 @@ export const FooterComponentWrapper = styled(ComponentWrapper)`
 	width: 19%;
 	min-width: 24rem;
 `;
+
+export const StatusHeader = styled.h3`
+	cursor: pointer;
+
+	&:hover {
+		color: #eb847d;
+	}
+`;
