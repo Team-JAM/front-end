@@ -27,17 +27,19 @@ export default function Item({ item, action }) {
 	const handleTakeDrop = name => {
 		dispatch({ type: 'GET_DATA_START' });
 
+		const actionLC = action.toLowerCase();
+
 		axiosWithAuth()
-			.post(`/adv/${action}`, { name })
+			.post(`/adv/${actionLC}`, { name })
 			.then(res => {
 				// console.log(res.data);
 				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
 				const message = res.data.messages[0];
 
-				if (action === 'take') {
+				if (actionLC === 'take') {
 					const item = message.split('You have picked up ')[1];
 					dispatch({ type: 'TAKE_ITEM', payload: item });
-				} else if (action === 'drop') {
+				} else if (actionLC === 'drop') {
 					const item = message.split('You have dropped ')[1];
 					dispatch({ type: 'DROP_ITEM', payload: item });
 				}
@@ -79,13 +81,13 @@ export default function Item({ item, action }) {
 			});
 	};
 
-	const handleEquipment = (action, name) => {
+	const handleEquipment = name => {
 		dispatch({ type: 'GET_DATA_START' });
 
 		axiosWithAuth()
-			.post(`/adv/${action}/`, { name })
+			.post(`/adv/wear/`, { name })
 			.then(res => {
-				console.log(res.data);
+				// console.log(res.data);
 				dispatch({ type: 'GET_STATUS_SUCCESS', payload: res.data });
 			})
 			.catch(err => {
@@ -107,10 +109,7 @@ export default function Item({ item, action }) {
 					{roomData.room_id === 1 && (
 						<button onClick={() => handleSell(item)}>Sell Item</button>
 					)}
-					<button onClick={() => handleEquipment('wear', item)}>Wear</button>
-					<button onClick={() => handleEquipment('undress', item)}>
-						Undress
-					</button>
+					<button onClick={() => handleEquipment(item)}>Wear</button>
 				</>
 			)}
 		</li>

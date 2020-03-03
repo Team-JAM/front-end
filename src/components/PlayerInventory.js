@@ -1,6 +1,6 @@
 import React from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 
 import { useDataContext } from '../contexts/DataContext';
 
@@ -32,22 +32,59 @@ export default function PlayerInventory() {
 			});
 	};
 
-	const handleClick = () => getStatus();
+	const handleStatus = () => getStatus();
+
+	const handleUndress = name => {
+		dispatch({ type: 'GET_DATA_START' });
+
+		axiosWithAuth()
+			.post(`/adv/undress/`, { name })
+			.then(res => {
+				// console.log(res.data);
+				dispatch({ type: 'GET_STATUS_SUCCESS', payload: res.data });
+			})
+			.catch(err => {
+				console.log(err);
+				dispatch({ type: 'GET_DATA_FAILURE' });
+			});
+	};
 
 	return (
 		<FooterComponentWrapper>
-			<StatusHeader onClick={handleClick}>INVENTORY</StatusHeader>
+			<StatusHeader onClick={handleStatus}>INVENTORY</StatusHeader>
 			<div>
-				<p>Bodywear: {playerStatus.bodywear}</p>
-				<p>Footwear: {playerStatus.footwear}</p>
-				<p>Inventory:</p>
-				<ul>
-					{playerStatus.inventory &&
-						playerStatus.inventory.map((item, index) => (
-							<Item key={index} item={item} action='drop' />
-						))}
-				</ul>
+				{playerStatus.bodywear && (
+					<InventoryRow>
+						<p>Bodywear: {playerStatus.bodywear}</p>
+						<button onClick={() => handleUndress(playerStatus.bodywear)}>
+							Undress
+						</button>
+					</InventoryRow>
+				)}
+				{playerStatus.footwear && (
+					<InventoryRow>
+						<p>Footwear: {playerStatus.footwear}</p>
+						<button onClick={() => handleUndress(playerStatus.footwear)}>
+							Undress
+						</button>
+					</InventoryRow>
+				)}
+				{playerStatus.inventory && playerStatus.inventory[0] && (
+					<>
+						<p>Inventory:</p>
+						<ul>
+							{playerStatus.inventory.map((item, index) => (
+								<Item key={index} item={item} action='Drop' />
+							))}
+						</ul>
+					</>
+				)}
 			</div>
 		</FooterComponentWrapper>
 	);
 }
+
+const InventoryRow = styled.div`
+	display: flex;
+	align-items: center;
+`;
