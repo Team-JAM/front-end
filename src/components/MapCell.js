@@ -50,17 +50,17 @@ const StyledCell = styled.div`
 	color: ${props => props.isSpecialRoom && 'black'};
 
 	border: 1px solid lightskyblue;
-	border: ${props => props.terrain === 'NORMAL' && '2px solid #baa369'};
+	border: ${props => props.terrain === 'NORMAL' && '2px solid black'};
 	border: ${props => props.terrain === 'CAVE' && '2px solid gray'};
-	border: ${props => props.terrain === 'TRAP' && '2px solid yellow'};
-	border: ${props => props.terrain === 'MOUNTAIN' && '2px solid #654321'};
+	border: ${props => props.terrain === 'TRAP' && '2px solid black'};
+	border: ${props => props.terrain === 'MOUNTAIN' && '2px solid black'};
 
 	border-left: ${props => props.exitW && '0'};
 	border-right: ${props => props.exitE && '0'};
 	border-top: ${props => props.exitS && '0'};
 	border-bottom: ${props => props.exitN && '0'};
 
-	border: ${props => props.isCurrentRoom && '2px solid red'};
+	border: ${props => props.isCurrentRoom && '3px solid red'};
 
 	background-color: lightcyan;
 	background-color: ${props => props.terrain === 'NORMAL' && '#cdbf81'};

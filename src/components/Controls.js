@@ -1,6 +1,6 @@
 import React from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 
 import { useDataContext } from '../contexts/DataContext';
 
@@ -28,18 +28,37 @@ export default function Controls() {
 	};
 
 	return (
-		<ComponentWrapper>
+		<ControlsWrapper>
 			<h3>CONTROLS</h3>
 			{cooldownOver && (
-				<div>
-					<button onClick={() => handleMove('n')}>N</button>
-					<div>
+				<div className='all-buttons'>
+					<button onClick={() => handleMove('s')}>S</button>
+					<div className='middle-buttons'>
 						<button onClick={() => handleMove('w')}>W</button>
 						<button onClick={() => handleMove('e')}>E</button>
 					</div>
-					<button onClick={() => handleMove('s')}>S</button>
+					<button onClick={() => handleMove('n')}>N</button>
 				</div>
 			)}
-		</ComponentWrapper>
+		</ControlsWrapper>
 	);
 }
+
+const ControlsWrapper = styled(ComponentWrapper)`
+	.all-buttons {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.middle-buttons {
+		width: 15rem;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	button {
+		width: 5rem;
+		height: 3rem;
+	}
+`;
