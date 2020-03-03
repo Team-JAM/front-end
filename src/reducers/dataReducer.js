@@ -92,6 +92,7 @@ export const dataReducer = (state = initialDataState, action) => {
 				...state,
 				coinBalance: action.payload,
 				isLoading: false,
+				cooldownOver: false,
 			};
 		default:
 			return state;

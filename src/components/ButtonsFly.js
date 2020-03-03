@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { useDataContext } from '../contexts/DataContext';
 
-export default function ButtonsMove() {
+export default function ButtonsFly() {
 	const {
 		data: { roomData, rooms },
 		dispatch,
@@ -21,7 +21,7 @@ export default function ButtonsMove() {
 			const next_room_id = exitsObj[direction].toString();
 
 			axiosWithAuth()
-				.post('/adv/move/', { direction, next_room_id })
+				.post('/adv/fly/', { direction, next_room_id })
 				.then(res => {
 					// console.log(res.data);
 					dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });

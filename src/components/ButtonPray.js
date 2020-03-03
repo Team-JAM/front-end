@@ -12,8 +12,8 @@ export default function ButtonPray() {
 		axiosWithAuth()
 			.post('/adv/pray/')
 			.then(res => {
-				console.log(res.data);
-				// dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
+				// console.log(res.data);
+				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
 			})
 			.catch(err => {
 				console.log(err);

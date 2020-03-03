@@ -20,7 +20,7 @@ export default function PlayerStatus() {
 		axiosWithAuth()
 			.post('/adv/status')
 			.then(res => {
-				console.log(res.data);
+				// console.log(res.data);
 				dispatch({ type: 'GET_STATUS_SUCCESS', payload: res.data });
 			})
 			.catch(err => {
@@ -45,21 +45,12 @@ export default function PlayerStatus() {
 				<p>Strength: {playerStatus.strength}</p>
 				<p>Speed: {playerStatus.speed}</p>
 				<p>Gold: {playerStatus.gold}</p>
-				{/* <p>Bodywear: {playerStatus.bodywear}</p>
-				<p>Footwear: {playerStatus.footwear}</p> */}
 				<p>Has mined? {playerStatus.has_mined ? 'True' : 'False'}</p>
 				<p>Status:</p>
 				<ul>
 					{playerStatus.status &&
 						playerStatus.status.map(status => <li key={status}>{status}</li>)}
 				</ul>
-				{/* <p>Inventory:</p>
-				<ul>
-					{playerStatus.inventory &&
-						playerStatus.inventory.map((item, index) => (
-							<Item key={index} item={item} action='drop' />
-						))}
-				</ul> */}
 			</div>
 		</FooterComponentWrapper>
 	);

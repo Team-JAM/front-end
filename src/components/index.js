@@ -21,9 +21,11 @@ import RoomInfo from './RoomInfo';
 
 // Buttons
 import ButtonsMove from './ButtonsMove';
+import ButtonsFly from './ButtonsFly';
 import ButtonNameChanger from './ButtonNameChanger';
 import ButtonExamineWell from './ButtonExamineWell';
 import ButtonPray from './ButtonPray';
+import ButtonRecall from './ButtonRecall';
 
 // Footer Components
 import PlayerStatus from './PlayerStatus';
@@ -50,9 +52,11 @@ export {
 	Messages,
 	RoomInfo,
 	ButtonsMove,
+	ButtonsFly,
 	ButtonNameChanger,
 	ButtonExamineWell,
 	ButtonPray,
+	ButtonRecall,
 	PlayerStatus,
 	PlayerAbilities,
 	PlayerInventory,
