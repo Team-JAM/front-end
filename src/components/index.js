@@ -21,7 +21,6 @@ import RoomInfo from './RoomInfo';
 
 // Buttons
 import ButtonsMove from './ButtonsMove';
-import ButtonsFly from './ButtonsFly';
 import ButtonNameChanger from './ButtonNameChanger';
 import ButtonExamineWell from './ButtonExamineWell';
 import ButtonPray from './ButtonPray';
@@ -52,7 +51,6 @@ export {
 	Messages,
 	RoomInfo,
 	ButtonsMove,
-	ButtonsFly,
 	ButtonNameChanger,
 	ButtonExamineWell,
 	ButtonPray,

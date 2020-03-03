@@ -1,12 +1,11 @@
 import React from 'react';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 
 import { useDataContext } from '../contexts/DataContext';
 
 import { FooterComponentWrapper } from '../styled-components/StyledComponents';
 import {
 	ButtonsMove,
-	ButtonsFly,
 	ButtonNameChanger,
 	ButtonExamineWell,
 	ButtonPray,
@@ -22,17 +21,33 @@ export default function Controls() {
 		<FooterComponentWrapper>
 			<h3>CONTROLS</h3>
 			{cooldownOver && (
-				<div>
-					<ButtonsMove />
-					<ButtonsFly />
-					<div>
-						<ButtonNameChanger />
-						<ButtonExamineWell />
+				<ButtonsWrapper>
+					<div className='buttons-move'>
+						<ButtonsMove endpoint='move' header='Walk:' />
+						<ButtonsMove endpoint='fly' header='Fly:' />
+					</div>
+					<div className='buttons-abilities'>
 						<ButtonPray />
 						<ButtonRecall />
+						<ButtonExamineWell />
+						<ButtonNameChanger />
 					</div>
-				</div>
+				</ButtonsWrapper>
 			)}
 		</FooterComponentWrapper>
 	);
 }
+
+const ButtonsWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+
+	.buttons-move {
+		display: flex;
+	}
+
+	.buttons-abilities {
+		display: flex;
+		justify-content: space-around;
+	}
+`;
