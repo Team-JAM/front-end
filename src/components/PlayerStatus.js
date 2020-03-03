@@ -33,12 +33,12 @@ export default function PlayerStatus() {
 		getStatus();
 	}, []);
 
-	// const handleClick = () => getStatus();
+	const handleClick = () => getStatus();
 
 	return (
 		<ComponentWrapper>
 			<h3>STATUS AND INVENTORY</h3>
-			{/* <button onClick={handleClick}>Update</button> */}
+			<button onClick={handleClick}>Update</button>
 			<div>
 				<p>Name: {playerStatus.name}</p>
 				<p>Encumberance: {playerStatus.encumberance}</p>

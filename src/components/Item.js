@@ -5,7 +5,7 @@ import { useDataContext } from '../contexts/DataContext';
 
 export default function Item({ item, action }) {
 	const {
-		data: { cooldownOver },
+		data: { cooldownOver, roomData },
 		dispatch,
 	} = useDataContext();
 
@@ -48,6 +48,37 @@ export default function Item({ item, action }) {
 			});
 	};
 
+	const handlePrice = name => {
+		dispatch({ type: 'GET_DATA_START' });
+
+		axiosWithAuth()
+			.post('/sell', { name })
+			.then(res => {
+				console.log(res.data);
+				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
+			})
+			.catch(err => {
+				console.log(err);
+				dispatch({ type: 'GET_DATA_FAILURE' });
+			});
+	};
+
+	const handleSell = name => {
+		dispatch({ type: 'GET_DATA_START' });
+
+		axiosWithAuth()
+			.post('/sell', { name, confirm: 'yes' })
+			.then(res => {
+				console.log(res.data);
+				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
+				dispatch({ type: 'DROP_ITEM', payload: item });
+			})
+			.catch(err => {
+				console.log(err);
+				dispatch({ type: 'GET_DATA_FAILURE' });
+			});
+	};
+
 	return (
 		<li>
 			{item}
@@ -55,6 +86,12 @@ export default function Item({ item, action }) {
 				<>
 					<button onClick={() => handleExamine(item)}>Examine</button>
 					<button onClick={() => handleTakeDrop(item)}>{action}</button>
+					{roomData.room_id === 1 && (
+						<button onClick={() => handlePrice(item)}>Get Price</button>
+					)}
+					{roomData.room_id === 1 && (
+						<button onClick={() => handleSell(item)}>Sell Item</button>
+					)}
 				</>
 			)}
 		</li>
