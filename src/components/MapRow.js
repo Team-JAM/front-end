@@ -13,5 +13,5 @@ export default function MapRow({ row }) {
 
 const StyledRow = styled.div`
 	display: flex;
-	width: 100%;
+	// width: 100%;
 `;

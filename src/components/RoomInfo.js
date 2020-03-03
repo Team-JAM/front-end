@@ -1,5 +1,5 @@
 import React from 'react';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 
 import { useDataContext } from '../contexts/DataContext';
 
@@ -12,7 +12,7 @@ export default function RoomInfo() {
 	} = useDataContext();
 
 	return (
-		<ComponentWrapper>
+		<RoomWrapper>
 			<h3>ROOM</h3>
 			<div>
 				<p>
@@ -46,6 +46,11 @@ export default function RoomInfo() {
 						roomData.messages.map(message => <li key={message}>{message}</li>)}
 				</ul>
 			</div>
-		</ComponentWrapper>
+		</RoomWrapper>
 	);
 }
+
+const RoomWrapper = styled(ComponentWrapper)`
+	height: 35vh;
+	overflow-y: auto;
+`;
