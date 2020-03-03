@@ -74,7 +74,12 @@ export default function PlayerInventory() {
 						<p>Inventory:</p>
 						<ul>
 							{playerStatus.inventory.map((item, index) => (
-								<Item key={index} item={item} action='Drop' />
+								<Item
+									key={index}
+									item={item}
+									action='Drop'
+									inInventory={true}
+								/>
 							))}
 						</ul>
 					</>

@@ -25,7 +25,7 @@ export default function RoomInfo() {
 				<ul>
 					{roomData.items &&
 						roomData.items.map((item, index) => (
-							<Item key={index} item={item} action='Take' />
+							<Item key={index} item={item} action='Take' inInventory={false} />
 						))}
 				</ul>
 				<p>Players:</p>

@@ -3,11 +3,13 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 import { useDataContext } from '../contexts/DataContext';
 
-export default function Item({ item, action }) {
+export default function Item({ item, action, inInventory }) {
 	const {
 		data: { cooldownOver, roomData },
 		dispatch,
 	} = useDataContext();
+
+	const isWearable = item.includes('boots') || item.includes('jacket');
 
 	const handleExamine = name => {
 		dispatch({ type: 'GET_DATA_START' });
@@ -109,7 +111,9 @@ export default function Item({ item, action }) {
 					{roomData.room_id === 1 && (
 						<button onClick={() => handleSell(item)}>Sell Item</button>
 					)}
-					<button onClick={() => handleEquipment(item)}>Wear</button>
+					{isWearable && inInventory && (
+						<button onClick={() => handleEquipment(item)}>Wear</button>
+					)}
 				</>
 			)}
 		</li>
