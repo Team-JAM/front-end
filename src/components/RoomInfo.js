@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { useDataContext } from '../contexts/DataContext';
 
-import { Item, Player } from './';
+import { Item } from './';
 import { ComponentWrapper } from '../styled-components/StyledComponents';
 
 export default function RoomInfo() {
@@ -32,7 +32,8 @@ export default function RoomInfo() {
 				<ul>
 					{roomData.players &&
 						roomData.players.map(player => (
-							<Player key={player} player={player} />
+							<li key={player}>{player}</li>
+							// <Player key={player} player={player} />
 						))}
 				</ul>
 				<p>Exits:</p>
@@ -51,6 +52,6 @@ export default function RoomInfo() {
 }
 
 const RoomWrapper = styled(ComponentWrapper)`
-	max-height: 33vh;
+	max-height: 30vh;
 	overflow-y: auto;
 `;

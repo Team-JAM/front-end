@@ -4,7 +4,12 @@ import React from 'react';
 import { useDataContext } from '../contexts/DataContext';
 
 import { FooterComponentWrapper } from '../styled-components/StyledComponents';
-import { ButtonsMove, ButtonNameChanger, ButtonPray } from './';
+import {
+	ButtonsMove,
+	ButtonNameChanger,
+	ButtonExamineWell,
+	ButtonPray,
+} from './';
 
 export default function Controls() {
 	const {
@@ -19,6 +24,7 @@ export default function Controls() {
 					<ButtonsMove />
 					<div>
 						<ButtonNameChanger />
+						<ButtonExamineWell />
 						<ButtonPray />
 					</div>
 				</div>

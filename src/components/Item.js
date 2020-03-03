@@ -14,7 +14,7 @@ export default function Item({ item, action }) {
 		dispatch({ type: 'GET_DATA_START' });
 
 		axiosWithAuth()
-			.post('/examine', { name })
+			.post('/adv/examine', { name })
 			.then(res => {
 				// console.log(res.data);
 				dispatch({ type: 'EXAMINE_ITEM_SUCCESS', payload: res.data });
@@ -29,7 +29,7 @@ export default function Item({ item, action }) {
 		dispatch({ type: 'GET_DATA_START' });
 
 		axiosWithAuth()
-			.post(`/${action}`, { name })
+			.post(`/adv/${action}`, { name })
 			.then(res => {
 				// console.log(res.data);
 				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
@@ -53,7 +53,7 @@ export default function Item({ item, action }) {
 		dispatch({ type: 'GET_DATA_START' });
 
 		axiosWithAuth()
-			.post('/sell', { name })
+			.post('/adv/sell', { name })
 			.then(res => {
 				console.log(res.data);
 				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
@@ -68,7 +68,7 @@ export default function Item({ item, action }) {
 		dispatch({ type: 'GET_DATA_START' });
 
 		axiosWithAuth()
-			.post('/sell', { name, confirm: 'yes' })
+			.post('/adv/sell', { name, confirm: 'yes' })
 			.then(res => {
 				console.log(res.data);
 				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });

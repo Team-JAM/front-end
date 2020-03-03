@@ -17,7 +17,7 @@ export default function ButtonNameChanger() {
 		dispatch({ type: 'GET_DATA_START' });
 
 		axiosWithAuth()
-			.post('/change_name/', { name: newName, confirm: 'aye' })
+			.post('/adv/change_name/', { name: newName, confirm: 'aye' })
 			.then(res => {
 				console.log(res.data);
 				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });

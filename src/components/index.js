@@ -22,6 +22,7 @@ import RoomInfo from './RoomInfo';
 // Buttons
 import ButtonsMove from './ButtonsMove';
 import ButtonNameChanger from './ButtonNameChanger';
+import ButtonExamineWell from './ButtonExamineWell';
 import ButtonPray from './ButtonPray';
 
 // Footer Components
@@ -50,6 +51,7 @@ export {
 	RoomInfo,
 	ButtonsMove,
 	ButtonNameChanger,
+	ButtonExamineWell,
 	ButtonPray,
 	PlayerStatus,
 	PlayerAbilities,
