@@ -10,18 +10,19 @@ export default function Player({ player }) {
 	} = useDataContext();
 
 	const handleExamine = name => {
-		dispatch({ type: 'GET_DATA_START' });
+		console.log(name);
+		// dispatch({ type: 'GET_DATA_START' });
 
-		axiosWithAuth()
-			.post('/examine', { name })
-			.then(res => {
-				console.log(res.data);
-				dispatch({ type: 'EXAMINE_PLAYER_SUCCESS', payload: res.data });
-			})
-			.catch(err => {
-				console.log(err);
-				dispatch({ type: 'GET_DATA_FAILURE' });
-			});
+		// axiosWithAuth()
+		// 	.post('/examine', { name })
+		// 	.then(res => {
+		// 		console.log(res.data);
+		// 		// dispatch({ type: 'EXAMINE_PLAYER_SUCCESS', payload: res.data });
+		// 	})
+		// 	.catch(err => {
+		// 		console.log(err);
+		// 		dispatch({ type: 'GET_DATA_FAILURE' });
+		// 	});
 	};
 
 	return (

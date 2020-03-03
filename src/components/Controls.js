@@ -1,71 +1,26 @@
 import React from 'react';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 import { useDataContext } from '../contexts/DataContext';
 
 import { ComponentWrapper } from '../styled-components/StyledComponents';
-import NameChanger from './NameChanger';
+import { ButtonsMove, ButtonNameChanger, ButtonPray } from './';
 
 export default function Controls() {
 	const {
-		data: { cooldownOver, roomData, rooms },
-		dispatch,
+		data: { cooldownOver },
 	} = useDataContext();
 
-	const handleMove = direction => {
-		dispatch({ type: 'GET_DATA_START' });
-
-		axiosWithAuth()
-			.post('/move/', {
-				direction,
-				next_room_id: rooms[roomData.room_id].exits[direction].toString(),
-			})
-			.then(res => {
-				// console.log(res.data);
-				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
-			})
-			.catch(err => {
-				console.log(err);
-				dispatch({ type: 'GET_DATA_FAILURE' });
-			});
-	};
-
 	return (
-		<ControlsWrapper>
+		<ComponentWrapper>
 			<h3>CONTROLS</h3>
 			{cooldownOver && (
-				<>
-					<div className='all-buttons'>
-						<button onClick={() => handleMove('s')}>S</button>
-						<div className='middle-buttons'>
-							<button onClick={() => handleMove('w')}>W</button>
-							<button onClick={() => handleMove('e')}>E</button>
-						</div>
-						<button onClick={() => handleMove('n')}>N</button>
-					</div>
-					<NameChanger />
-				</>
+				<div>
+					<ButtonsMove />
+					<ButtonNameChanger />
+					<ButtonPray />
+				</div>
 			)}
-		</ControlsWrapper>
+		</ComponentWrapper>
 	);
 }
-
-const ControlsWrapper = styled(ComponentWrapper)`
-	.all-buttons {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-
-	.middle-buttons {
-		width: 15rem;
-		display: flex;
-		justify-content: space-between;
-	}
-
-	button {
-		width: 5rem;
-		height: 3rem;
-	}
-`;

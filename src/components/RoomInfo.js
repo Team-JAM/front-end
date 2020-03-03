@@ -40,17 +40,17 @@ export default function RoomInfo() {
 					{roomData.exits &&
 						roomData.exits.map(exit => <li key={exit}>{exit}</li>)}
 				</ul>
-				<p>Messages:</p>
+				{/* <p>Messages:</p>
 				<ul>
 					{roomData.messages &&
 						roomData.messages.map(message => <li key={message}>{message}</li>)}
-				</ul>
+				</ul> */}
 			</div>
 		</RoomWrapper>
 	);
 }
 
 const RoomWrapper = styled(ComponentWrapper)`
-	height: 35vh;
+	max-height: 36vh;
 	overflow-y: auto;
 `;
