@@ -36,6 +36,14 @@ import Item from './Item';
 import PlayerInfo from './PlayerInfo';
 import Player from './Player';
 
+// Item Buttons
+import ButtonExamine from './ButtonExamine';
+import ButtonTakeDrop from './ButtonTakeDrop';
+import ButtonPrice from './ButtonPrice';
+import ButtonSell from './ButtonSell';
+import ButtonWear from './ButtonWear';
+import ButtonUndress from './ButtonUndress';
+
 export {
 	NavBar,
 	Game,
@@ -63,4 +71,10 @@ export {
 	Item,
 	PlayerInfo,
 	Player,
+	ButtonExamine,
+	ButtonTakeDrop,
+	ButtonPrice,
+	ButtonSell,
+	ButtonWear,
+	ButtonUndress,
 };

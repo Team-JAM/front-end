@@ -1,10 +1,9 @@
 import React from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import styled from 'styled-components';
-
 import { useDataContext } from '../contexts/DataContext';
 
-import Item from './Item';
+import { Item, ButtonUndress } from './';
 
 import {
 	FooterComponentWrapper,
@@ -34,21 +33,6 @@ export default function PlayerInventory() {
 
 	const handleStatus = () => getStatus();
 
-	const handleUndress = name => {
-		dispatch({ type: 'GET_DATA_START' });
-
-		axiosWithAuth()
-			.post(`/adv/undress/`, { name })
-			.then(res => {
-				// console.log(res.data);
-				dispatch({ type: 'GET_STATUS_SUCCESS', payload: res.data });
-			})
-			.catch(err => {
-				console.log(err);
-				dispatch({ type: 'GET_DATA_FAILURE' });
-			});
-	};
-
 	return (
 		<FooterComponentWrapper>
 			<StatusHeader onClick={handleStatus}>INVENTORY</StatusHeader>
@@ -56,17 +40,13 @@ export default function PlayerInventory() {
 				{playerStatus.bodywear && (
 					<InventoryRow>
 						<p>Bodywear: {playerStatus.bodywear}</p>
-						<button onClick={() => handleUndress(playerStatus.bodywear)}>
-							Undress
-						</button>
+						<ButtonUndress item={playerStatus.bodywear} />
 					</InventoryRow>
 				)}
 				{playerStatus.footwear && (
 					<InventoryRow>
 						<p>Footwear: {playerStatus.footwear}</p>
-						<button onClick={() => handleUndress(playerStatus.footwear)}>
-							Undress
-						</button>
+						<ButtonUndress item={playerStatus.footwear} />
 					</InventoryRow>
 				)}
 				{playerStatus.inventory && playerStatus.inventory[0] && (
