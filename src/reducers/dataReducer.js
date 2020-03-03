@@ -4,6 +4,7 @@ export const initialDataState = {
 	playerStatus: {},
 	itemInfo: {},
 	playerInfo: {},
+	rooms: {},
 	cooldown: 0,
 	cooldownOver: false,
 	isLoading: false,
@@ -78,6 +79,12 @@ export const dataReducer = (state = initialDataState, action) => {
 						item => item !== action.payload,
 					),
 				},
+			};
+		case 'GET_ROOMS_SUCCESS':
+			return {
+				...state,
+				rooms: action.payload,
+				isLoading: false,
 			};
 		default:
 			return state;

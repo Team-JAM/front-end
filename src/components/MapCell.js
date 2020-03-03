@@ -40,9 +40,15 @@ export default function MapCell({ cell }) {
 }
 
 const StyledCell = styled.div`
+	flex-shrink: 0;
 	width: 6rem;
 	height: 6rem;
 
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
 	font-size: 0.8rem;
 
 	color: ${props => props.terrain === 'CAVE' && 'white'};

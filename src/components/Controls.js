@@ -5,10 +5,11 @@ import styled from 'styled-components';
 import { useDataContext } from '../contexts/DataContext';
 
 import { ComponentWrapper } from '../styled-components/StyledComponents';
+import NameChanger from './NameChanger';
 
 export default function Controls() {
 	const {
-		data: { cooldownOver },
+		data: { cooldownOver, roomData, rooms },
 		dispatch,
 	} = useDataContext();
 
@@ -16,7 +17,10 @@ export default function Controls() {
 		dispatch({ type: 'GET_DATA_START' });
 
 		axiosWithAuth()
-			.post('/move/', { direction })
+			.post('/move/', {
+				direction,
+				next_room_id: rooms[roomData.room_id].exits[direction].toString(),
+			})
 			.then(res => {
 				// console.log(res.data);
 				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
@@ -31,14 +35,17 @@ export default function Controls() {
 		<ControlsWrapper>
 			<h3>CONTROLS</h3>
 			{cooldownOver && (
-				<div className='all-buttons'>
-					<button onClick={() => handleMove('s')}>S</button>
-					<div className='middle-buttons'>
-						<button onClick={() => handleMove('w')}>W</button>
-						<button onClick={() => handleMove('e')}>E</button>
+				<>
+					<div className='all-buttons'>
+						<button onClick={() => handleMove('s')}>S</button>
+						<div className='middle-buttons'>
+							<button onClick={() => handleMove('w')}>W</button>
+							<button onClick={() => handleMove('e')}>E</button>
+						</div>
+						<button onClick={() => handleMove('n')}>N</button>
 					</div>
-					<button onClick={() => handleMove('n')}>N</button>
-				</div>
+					<NameChanger />
+				</>
 			)}
 		</ControlsWrapper>
 	);
