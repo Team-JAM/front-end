@@ -18,4 +18,6 @@ const PanelWrapper = styled.div`
 	padding: 2rem;
 	width: 34rem;
 	background-color: #ebebe3;
+	display: flex;
+	flex-direction: column;
 `;

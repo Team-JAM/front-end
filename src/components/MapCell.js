@@ -13,7 +13,7 @@ export default function MapCell({ cell }) {
 	// console.log('MAPCELL ROOMDATA', roomData);
 
 	const isCurrentRoom =
-		roomData.room_id && cell && roomData.room_id === cell.id;
+		roomData.room_id !== null && cell !== null && roomData.room_id === cell.id;
 
 	const specialRoomIDs = [461, 499, 374, 486, 55, 15, 467, 22, 495, 492, 1];
 

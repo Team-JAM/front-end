@@ -6,9 +6,11 @@ import { useDataContext } from '../contexts/DataContext';
 import { FooterComponentWrapper } from '../styled-components/StyledComponents';
 import {
 	ButtonsMove,
+	ButtonsFly,
 	ButtonNameChanger,
 	ButtonExamineWell,
 	ButtonPray,
+	ButtonRecall,
 } from './';
 
 export default function Controls() {
@@ -22,10 +24,12 @@ export default function Controls() {
 			{cooldownOver && (
 				<div>
 					<ButtonsMove />
+					<ButtonsFly />
 					<div>
 						<ButtonNameChanger />
 						<ButtonExamineWell />
 						<ButtonPray />
+						<ButtonRecall />
 					</div>
 				</div>
 			)}

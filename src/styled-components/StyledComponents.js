@@ -7,6 +7,8 @@ export const ComponentWrapper = styled.div`
 	margin-bottom: 2rem;
 
 	max-height: 24rem;
+	flex-shrink: 0;
+	flex-grow: 0;
 	overflow-y: auto;
 
 	background-color: white;
