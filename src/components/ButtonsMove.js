@@ -10,32 +10,47 @@ export default function Controls() {
 		dispatch,
 	} = useDataContext();
 
+	const exitsObj =
+		rooms && rooms[roomData.room_id] && rooms[roomData.room_id].exits;
+	const exitsArr = exitsObj && Object.keys(exitsObj);
+
 	const handleMove = direction => {
 		dispatch({ type: 'GET_DATA_START' });
 
-		const next_room_id = rooms[roomData.room_id].exits[direction].toString();
+		if (exitsObj[direction]) {
+			const next_room_id = exitsObj[direction].toString();
 
-		axiosWithAuth()
-			.post('/adv/move/', { direction, next_room_id })
-			.then(res => {
-				// console.log(res.data);
-				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
-			})
-			.catch(err => {
-				console.log(err);
-				dispatch({ type: 'GET_DATA_FAILURE' });
-			});
+			axiosWithAuth()
+				.post('/adv/move/', { direction, next_room_id })
+				.then(res => {
+					// console.log(res.data);
+					dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
+				})
+				.catch(err => {
+					console.log(err);
+					dispatch({ type: 'GET_DATA_FAILURE' });
+				});
+			// }
+		}
 	};
 
 	return (
 		<MoveWrapper>
 			<div className='all-buttons'>
-				<button onClick={() => handleMove('s')}>S</button>
+				<MoveButton exits={exitsArr} exit='s' onClick={() => handleMove('s')}>
+					S
+				</MoveButton>
 				<div className='middle-buttons'>
-					<button onClick={() => handleMove('w')}>W</button>
-					<button onClick={() => handleMove('e')}>E</button>
+					<MoveButton exits={exitsArr} exit='w' onClick={() => handleMove('w')}>
+						W
+					</MoveButton>
+					<MoveButton exits={exitsArr} exit='e' onClick={() => handleMove('e')}>
+						E
+					</MoveButton>
 				</div>
-				<button onClick={() => handleMove('n')}>N</button>
+				<MoveButton exits={exitsArr} exit='n' onClick={() => handleMove('n')}>
+					N
+				</MoveButton>
 			</div>
 		</MoveWrapper>
 	);
@@ -53,9 +68,12 @@ const MoveWrapper = styled.div`
 		display: flex;
 		justify-content: space-between;
 	}
+`;
 
-	button {
-		width: 5rem;
-		height: 3rem;
-	}
+const MoveButton = styled.button`
+	width: 5rem;
+	height: 3rem;
+
+	opacity: ${props => !props.exits.includes(props.exit) && '0.5'};
+	cursor: ${props => !props.exits.includes(props.exit) && 'default'};
 `;
