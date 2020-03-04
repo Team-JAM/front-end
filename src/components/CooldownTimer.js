@@ -18,16 +18,18 @@ export default function CooldownTimer() {
 	}, [cooldownOver]);
 
 	useEffect(() => {
-		const myInterval = setInterval(() => {
+		const myTimeout = setTimeout(() => {
 			setTimeLeft(timeLeft - 1);
-
-			if (timeLeft <= 0) {
-				dispatch({ type: 'SET_CAN_MOVE_TRUE' });
-			}
 		}, 1000);
 
-		return () => clearInterval(myInterval);
+		return () => clearTimeout(myTimeout);
 	});
+
+	useEffect(() => {
+		if (timeLeft <= 0) {
+			dispatch({ type: 'SET_CAN_MOVE_TRUE' });
+		}
+	}, [timeLeft]);
 
 	return (
 		<CooldownWrapper cooldownOver={cooldownOver} timeLeft={timeLeft}>
