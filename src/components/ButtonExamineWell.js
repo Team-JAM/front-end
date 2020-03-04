@@ -1,8 +1,8 @@
 import React from 'react';
 // import { axiosWithAuth } from '../utils/axiosWithAuth';
 import axios from 'axios';
-
 import { useDataContext } from '../contexts/DataContext';
+import { specialRooms } from '../data/specialRooms';
 
 export default function ButtonExamineWell() {
 	const {
@@ -45,7 +45,8 @@ export default function ButtonExamineWell() {
 
 	return (
 		<div>
-			{roomData.room_id === 55 && (
+			{(roomData.room_id === specialRooms['Wishing Well'] ||
+				roomData.room_id === specialRooms['Underworld Wishing Well']) && (
 				<button onClick={handleClick}>Examine Well</button>
 			)}
 		</div>

@@ -17,9 +17,11 @@ export default function() {
 		dispatch({ type: 'SET_ROOM_TO_FIND', payload: roomToFind });
 	}, [roomToFind]);
 
+	const handleClick = () => setRoomToFind('');
+
 	return (
 		<ComponentWrapper>
-			<StatusHeader>LOCATE A ROOM</StatusHeader>
+			<StatusHeader onClick={handleClick}>LOCATE A ROOM</StatusHeader>
 			<input
 				type='text'
 				name='roomToFind'
