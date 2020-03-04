@@ -10,6 +10,7 @@ import {
 	ButtonExamineWell,
 	ButtonPray,
 	ButtonRecall,
+	ButtonWarp,
 } from './';
 
 export default function Controls() {
@@ -33,6 +34,7 @@ export default function Controls() {
 						<ButtonRecall />
 						<ButtonExamineWell />
 						<ButtonNameChanger />
+						<ButtonWarp />
 					</div>
 				</ButtonsWrapper>
 			)}
