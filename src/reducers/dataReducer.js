@@ -16,6 +16,8 @@ export const initialDataState = {
 	cooldown: 0,
 	cooldownOver: false,
 	warpMode: localStorage.getItem('warp_mode') === 'true',
+	destination: '',
+	path: [],
 	isLoading: false,
 	error: '',
 };
@@ -125,6 +127,12 @@ export const dataReducer = (state = initialDataState, action) => {
 			return {
 				...state,
 				itemInfo: {},
+			};
+		case 'SET_PATH':
+			return {
+				...state,
+				destination: action.payload.destination,
+				path: action.payload.path,
 			};
 		default:
 			return state;

@@ -48,6 +48,9 @@ export const StyledCell = styled.div`
 	opacity: ${props => props.elevation === 2 && '0.7'};
 	opacity: ${props => props.elevation === 1 && '0.6'};
 
+	background-color: ${props => props.isOnPath && 'pink'};
+	background-color: ${props => props.isDestination && 'purple'};
+
 	&:hover {
 		opacity: ${props => props.isRoom && '0.75'};
 	}
