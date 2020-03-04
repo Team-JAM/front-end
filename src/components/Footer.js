@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-	ItemInfo,
+	ExamineItem,
 	// PlayerInfo,
 	Controls,
 	PlayerStatus,
@@ -14,7 +14,7 @@ export default function Footer() {
 	return (
 		<StyledFooter>
 			<Controls />
-			<ItemInfo />
+			<ExamineItem />
 			{/* <PlayerInfo /> */}
 			<PlayerStatus />
 			<PlayerAbilities />

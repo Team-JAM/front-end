@@ -3,16 +3,24 @@ import React from 'react';
 
 import { useDataContext } from '../contexts/DataContext';
 
-import { FooterComponentWrapper } from '../styled-components/StyledComponents';
+import {
+	FooterComponentWrapper,
+	StatusHeader,
+} from '../styled-components/StyledComponents';
 
-export default function ItemInfo() {
+export default function ExamineItem() {
 	const {
 		data: { itemInfo },
+		dispatch,
 	} = useDataContext();
+
+	const handleClick = () => {
+		dispatch({ type: 'RESET_ITEM_INFO' });
+	};
 
 	return (
 		<FooterComponentWrapper>
-			<h3>ITEM INFO</h3>
+			<StatusHeader onClick={handleClick}>EXAMINE</StatusHeader>
 			{itemInfo.name && (
 				<div>
 					<p>Name: {itemInfo.name}</p>

@@ -10,12 +10,17 @@ export default function Messages() {
 	} = useDataContext();
 
 	return (
-		<ComponentWrapper>
-			<h3>MESSAGES</h3>
-			<ul>
-				{roomData.messages &&
-					roomData.messages.map(message => <li key={message}>{message}</li>)}
-			</ul>
-		</ComponentWrapper>
+		<>
+			{roomData.messages[0] && (
+				<ComponentWrapper>
+					<h3>MESSAGES</h3>
+					<ul>
+						{roomData.messages.map(message => (
+							<li key={message}>{message}</li>
+						))}
+					</ul>
+				</ComponentWrapper>
+			)}
+		</>
 	);
 }

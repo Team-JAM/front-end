@@ -1,21 +1,40 @@
 import React from 'react';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 import styled from 'styled-components';
-
 import { useDataContext } from '../contexts/DataContext';
 
 import { Item } from './';
-import { ComponentWrapper } from '../styled-components/StyledComponents';
+import {
+	ComponentWrapper,
+	StatusHeader,
+} from '../styled-components/StyledComponents';
 
 export default function RoomInfo() {
 	const {
 		data: { roomData },
+		dispatch,
 	} = useDataContext();
+
+	const handleClick = () => {
+		dispatch({ type: 'GET_DATA_START' });
+
+		axiosWithAuth()
+			.get('/adv/init/')
+			.then(res => {
+				// console.log(res.data);
+				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
+			})
+			.catch(err => {
+				console.log(err);
+				dispatch({ type: 'GET_DATA_FAILURE' });
+			});
+	};
 
 	return (
 		<RoomWrapper>
-			<h3>
+			<StatusHeader onClick={handleClick}>
 				ROOM {roomData.room_id} {roomData.coordinates}: {roomData.title}
-			</h3>
+			</StatusHeader>
 			<div>
 				{/* <p>
 					Room {roomData.room_id} {roomData.coordinates}: {roomData.title}

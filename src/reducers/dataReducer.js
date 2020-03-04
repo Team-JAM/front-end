@@ -116,6 +116,11 @@ export const dataReducer = (state = initialDataState, action) => {
 				...state,
 				roomToFind: action.payload,
 			};
+		case 'RESET_ITEM_INFO':
+			return {
+				...state,
+				itemInfo: {},
+			};
 		default:
 			return state;
 	}
