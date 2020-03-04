@@ -6,6 +6,8 @@ export const initialDataState = {
 	playerInfo: {},
 	rooms: {},
 	coinBalance: '',
+	roomToMine: localStorage.getItem('roomToMine'),
+	roomToFind: undefined,
 	cooldown: 0,
 	cooldownOver: false,
 	warpMode: localStorage.getItem('warp_mode') === 'true',
@@ -98,15 +100,21 @@ export const dataReducer = (state = initialDataState, action) => {
 		case 'GET_MINING_ROOM_SUCCESS':
 			return {
 				...state,
-				roomData: {
-					...state.roomData,
-					messages: [...state.roomData.messages, action.payload],
-				},
+				// roomData: {
+				// 	...state.roomData,
+				// 	messages: [...state.roomData.messages, action.payload],
+				// },
+				roomToMine: action.payload,
 			};
 		case 'TOGGLE_WARP_MODE':
 			return {
 				...state,
 				warpMode: !state.warpMode,
+			};
+		case 'SET_ROOM_TO_FIND':
+			return {
+				...state,
+				roomToFind: action.payload,
 			};
 		default:
 			return state;

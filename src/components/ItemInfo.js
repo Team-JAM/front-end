@@ -12,16 +12,18 @@ export default function ItemInfo() {
 
 	return (
 		<FooterComponentWrapper>
-			<h4>ITEM INFO</h4>
-			<div>
-				<p>Name: {itemInfo.name}</p>
-				<p>Description: {itemInfo.description}</p>
-				<p>Weight: {itemInfo.weight}</p>
-				<p>Type: {itemInfo.itemtype}</p>
-				<p>Level: {itemInfo.level}</p>
-				<p>Exp: {itemInfo.exp}</p>
-				<p>Attributes: {itemInfo.attributes}</p>
-			</div>
+			<h3>ITEM INFO</h3>
+			{itemInfo.name && (
+				<div>
+					<p>Name: {itemInfo.name}</p>
+					<p>Description: {itemInfo.description}</p>
+					<p>Weight: {itemInfo.weight}</p>
+					<p>Type: {itemInfo.itemtype}</p>
+					<p>Level: {itemInfo.level}</p>
+					<p>Exp: {itemInfo.exp}</p>
+					<p>Attributes: {itemInfo.attributes}</p>
+				</div>
+			)}
 		</FooterComponentWrapper>
 	);
 }

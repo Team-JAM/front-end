@@ -5,7 +5,7 @@ import { useDataContext } from '../contexts/DataContext';
 
 export default function MapCell({ cell }) {
 	const {
-		data: { roomData },
+		data: { roomData, roomToFind, roomToMine },
 	} = useDataContext();
 	const [specialRoom, setSpecialRoom] = useState(false);
 
@@ -15,6 +15,12 @@ export default function MapCell({ cell }) {
 		roomData.room_id !== null && cell !== null && roomData.room_id === cell.id;
 
 	const specialRoomIDs = [461, 499, 374, 486, 55, 15, 467, 22, 495, 492, 1];
+
+	const miningRoomID = Number(roomToMine.split('Mine your coin in room ')[1]);
+
+	const isMiningRoom = cell && cell.id === miningRoomID;
+
+	const isRoomToFind = cell && cell.id === Number(roomToFind);
 
 	useEffect(() => {
 		if (cell && specialRoomIDs.includes(cell.id)) {
@@ -26,6 +32,8 @@ export default function MapCell({ cell }) {
 		<StyledCell
 			isCurrentRoom={isCurrentRoom}
 			isSpecialRoom={specialRoom}
+			isMiningRoom={isMiningRoom}
+			isRoomToFind={isRoomToFind}
 			terrain={cell && cell.terrain}
 			elevation={cell && cell.elevation}
 			exitN={cell && cell.exits.n}
@@ -74,6 +82,8 @@ const StyledCell = styled.div`
 	background-color: ${props =>
 		props.terrain === 'MOUNTAIN' && 'rgb(101, 67, 33)'};
 	background-color: ${props => props.isSpecialRoom && 'yellow'};
+	background-color: ${props => props.isMiningRoom && 'orange'};
+	background-color: ${props => props.isRoomToFind && 'dodgerblue'};
 	background-color: ${props => props.isCurrentRoom && 'white'};
 
 	opacity: ${props => props.elevation === 5 && '1'};
