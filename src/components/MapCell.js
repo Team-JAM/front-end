@@ -1,94 +1,85 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-
+import React from 'react';
+// import axios from 'axios';
 import { useDataContext } from '../contexts/DataContext';
+import { specialRooms } from '../data/specialRooms';
+import { StyledCell, StyledCellDark } from '../styled-components/StyledCells';
 
 export default function MapCell({ cell }) {
 	const {
-		data: { roomData, roomToFind, roomToMine },
+		data: { warpMode, roomData, roomToFind, roomToMine },
 	} = useDataContext();
-	const [specialRoom, setSpecialRoom] = useState(false);
 
-	// console.log(cell);
+	const isRoom = cell && cell.id;
 
 	const isCurrentRoom =
 		roomData.room_id !== null && cell !== null && roomData.room_id === cell.id;
 
-	const specialRoomIDs = [461, 499, 374, 486, 55, 15, 467, 22, 495, 492, 1];
+	const specialRoomIDs = Object.values(specialRooms);
+	const isSpecialRoom = cell && cell.id && specialRoomIDs.includes(cell.id);
 
 	const miningRoomID = Number(roomToMine.split('Mine your coin in room ')[1]);
-
 	const isMiningRoom = cell && cell.id === miningRoomID;
 
-	const isRoomToFind = cell && cell.id === Number(roomToFind);
+	const isRoomToFind =
+		cell && cell.id === (roomToFind !== '' && Number(roomToFind));
 
-	useEffect(() => {
-		if (cell && specialRoomIDs.includes(cell.id)) {
-			setSpecialRoom(true);
-		}
-	}, []);
+	const handleClick = destination_room => {
+		console.log(roomData.room_id);
+		console.log(destination_room);
+		console.log(localStorage.getItem('token'));
+
+		// axios
+		// 	.post('https://team-jam-api.herokuapp.com/api/get_directions', {
+		// 		starting_room: roomData.room_id,
+		// 		destination_room,
+		// 		token: localStorage.getItem('token'),
+		// 	})
+		// 	.then(res => {
+		// 		console.log(res);
+		// 	})
+		// 	.catch(err => {
+		// 		console.log(err);
+		// 	});
+	};
 
 	return (
-		<StyledCell
-			isCurrentRoom={isCurrentRoom}
-			isSpecialRoom={specialRoom}
-			isMiningRoom={isMiningRoom}
-			isRoomToFind={isRoomToFind}
-			terrain={cell && cell.terrain}
-			elevation={cell && cell.elevation}
-			exitN={cell && cell.exits.n}
-			exitS={cell && cell.exits.s}
-			exitE={cell && cell.exits.e}
-			exitW={cell && cell.exits.w}>
-			<div>{cell && cell.id}</div>
-			<div>{specialRoom && cell.title}</div>
-		</StyledCell>
+		<>
+			{!warpMode && (
+				<StyledCell
+					isRoom={isRoom}
+					isCurrentRoom={isCurrentRoom}
+					isSpecialRoom={isSpecialRoom}
+					isMiningRoom={isMiningRoom}
+					isRoomToFind={isRoomToFind}
+					terrain={cell && cell.terrain}
+					elevation={cell && cell.elevation}
+					exitN={cell && cell.exits.n}
+					exitS={cell && cell.exits.s}
+					exitE={cell && cell.exits.e}
+					exitW={cell && cell.exits.w}
+					onClick={() => handleClick(cell.id)}>
+					<div>{cell && cell.id}</div>
+					<div>{(isSpecialRoom || isCurrentRoom) && cell.title}</div>
+				</StyledCell>
+			)}
+			{warpMode && (
+				<StyledCellDark
+					isRoom={isRoom}
+					isCurrentRoom={isCurrentRoom}
+					isSpecialRoom={isSpecialRoom}
+					isMiningRoom={isMiningRoom}
+					isRoomToFind={isRoomToFind}
+					terrain={cell && cell.terrain}
+					elevation={cell && cell.elevation}
+					exitN={cell && cell.exits.n}
+					exitS={cell && cell.exits.s}
+					exitE={cell && cell.exits.e}
+					exitW={cell && cell.exits.w}
+					onClick={() => handleClick(cell.id)}>
+					<div>{cell && cell.id}</div>
+					<div>{(isSpecialRoom || isCurrentRoom) && cell.title}</div>
+				</StyledCellDark>
+			)}
+		</>
 	);
 }
-
-const StyledCell = styled.div`
-	flex-shrink: 0;
-	width: 6rem;
-	height: 6rem;
-
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-	font-size: 0.8rem;
-
-	color: ${props => props.terrain === 'CAVE' && 'white'};
-	color: ${props => props.terrain === 'MOUNTAIN' && 'white'};
-	color: ${props => props.isSpecialRoom && 'black'};
-
-	border: 1px solid lightskyblue;
-	border: ${props => props.terrain === 'NORMAL' && '2px solid #013208'};
-	border: ${props => props.terrain === 'CAVE' && '2px solid gray'};
-	border: ${props => props.terrain === 'TRAP' && '2px solid black'};
-	border: ${props => props.terrain === 'MOUNTAIN' && '2px solid black'};
-
-	border-left: ${props => props.exitW && '0'};
-	border-right: ${props => props.exitE && '0'};
-	border-top: ${props => props.exitS && '0'};
-	border-bottom: ${props => props.exitN && '0'};
-
-	border: ${props => props.isCurrentRoom && '3px solid red'};
-
-	background-color: lightcyan;
-	background-color: ${props => props.terrain === 'NORMAL' && '#567d46'};
-	background-color: ${props => props.terrain === 'CAVE' && '#202020'};
-	background-color: ${props => props.terrain === 'TRAP' && 'red'};
-	background-color: ${props =>
-		props.terrain === 'MOUNTAIN' && 'rgb(101, 67, 33)'};
-	background-color: ${props => props.isSpecialRoom && 'yellow'};
-	background-color: ${props => props.isMiningRoom && 'orange'};
-	background-color: ${props => props.isRoomToFind && 'dodgerblue'};
-	background-color: ${props => props.isCurrentRoom && 'white'};
-
-	opacity: ${props => props.elevation === 5 && '1'};
-	opacity: ${props => props.elevation === 4 && '0.9'};
-	opacity: ${props => props.elevation === 3 && '0.8'};
-	opacity: ${props => props.elevation === 2 && '0.7'};
-	opacity: ${props => props.elevation === 1 && '0.6'};
-`;

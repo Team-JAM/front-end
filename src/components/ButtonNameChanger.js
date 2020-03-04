@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-
 import { useDataContext } from '../contexts/DataContext';
+import { specialRooms } from '../data/specialRooms';
 
 export default function ButtonNameChanger() {
 	const {
@@ -30,7 +30,7 @@ export default function ButtonNameChanger() {
 
 	return (
 		<div>
-			{roomData.room_id === 467 && (
+			{roomData.room_id === specialRooms["Pirate Ry's"] && (
 				<>
 					<input
 						type='text'

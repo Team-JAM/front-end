@@ -1,6 +1,7 @@
 import React from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useDataContext } from '../contexts/DataContext';
+import { specialRooms } from '../data/specialRooms';
 
 export default function ButtonSell({ item }) {
 	const {
@@ -26,7 +27,7 @@ export default function ButtonSell({ item }) {
 
 	return (
 		<>
-			{roomData.room_id === 1 && (
+			{roomData.room_id === specialRooms['Shop'] && (
 				<button onClick={() => handleSell(item)}>Sell Item</button>
 			)}
 		</>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useDataContext } from '../contexts/DataContext';
+import { specialRooms } from '../data/specialRooms';
 
 export default function ButtonTransmogrify({ item }) {
 	const {
@@ -25,7 +26,7 @@ export default function ButtonTransmogrify({ item }) {
 
 	return (
 		<div>
-			{roomData.room_id === 495 && (
+			{roomData.room_id === specialRooms['The Transmogriphier'] && (
 				<button onClick={() => handleClick(item)}>Transmogrify</button>
 			)}
 		</div>
