@@ -6,6 +6,7 @@ import About from './About';
 // NavBar Components
 import Logo from './Logo';
 import InputToken from './InputToken';
+import PlayerName from './PlayerName';
 import SelectMode from './SelectMode';
 
 // Game Components
@@ -56,6 +57,7 @@ export {
 	About,
 	Logo,
 	InputToken,
+	PlayerName,
 	SelectMode,
 	Map,
 	PanelRight,

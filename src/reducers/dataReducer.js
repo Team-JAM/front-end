@@ -1,11 +1,16 @@
 export const initialDataState = {
 	// token: '',
 	roomData: { messages: [] },
-	playerStatus: { inventory: [], abilities: [], status: [] },
+	playerStatus: {
+		name: localStorage.getItem('name'),
+		inventory: [],
+		abilities: [],
+		status: [],
+	},
 	itemInfo: {},
 	playerInfo: {},
 	rooms: {},
-	coinBalance: '',
+	coinBalance: localStorage.getItem('coinBalance'),
 	roomToMine: localStorage.getItem('roomToMine'),
 	roomToFind: undefined,
 	cooldown: 0,

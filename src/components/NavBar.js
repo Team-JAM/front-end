@@ -2,13 +2,14 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { Logo, InputToken, SelectMode } from './';
+import { Logo, InputToken, PlayerName, SelectMode } from './';
 
 export default function NavBar() {
 	return (
 		<NavBarWrapper>
 			<Logo />
 			<InputToken />
+			<PlayerName />
 			<SelectMode />
 			<NavLink to='/'>Game</NavLink>
 			<NavLink to='/About'>About</NavLink>
