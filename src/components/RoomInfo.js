@@ -13,29 +13,42 @@ export default function RoomInfo() {
 
 	return (
 		<RoomWrapper>
-			<h3>ROOM</h3>
+			<h3>
+				ROOM {roomData.room_id} {roomData.coordinates}: {roomData.title}
+			</h3>
 			<div>
-				<p>
+				{/* <p>
 					Room {roomData.room_id} {roomData.coordinates}: {roomData.title}
-				</p>
+				</p> */}
 				<p>{roomData.description}</p>
 				<p>Elevation: {roomData.elevation}</p>
 				<p>Terrain: {roomData.terrain}</p>
-				<p>Items:</p>
-				<ul>
-					{roomData.items &&
-						roomData.items.map((item, index) => (
-							<Item key={index} item={item} action='Take' inInventory={false} />
-						))}
-				</ul>
-				<p>Players:</p>
-				<ul>
-					{roomData.players &&
-						roomData.players.map(player => (
-							<li key={player}>{player}</li>
-							// <Player key={player} player={player} />
-						))}
-				</ul>
+				{roomData.items && roomData.items[0] && (
+					<>
+						<p>Items:</p>
+						<ul>
+							{roomData.items.map((item, index) => (
+								<Item
+									key={index}
+									item={item}
+									action='Take'
+									inInventory={false}
+								/>
+							))}
+						</ul>
+					</>
+				)}
+				{roomData.players && roomData.players[0] && (
+					<>
+						<p>Players:</p>
+						<ul>
+							{roomData.players.map(player => (
+								<li key={player}>{player}</li>
+								// <Player key={player} player={player} />
+							))}
+						</ul>
+					</>
+				)}
 				<p>Exits:</p>
 				<ul>
 					{roomData.exits &&

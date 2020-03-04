@@ -16,6 +16,8 @@ import Footer from './Footer';
 // Right Panel Components
 import CooldownTimer from './CooldownTimer';
 import LambdaCoin from './LambdaCoin';
+import LocateRoom from './LocateRoom';
+import RoomToMine from './RoomToMine';
 import Messages from './Messages';
 import RoomInfo from './RoomInfo';
 
@@ -64,6 +66,8 @@ export {
 	Footer,
 	CooldownTimer,
 	LambdaCoin,
+	LocateRoom,
+	RoomToMine,
 	Messages,
 	RoomInfo,
 	ButtonsMove,
