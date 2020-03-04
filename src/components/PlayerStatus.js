@@ -30,9 +30,9 @@ export default function PlayerStatus() {
 			});
 	};
 
-	useEffect(() => {
-		getStatus();
-	}, []);
+	// useEffect(() => {
+	// 	getStatus();
+	// }, []);
 
 	const handleClick = () => getStatus();
 
