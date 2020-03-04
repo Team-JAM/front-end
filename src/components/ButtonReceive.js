@@ -1,21 +1,21 @@
 import React from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-
 import { useDataContext } from '../contexts/DataContext';
 
-export default function ButtonRecall() {
+export default function ButtonReceive() {
 	const {
-		data: { playerStatus },
+		data: { cooldownOver, playerStatus },
 		dispatch,
 	} = useDataContext();
 
-	const canRecall = playerStatus.abilities.includes('recall');
+	const ghostCarrying =
+		playerStatus.status[0] && playerStatus.status[0].includes('Glasowyn');
 
-	const handleRecall = () => {
+	const handleReceive = () => {
 		dispatch({ type: 'GET_DATA_START' });
 
 		axiosWithAuth()
-			.post('/adv/recall/')
+			.post('/adv/receive')
 			.then(res => {
 				// console.log(res.data);
 				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
@@ -26,5 +26,11 @@ export default function ButtonRecall() {
 			});
 	};
 
-	return <>{canRecall && <button onClick={handleRecall}>Recall</button>}</>;
+	return (
+		<>
+			{cooldownOver && ghostCarrying && (
+				<button onClick={handleReceive}>Receive</button>
+			)}
+		</>
+	);
 }

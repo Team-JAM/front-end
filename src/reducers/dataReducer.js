@@ -1,7 +1,7 @@
 export const initialDataState = {
 	// token: '',
 	roomData: {},
-	playerStatus: { inventory: [] },
+	playerStatus: { inventory: [], abilities: [], status: [] },
 	itemInfo: {},
 	playerInfo: {},
 	rooms: {},

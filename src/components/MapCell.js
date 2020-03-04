@@ -9,8 +9,7 @@ export default function MapCell({ cell }) {
 	} = useDataContext();
 	const [specialRoom, setSpecialRoom] = useState(false);
 
-	// console.log('MAPCELL CELL', cell && cell.exits);
-	// console.log('MAPCELL ROOMDATA', roomData);
+	// console.log(cell);
 
 	const isCurrentRoom =
 		roomData.room_id !== null && cell !== null && roomData.room_id === cell.id;
