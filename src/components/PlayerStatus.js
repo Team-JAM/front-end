@@ -22,6 +22,8 @@ export default function PlayerStatus() {
 			.post('/adv/status')
 			.then(res => {
 				// console.log(res.data);
+				localStorage.setItem('name', res.data.name);
+
 				dispatch({ type: 'GET_STATUS_SUCCESS', payload: res.data });
 			})
 			.catch(err => {
@@ -39,19 +41,21 @@ export default function PlayerStatus() {
 	return (
 		<FooterComponentWrapper>
 			<StatusHeader onClick={handleClick}>PLAYER STATUS</StatusHeader>
-			<div>
-				<p>Name: {playerStatus.name}</p>
-				<p>Encumbrance: {playerStatus.encumbrance}</p>
-				<p>Strength: {playerStatus.strength}</p>
-				<p>Speed: {playerStatus.speed}</p>
-				<p>Gold: {playerStatus.gold}</p>
-				<p>Has mined? {playerStatus.has_mined ? 'True' : 'False'}</p>
-				<p>Status:</p>
-				<ul>
-					{playerStatus.status &&
-						playerStatus.status.map(status => <li key={status}>{status}</li>)}
-				</ul>
-			</div>
+			{playerStatus.encumbrance && (
+				<div>
+					{/* <p>Name: {playerStatus.name}</p> */}
+					<p>Encumbrance: {playerStatus.encumbrance}</p>
+					<p>Strength: {playerStatus.strength}</p>
+					<p>Speed: {playerStatus.speed}</p>
+					<p>Gold: {playerStatus.gold}</p>
+					<p>Has mined? {playerStatus.has_mined ? 'True' : 'False'}</p>
+					<p>Status:</p>
+					<ul>
+						{playerStatus.status &&
+							playerStatus.status.map(status => <li key={status}>{status}</li>)}
+					</ul>
+				</div>
+			)}
 		</FooterComponentWrapper>
 	);
 }

@@ -22,6 +22,8 @@ export default function LambdaCoin() {
 			.get('/bc/get_balance/')
 			.then(res => {
 				// console.log(res.data.messages[0]);
+				localStorage.setItem('coinBalance', res.data.messages[0]);
+
 				dispatch({
 					type: 'GET_BALANCE_SUCCESS',
 					payload: res.data.messages[0],

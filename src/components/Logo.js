@@ -5,7 +5,7 @@ export default function Logo() {
 	return (
 		<LogoWrapper>
 			<StyledLogo></StyledLogo>
-			<h1>TeamJAM</h1>
+			<h1>JAMbda Treasure Hunt</h1>
 		</LogoWrapper>
 	);
 }

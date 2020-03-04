@@ -33,6 +33,11 @@ button {
 button:focus {
   outline: 0;
 }
+
+a {
+  text-decoration: none;
+  color: white;
+}
 `;
 
 export default GlobalStyle;
