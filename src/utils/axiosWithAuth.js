@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { baseURL } from './baseURL';
+import { lambdaServerBaseURL } from './baseURL';
 
 export const axiosWithAuth = () => {
 	const token = localStorage.getItem('token');
 
 	return axios.create({
-		baseURL,
+		baseURL: lambdaServerBaseURL,
 		headers: {
 			Authorization: `Token ${token}`,
 		},

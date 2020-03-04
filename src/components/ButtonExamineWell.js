@@ -1,6 +1,6 @@
 import React from 'react';
 // import { axiosWithAuth } from '../utils/axiosWithAuth';
-import axios from 'axios';
+import { axiosTeamJamBackEnd } from '../utils/axiosTeamJamBackEnd';
 import { useDataContext } from '../contexts/DataContext';
 import { specialRooms } from '../data/specialRooms';
 
@@ -13,8 +13,8 @@ export default function ButtonExamineWell() {
 	const handleClick = () => {
 		dispatch({ type: 'GET_DATA_START' });
 
-		axios
-			.post('https://team-jam-api.herokuapp.com/api/well', {
+		axiosTeamJamBackEnd()
+			.post('/well/', {
 				token: localStorage.getItem('token'),
 			})
 			.then(res => {

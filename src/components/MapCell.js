@@ -1,5 +1,5 @@
 import React from 'react';
-// import axios from 'axios';
+// import { axiosTeamJamBackEnd } from '../utils/axiosTeamJamBackEnd';
 import { useDataContext } from '../contexts/DataContext';
 import { specialRooms } from '../data/specialRooms';
 import { StyledCell, StyledCellDark } from '../styled-components/StyledCells';
@@ -9,7 +9,7 @@ export default function MapCell({ cell }) {
 		data: { warpMode, roomData, roomToFind, roomToMine },
 	} = useDataContext();
 
-	const isRoom = cell && cell.id;
+	const isRoom = cell !== null;
 
 	const isCurrentRoom =
 		roomData.room_id !== null && cell !== null && roomData.room_id === cell.id;
@@ -23,23 +23,26 @@ export default function MapCell({ cell }) {
 	const isRoomToFind =
 		cell && cell.id === (roomToFind !== '' && Number(roomToFind));
 
-	const handleClick = destination_room => {
-		console.log(roomData.room_id);
-		console.log(destination_room);
-		console.log(localStorage.getItem('token'));
+	const handleClick = cell => {
+		if (cell) {
+			const destination_room = cell.id;
+			console.log(roomData.room_id);
+			console.log(destination_room);
+			console.log(localStorage.getItem('token'));
 
-		// axios
-		// 	.post('https://team-jam-api.herokuapp.com/api/get_directions', {
-		// 		starting_room: roomData.room_id,
-		// 		destination_room,
-		// 		token: localStorage.getItem('token'),
-		// 	})
-		// 	.then(res => {
-		// 		console.log(res);
-		// 	})
-		// 	.catch(err => {
-		// 		console.log(err);
-		// 	});
+			// axiosTeamJamBackEnd()
+			// 	.post('/get_directions/', {
+			// 		starting_room: roomData.room_id,
+			// 		destination_room,
+			// 		token: localStorage.getItem('token'),
+			// 	})
+			// 	.then(res => {
+			// 		console.log(res);
+			// 	})
+			// 	.catch(err => {
+			// 		console.log(err);
+			// 	});
+		}
 	};
 
 	return (
@@ -57,7 +60,7 @@ export default function MapCell({ cell }) {
 					exitS={cell && cell.exits.s}
 					exitE={cell && cell.exits.e}
 					exitW={cell && cell.exits.w}
-					onClick={() => handleClick(cell.id)}>
+					onClick={() => handleClick(cell)}>
 					<div>{cell && cell.id}</div>
 					<div>{(isSpecialRoom || isCurrentRoom) && cell.title}</div>
 				</StyledCell>
@@ -75,7 +78,7 @@ export default function MapCell({ cell }) {
 					exitS={cell && cell.exits.s}
 					exitE={cell && cell.exits.e}
 					exitW={cell && cell.exits.w}
-					onClick={() => handleClick(cell.id)}>
+					onClick={() => handleClick(cell)}>
 					<div>{cell && cell.id}</div>
 					<div>{(isSpecialRoom || isCurrentRoom) && cell.title}</div>
 				</StyledCellDark>
