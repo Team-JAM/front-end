@@ -16,7 +16,7 @@ export default function Map() {
 		axios
 			.get('https://team-jam-api.herokuapp.com/api/map')
 			.then(res => {
-				// console.log(res.data);
+				console.log(res.data);
 				setMapData(res.data.map);
 				dispatch({ type: 'GET_ROOMS_SUCCESS', payload: res.data.rooms });
 			})
@@ -34,9 +34,7 @@ export default function Map() {
 }
 
 const MapWrapper = styled.div`
-	// flex-grow: 1;
-	// width: auto;
-	width: inline-block;
+	min-width: 79vw;
 	overflow: auto;
 
 	background-color: white;

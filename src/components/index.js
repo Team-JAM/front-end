@@ -43,6 +43,7 @@ import ButtonPrice from './ButtonPrice';
 import ButtonSell from './ButtonSell';
 import ButtonWear from './ButtonWear';
 import ButtonUndress from './ButtonUndress';
+import ButtonTransmogrify from './ButtonTransmogrify';
 
 export {
 	NavBar,
@@ -77,4 +78,5 @@ export {
 	ButtonSell,
 	ButtonWear,
 	ButtonUndress,
+	ButtonTransmogrify,
 };

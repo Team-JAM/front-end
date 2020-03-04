@@ -17,11 +17,24 @@ export default function ButtonsMove({ endpoint, header }) {
 	const handleMove = direction => {
 		dispatch({ type: 'GET_DATA_START' });
 
-		if (exitsObj[direction] !== null) {
-			const next_room_id = exitsObj[direction].toString();
+		if (exitsObj) {
+			if (exitsObj[direction] !== null) {
+				const next_room_id = exitsObj[direction].toString();
 
+				axiosWithAuth()
+					.post(`/adv/${endpoint}/`, { direction, next_room_id })
+					.then(res => {
+						// console.log(res.data);
+						dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
+					})
+					.catch(err => {
+						console.log(err);
+						dispatch({ type: 'GET_DATA_FAILURE' });
+					});
+			}
+		} else {
 			axiosWithAuth()
-				.post(`/adv/${endpoint}/`, { direction, next_room_id })
+				.post(`/adv/${endpoint}/`, { direction })
 				.then(res => {
 					// console.log(res.data);
 					dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
