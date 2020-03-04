@@ -8,12 +8,14 @@ export default function ButtonTakeDrop({ item, action }) {
 	const handleTakeDrop = name => {
 		dispatch({ type: 'GET_DATA_START' });
 
+		console.log(name);
+
 		const actionLC = action.toLowerCase();
 
 		axiosWithAuth()
 			.post(`/adv/${actionLC}`, { name })
 			.then(res => {
-				// console.log(res.data);
+				console.log(res.data);
 				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
 				const message = res.data.messages[0];
 

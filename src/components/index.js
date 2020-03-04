@@ -25,6 +25,7 @@ import ButtonNameChanger from './ButtonNameChanger';
 import ButtonExamineWell from './ButtonExamineWell';
 import ButtonPray from './ButtonPray';
 import ButtonRecall from './ButtonRecall';
+import ButtonWarp from './ButtonWarp';
 
 // Footer Components
 import PlayerStatus from './PlayerStatus';
@@ -47,6 +48,10 @@ import ButtonTransmogrify from './ButtonTransmogrify';
 import ButtonCarry from './ButtonCarry';
 import ButtonReceive from './ButtonReceive';
 
+// Map Cells
+import MapCell from './MapCell';
+import MapCellDark from './MapCellDark';
+
 export {
 	NavBar,
 	Game,
@@ -66,6 +71,7 @@ export {
 	ButtonExamineWell,
 	ButtonPray,
 	ButtonRecall,
+	ButtonWarp,
 	PlayerStatus,
 	PlayerAbilities,
 	PlayerInventory,
@@ -83,4 +89,6 @@ export {
 	ButtonTransmogrify,
 	ButtonCarry,
 	ButtonReceive,
+	MapCell,
+	MapCellDark,
 };

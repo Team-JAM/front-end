@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { useDataContext } from '../contexts/DataContext';
 
-export default function MapCell({ cell }) {
+export default function MapCellDark({ cell }) {
 	const {
 		data: { roomData },
 	} = useDataContext();
@@ -50,12 +50,13 @@ const StyledCell = styled.div`
 	text-align: center;
 	font-size: 0.8rem;
 
+	color: white;
 	color: ${props => props.terrain === 'CAVE' && 'white'};
 	color: ${props => props.terrain === 'MOUNTAIN' && 'white'};
 	color: ${props => props.isSpecialRoom && 'black'};
 
-	border: 1px solid lightskyblue;
-	border: ${props => props.terrain === 'NORMAL' && '2px solid #013208'};
+	border: 1px solid #004080;
+	border: ${props => props.terrain === 'NORMAL' && '2px solid darkgreen'};
 	border: ${props => props.terrain === 'CAVE' && '2px solid gray'};
 	border: ${props => props.terrain === 'TRAP' && '2px solid black'};
 	border: ${props => props.terrain === 'MOUNTAIN' && '2px solid black'};
@@ -67,8 +68,8 @@ const StyledCell = styled.div`
 
 	border: ${props => props.isCurrentRoom && '3px solid red'};
 
-	background-color: lightcyan;
-	background-color: ${props => props.terrain === 'NORMAL' && '#567d46'};
+	background-color: #000d1a;
+	background-color: ${props => props.terrain === 'NORMAL' && '#013208'};
 	background-color: ${props => props.terrain === 'CAVE' && '#202020'};
 	background-color: ${props => props.terrain === 'TRAP' && 'red'};
 	background-color: ${props =>

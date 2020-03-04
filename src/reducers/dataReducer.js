@@ -1,6 +1,6 @@
 export const initialDataState = {
 	// token: '',
-	roomData: {},
+	roomData: { messages: [] },
 	playerStatus: { inventory: [], abilities: [], status: [] },
 	itemInfo: {},
 	playerInfo: {},
@@ -8,6 +8,7 @@ export const initialDataState = {
 	coinBalance: '',
 	cooldown: 0,
 	cooldownOver: false,
+	warpMode: localStorage.getItem('warp_mode') === 'true',
 	isLoading: false,
 	error: '',
 };
@@ -93,6 +94,19 @@ export const dataReducer = (state = initialDataState, action) => {
 				coinBalance: action.payload,
 				isLoading: false,
 				cooldownOver: false,
+			};
+		case 'GET_MINING_ROOM_SUCCESS':
+			return {
+				...state,
+				roomData: {
+					...state.roomData,
+					messages: [...state.roomData.messages, action.payload],
+				},
+			};
+		case 'TOGGLE_WARP_MODE':
+			return {
+				...state,
+				warpMode: !state.warpMode,
 			};
 		default:
 			return state;
