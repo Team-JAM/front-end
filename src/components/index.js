@@ -34,7 +34,7 @@ import PlayerStatus from './PlayerStatus';
 import PlayerAbilities from './PlayerAbilities';
 import PlayerInventory from './PlayerInventory';
 import Controls from './Controls';
-import ItemInfo from './ItemInfo';
+import ExamineItem from './ExamineItem';
 import Item from './Item';
 import PlayerInfo from './PlayerInfo';
 import Player from './Player';
@@ -76,7 +76,7 @@ export {
 	PlayerAbilities,
 	PlayerInventory,
 	Controls,
-	ItemInfo,
+	ExamineItem,
 	Item,
 	PlayerInfo,
 	Player,
