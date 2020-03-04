@@ -14,8 +14,10 @@ import {
 
 export default function Controls() {
 	const {
-		data: { cooldownOver },
+		data: { cooldownOver, playerStatus },
 	} = useDataContext();
+
+	const canFly = playerStatus.abilities.includes('fly');
 
 	return (
 		<FooterComponentWrapper>
@@ -24,7 +26,7 @@ export default function Controls() {
 				<ButtonsWrapper>
 					<div className='buttons-move'>
 						<ButtonsMove endpoint='move' header='Walk:' />
-						<ButtonsMove endpoint='fly' header='Fly:' />
+						{canFly && <ButtonsMove endpoint='fly' header='Fly:' />}
 					</div>
 					<div className='buttons-abilities'>
 						<ButtonPray />

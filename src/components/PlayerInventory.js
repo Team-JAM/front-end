@@ -3,7 +3,7 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 import styled from 'styled-components';
 import { useDataContext } from '../contexts/DataContext';
 
-import { Item, ButtonUndress } from './';
+import { Item, ButtonUndress, ButtonReceive } from './';
 
 import {
 	FooterComponentWrapper,
@@ -64,6 +64,7 @@ export default function PlayerInventory() {
 						</ul>
 					</>
 				)}
+				<ButtonReceive />
 			</div>
 		</FooterComponentWrapper>
 	);

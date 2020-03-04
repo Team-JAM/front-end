@@ -9,6 +9,7 @@ import {
 	ButtonSell,
 	ButtonWear,
 	ButtonTransmogrify,
+	ButtonCarry,
 } from './';
 
 export default function Item({ item, action, inInventory }) {
@@ -27,6 +28,7 @@ export default function Item({ item, action, inInventory }) {
 					<ButtonSell item={item} />
 					<ButtonWear item={item} inInventory={inInventory} />
 					<ButtonTransmogrify item={item} />
+					<ButtonCarry item={item} inInventory={inInventory} />
 				</>
 			)}
 		</StyledListItem>

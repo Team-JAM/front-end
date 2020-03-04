@@ -44,6 +44,8 @@ import ButtonSell from './ButtonSell';
 import ButtonWear from './ButtonWear';
 import ButtonUndress from './ButtonUndress';
 import ButtonTransmogrify from './ButtonTransmogrify';
+import ButtonCarry from './ButtonCarry';
+import ButtonReceive from './ButtonReceive';
 
 export {
 	NavBar,
@@ -79,4 +81,6 @@ export {
 	ButtonWear,
 	ButtonUndress,
 	ButtonTransmogrify,
+	ButtonCarry,
+	ButtonReceive,
 };
