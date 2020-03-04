@@ -5,7 +5,7 @@ import { useDataContext } from '../contexts/DataContext';
 
 export default function InputToken() {
 	const { dispatch } = useDataContext();
-	const [token, setToken] = useState(localStorage.getItem('token'));
+	// const [token, setToken] = useState(localStorage.getItem('token'));
 
 	const getInitData = () => {
 		dispatch({ type: 'GET_DATA_START' });
@@ -22,20 +22,20 @@ export default function InputToken() {
 			});
 	};
 
-	const getStatus = () => {
-		dispatch({ type: 'GET_DATA_START' });
+	// const getStatus = () => {
+	// 	dispatch({ type: 'GET_DATA_START' });
 
-		axiosWithAuth()
-			.post('/adv/status')
-			.then(res => {
-				// console.log(res.data);
-				dispatch({ type: 'GET_STATUS_SUCCESS', payload: res.data });
-			})
-			.catch(err => {
-				console.log(err);
-				dispatch({ type: 'GET_DATA_FAILURE' });
-			});
-	};
+	// 	axiosWithAuth()
+	// 		.post('/adv/status')
+	// 		.then(res => {
+	// 			// console.log(res.data);
+	// 			dispatch({ type: 'GET_STATUS_SUCCESS', payload: res.data });
+	// 		})
+	// 		.catch(err => {
+	// 			console.log(err);
+	// 			dispatch({ type: 'GET_DATA_FAILURE' });
+	// 		});
+	// };
 
 	useEffect(() => {
 		if (localStorage.getItem('token')) {
@@ -44,38 +44,38 @@ export default function InputToken() {
 		}
 	}, []);
 
-	const handleChange = e => setToken(e.target.value);
+	// const handleChange = e => setToken(e.target.value);
 
-	const handleClick = () => {
-		localStorage.setItem('token', token);
+	// const handleClick = () => {
+	// 	localStorage.setItem('token', token);
+	// 	getInitData();
+	// 	// getStatus();
+	// };
+
+	const handleSelect = e => {
+		console.log(e.target.value);
+		// setToken(e.target.value);
+		localStorage.setItem('token', e.target.value);
 		getInitData();
 		// getStatus();
 	};
 
-	// const handleSelect = e => {
-	// 	console.log(e.target.value);
-	// 	setToken(e.target.value);
-	// 	localStorage.setItem('token', e.target.value);
-	// 	getInitData();
-	// 	getStatus();
-	// };
-
 	return (
 		<div>
-			{/* <select id='players' name='players' onChange={handleSelect}>
+			<select id='players' name='players' onChange={handleSelect}>
 				<option>Please select a player:</option>
-				<option value={process.env.ALLISON_TOKEN}>Allison</option>
-				<option value={process.env.JONATHAN_TOKEN}>Jonathan</option>
-				<option value={process.env.MATTHEW_TOKEN}>Matthew</option>
-			</select> */}
-			<input
+				<option value={process.env.REACT_APP_ALLISON_TOKEN}>Allison</option>
+				<option value={process.env.REACT_APP_JONATHAN_TOKEN}>Jonathan</option>
+				<option value={process.env.REACT_APP_MATTHEW_TOKEN}>Matthew</option>
+			</select>
+			{/* <input
 				type='text'
 				name='token'
 				placeholder='Enter token'
 				value={token}
 				onChange={handleChange}
 			/>
-			<button onClick={handleClick}>Set Token</button>
+			<button onClick={handleClick}>Set Token</button> */}
 		</div>
 	);
 }
