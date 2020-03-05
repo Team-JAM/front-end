@@ -22,6 +22,7 @@ export default function MapCell({ cell }) {
 			destination,
 			path,
 			playerStatus,
+			autoTravelMode,
 		},
 		dispatch,
 	} = useDataContext();
@@ -167,6 +168,7 @@ export default function MapCell({ cell }) {
 					exitE={cell && cell.exits.e}
 					exitW={cell && cell.exits.w}
 					cooldownOver={cooldownOver}
+					autoTravelMode={autoTravelMode}
 					onClick={() => handleClick(cell)}>
 					{isOnPath && !isDestination && <Dot />}
 					{isCurrentRoom && (
@@ -222,6 +224,7 @@ export default function MapCell({ cell }) {
 					exitE={cell && cell.exits.e}
 					exitW={cell && cell.exits.w}
 					cooldownOver={cooldownOver}
+					autoTravelMode={autoTravelMode}
 					onClick={() => handleClick(cell)}>
 					{isOnPath && !isDestination && <LightDot />}
 					{isCurrentRoom && (
