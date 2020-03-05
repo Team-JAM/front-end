@@ -10,7 +10,6 @@ export default function ButtonBuyDonut() {
 		data: { roomData },
 		dispatch,
 	} = useDataContext();
-
 	const getStatus = useGetStatus();
 
 	const handleClick = () => {
