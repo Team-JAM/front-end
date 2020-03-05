@@ -13,6 +13,7 @@ import SelectMode from './SelectMode';
 import Map from './Map';
 import PanelRight from './PanelRight';
 import Footer from './Footer';
+import IconAttrib from './IconAttrib';
 
 // Right Panel Components
 import CooldownTimer from './CooldownTimer';
@@ -26,6 +27,7 @@ import RoomInfo from './RoomInfo';
 import ButtonsMove from './ButtonsMove';
 import ButtonNameChanger from './ButtonNameChanger';
 import ButtonExamineWell from './ButtonExamineWell';
+import ButtonExamineBoard from './ButtonExamineBoard';
 import ButtonPray from './ButtonPray';
 import ButtonRecall from './ButtonRecall';
 import ButtonWarp from './ButtonWarp';
@@ -62,6 +64,7 @@ export {
 	Map,
 	PanelRight,
 	Footer,
+	IconAttrib,
 	CooldownTimer,
 	LambdaCoin,
 	LocateRoom,
@@ -71,6 +74,7 @@ export {
 	ButtonsMove,
 	ButtonNameChanger,
 	ButtonExamineWell,
+	ButtonExamineBoard,
 	ButtonPray,
 	ButtonRecall,
 	ButtonWarp,

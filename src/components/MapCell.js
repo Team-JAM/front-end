@@ -4,6 +4,7 @@ import { axiosTeamJamBackEnd } from '../utils/axiosTeamJamBackEnd';
 import { useDataContext } from '../contexts/DataContext';
 import { specialRooms } from '../data/specialRooms';
 import { StyledCell, StyledCellDark } from '../styled-components/StyledCells';
+import Icon from '../icons/';
 
 export default function MapCell({ cell }) {
 	const {
@@ -26,8 +27,10 @@ export default function MapCell({ cell }) {
 	const isCurrentRoom =
 		roomData.room_id !== null && cell !== null && roomData.room_id === cell.id;
 
+	const isTrap = cell && cell.terrain === 'TRAP';
+
 	const specialRoomIDs = Object.values(specialRooms);
-	const isSpecialRoom = cell && cell.id && specialRoomIDs.includes(cell.id);
+	const isSpecialRoom = cell && cell.id > 0 && specialRoomIDs.includes(cell.id);
 
 	const miningRoomID = Number(roomToMine.split('Mine your coin in room ')[1]);
 	const isMiningRoom = cell && cell.id === miningRoomID;
@@ -144,6 +147,7 @@ export default function MapCell({ cell }) {
 					isSpecialRoom={isSpecialRoom}
 					isMiningRoom={isMiningRoom}
 					isRoomToFind={isRoomToFind}
+					isTrap={isTrap}
 					isOnPath={isOnPath}
 					isDestination={isDestination}
 					terrain={cell && cell.terrain}
@@ -154,8 +158,29 @@ export default function MapCell({ cell }) {
 					exitW={cell && cell.exits.w}
 					cooldownOver={cooldownOver}
 					onClick={() => handleClick(cell)}>
+					{isSpecialRoom && (
+						<Icon
+							name={cell.title}
+							style={{
+								flexShrink: '0',
+								zIndex: '1000',
+								marginBottom: '0.2rem',
+							}}
+						/>
+					)}
+					{isTrap && (
+						<Icon
+							name='trap'
+							style={{
+								flexShrink: '0',
+								width: '4rem',
+								height: '4rem',
+								zIndex: '1000',
+							}}
+						/>
+					)}
 					<div>{cell && cell.id}</div>
-					<div>{(isSpecialRoom || isCurrentRoom) && cell.title}</div>
+					{/* <div>{(isSpecialRoom || isCurrentRoom) && cell.title}</div> */}
 				</StyledCell>
 			)}
 			{warpMode && (
@@ -175,8 +200,18 @@ export default function MapCell({ cell }) {
 					exitW={cell && cell.exits.w}
 					cooldownOver={cooldownOver}
 					onClick={() => handleClick(cell)}>
+					{isSpecialRoom && (
+						<Icon
+							name={cell.title}
+							style={{
+								flexShrink: '0',
+								zIndex: '1000',
+								marginBottom: '0.2rem',
+							}}
+						/>
+					)}
 					<div>{cell && cell.id}</div>
-					<div>{(isSpecialRoom || isCurrentRoom) && cell.title}</div>
+					{/* <div>{(isSpecialRoom || isCurrentRoom) && cell.title}</div> */}
 				</StyledCellDark>
 			)}
 		</>
