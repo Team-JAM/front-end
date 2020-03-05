@@ -28,6 +28,7 @@ import ButtonsMove from './ButtonsMove';
 import ButtonNameChanger from './ButtonNameChanger';
 import ButtonBuyDonut from './ButtonBuyDonut';
 import ButtonExamineWell from './ButtonExamineWell';
+import ButtonExamineBook from './ButtonExamineBook';
 import ButtonExamineBoard from './ButtonExamineBoard';
 import ButtonPray from './ButtonPray';
 import ButtonRecall from './ButtonRecall';
@@ -76,6 +77,7 @@ export {
 	ButtonNameChanger,
 	ButtonBuyDonut,
 	ButtonExamineWell,
+	ButtonExamineBook,
 	ButtonExamineBoard,
 	ButtonPray,
 	ButtonRecall,

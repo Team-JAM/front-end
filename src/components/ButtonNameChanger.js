@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useDataContext } from '../contexts/DataContext';
+import { useGetStatus } from '../hooks/useGetStatus';
 import { specialRooms } from '../data/specialRooms';
 
 export default function ButtonNameChanger() {
@@ -9,23 +10,28 @@ export default function ButtonNameChanger() {
 		dispatch,
 	} = useDataContext();
 	const [newName, setNewName] = useState('');
+	const getStatus = useGetStatus();
 
 	const handleChange = e => setNewName(e.target.value);
 
 	const handleClick = () => {
-		// console.log(newName);
 		dispatch({ type: 'GET_DATA_START' });
 
-		axiosWithAuth()
-			.post('/adv/change_name/', { name: newName, confirm: 'aye' })
-			.then(res => {
-				console.log(res.data);
+		(async () => {
+			try {
+				const res = await axiosWithAuth().post('/adv/change_name/', {
+					name: newName,
+					confirm: 'aye',
+				});
+				// console.log(res.data);
 				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
-			})
-			.catch(err => {
+
+				getStatus(res.data.cooldown);
+			} catch (err) {
 				console.log(err);
 				dispatch({ type: 'GET_DATA_FAILURE' });
-			});
+			}
+		})();
 	};
 
 	return (

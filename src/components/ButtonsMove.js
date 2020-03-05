@@ -49,8 +49,8 @@ export default function ButtonsMove({ endpoint, header }) {
 		<MoveWrapper>
 			<h4>{header}</h4>
 			<div className='all-buttons'>
-				<MoveButton exits={exitsArr} exit='s' onClick={() => handleMove('s')}>
-					S
+				<MoveButton exits={exitsArr} exit='n' onClick={() => handleMove('n')}>
+					N
 				</MoveButton>
 				<div className='middle-buttons'>
 					<MoveButton exits={exitsArr} exit='w' onClick={() => handleMove('w')}>
@@ -60,8 +60,8 @@ export default function ButtonsMove({ endpoint, header }) {
 						E
 					</MoveButton>
 				</div>
-				<MoveButton exits={exitsArr} exit='n' onClick={() => handleMove('n')}>
-					N
+				<MoveButton exits={exitsArr} exit='s' onClick={() => handleMove('s')}>
+					S
 				</MoveButton>
 			</div>
 		</MoveWrapper>

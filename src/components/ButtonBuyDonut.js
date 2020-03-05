@@ -2,7 +2,6 @@ import React from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useDataContext } from '../contexts/DataContext';
 import { useGetStatus } from '../hooks/useGetStatus';
-import { sleep } from '../utils/sleep';
 import { specialRooms } from '../data/specialRooms';
 
 export default function ButtonBuyDonut() {
@@ -12,21 +11,19 @@ export default function ButtonBuyDonut() {
 	} = useDataContext();
 	const getStatus = useGetStatus();
 
-	const handleClick = () => {
+	const handleBuy = () => {
 		dispatch({ type: 'GET_DATA_START' });
 
 		(async () => {
 			try {
-				const res = await axiosWithAuth().post('/adv/buy', {
+				const res = await axiosWithAuth().post('/adv/buy/', {
 					name: 'donut',
 					confirm: 'yes',
 				});
 				// console.log(res.data);
 				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
 
-				const cooldown = res.data.cooldown;
-				await sleep(cooldown);
-				getStatus();
+				getStatus(res.data.cooldown);
 			} catch (err) {
 				console.log(err);
 				dispatch({ type: 'GET_DATA_FAILURE' });
@@ -37,7 +34,7 @@ export default function ButtonBuyDonut() {
 	return (
 		<div>
 			{roomData.room_id === specialRooms['JKMT Donuts'] && (
-				<button onClick={handleClick}>Buy Donut</button>
+				<button onClick={handleBuy}>Buy Donut</button>
 			)}
 		</div>
 	);
