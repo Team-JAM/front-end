@@ -16,7 +16,11 @@ export const StyledCell = styled.div`
 	font-size: 1rem;
 
 	cursor: ${props =>
-		props.cooldownOver && props.isRoom && !props.isCurrentRoom && 'pointer'};
+		props.cooldownOver &&
+		!props.autoTravelMode &&
+		props.isRoom &&
+		!props.isCurrentRoom &&
+		'pointer'};
 
 	color: white;
 	color: ${props => props.terrain === 'NORMAL' && '#0b6623'};
@@ -56,23 +60,66 @@ export const StyledCell = styled.div`
 
 	&:hover {
 		background-color: ${props =>
-			props.terrain === 'NORMAL' && 'rgba(123, 179, 105, 0.75)'};
+			props.cooldownOver &&
+			!props.autoTravelMode &&
+			props.terrain === 'NORMAL' &&
+			'rgba(123, 179, 105, 0.75)'};
 		background-color: ${props =>
-			props.terrain === 'CAVE' && 'rgba(32, 32, 32, 0.75)'};
+			props.cooldownOver &&
+			!props.autoTravelMode &&
+			props.terrain === 'CAVE' &&
+			'rgba(32, 32, 32, 0.75)'};
 		background-color: ${props =>
-			props.terrain === 'TRAP' && 'rgba(32, 32, 32, 0.75)'};
+			props.cooldownOver &&
+			!props.autoTravelMode &&
+			props.terrain === 'TRAP' &&
+			'rgba(32, 32, 32, 0.75)'};
 		background-color: ${props =>
-			props.isMiningRoom && 'rgba(250, 190, 88, 0.75)'};
+			props.cooldownOver &&
+			!props.autoTravelMode &&
+			props.isMiningRoom &&
+			'rgba(250, 190, 88, 0.75)'};
 		background-color: ${props =>
-			props.isRoomToFind && 'rgba(30, 144, 255, 0.75)'};
-		background-color: ${props => props.isCurrentRoom && 'white'};
+			props.cooldownOver &&
+			!props.autoTravelMode &&
+			props.isRoomToFind &&
+			'rgba(30, 144, 255, 0.75)'};
+		background-color: ${props =>
+			props.cooldownOver &&
+			!props.autoTravelMode &&
+			props.isDestination &&
+			'purple'};
+		background-color: ${props =>
+			props.cooldownOver &&
+			!props.autoTravelMode &&
+			props.isCurrentRoom &&
+			'white'};
 
 		background-color: ${props =>
-			props.elevation === 5 && 'rgb(101, 67, 33, 0.75)'};
-		opacity: ${props => props.elevation === 4 && '0.65'};
-		opacity: ${props => props.elevation === 3 && '0.55'};
-		opacity: ${props => props.elevation === 2 && '0.45'};
-		opacity: ${props => props.elevation === 1 && '0.35'};
+			props.cooldownOver &&
+			!props.autoTravelMode &&
+			props.elevation === 5 &&
+			'rgb(101, 67, 33, 0.75)'};
+		opacity: ${props =>
+			props.cooldownOver &&
+			!props.autoTravelMode &&
+			props.elevation === 4 &&
+			'0.65'};
+		opacity: ${props =>
+			props.cooldownOver &&
+			!props.autoTravelMode &&
+			props.elevation === 3 &&
+			'0.55'};
+		opacity: ${props =>
+			props.cooldownOver &&
+			!props.autoTravelMode &&
+			props.elevation === 2 &&
+			'0.45'};
+		opacity: ${props =>
+			props.cooldownOver &&
+			!props.autoTravelMode &&
+			props.elevation === 1 &&
+			'0.35'};
 	}
 `;
 
