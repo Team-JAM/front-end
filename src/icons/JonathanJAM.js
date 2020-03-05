@@ -13,7 +13,6 @@ const SVG = ({
 		style={style}
 		width={width}
 		height={height}
-		viewBox={viewBox}
 		className={`svg-icon ${className || ''}`}
 		preserveAspectRatio='xMidYMid meet'>
 		<path

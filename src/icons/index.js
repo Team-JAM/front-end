@@ -47,7 +47,7 @@ const Icon = props => {
 			return <Market {...props} />;
 		case 'allisonJAM':
 			return <AllisonJAM {...props} />;
-		case 'jonathanJAM':
+		case 'JonathanJAM':
 			return <JonathanJAM {...props} />;
 		case 'matthewJAM':
 			return <MatthewJAM {...props} />;

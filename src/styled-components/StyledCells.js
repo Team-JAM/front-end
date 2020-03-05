@@ -8,7 +8,9 @@ export const StyledCell = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: ${props =>
-		props.isSpecialRoom || props.isTrap ? 'flex-end' : 'center'};
+		props.isSpecialRoom || props.isTrap || props.isCurrentRoom
+			? 'flex-end'
+			: 'center'};
 	align-items: center;
 	text-align: center;
 	font-size: 1rem;
@@ -31,7 +33,7 @@ export const StyledCell = styled.div`
 	border-top: ${props => props.exitS && '0'};
 	border-bottom: ${props => props.exitN && '0'};
 
-	border: ${props => props.isCurrentRoom && '3px solid red'};
+	// border: ${props => props.isCurrentRoom && '3px solid red'};
 
 	background-color: lightcyan;
 	background-color: ${props => props.terrain === 'NORMAL' && '#7bb369'};
@@ -42,7 +44,6 @@ export const StyledCell = styled.div`
 	// background-color: ${props => props.isSpecialRoom && 'yellow'};
 	background-color: ${props => props.isMiningRoom && 'orange'};
 	background-color: ${props => props.isRoomToFind && 'dodgerblue'};
-	// background-color: ${props => props.isOnPath && 'pink'};
 	background-color: ${props => props.isDestination && 'purple'};
 	background-color: ${props => props.isCurrentRoom && 'white'};
 
@@ -73,7 +74,7 @@ export const StyledCellDark = styled(StyledCell)`
 	border-top: ${props => props.exitS && '0'};
 	border-bottom: ${props => props.exitN && '0'};
 
-	border: ${props => props.isCurrentRoom && '3px solid red'};
+	// border: ${props => props.isCurrentRoom && '3px solid red'};
 
 	background-color: #000d1a;
 	background-color: ${props => props.terrain === 'NORMAL' && '#013208'};
