@@ -15,7 +15,8 @@ export const StyledCell = styled.div`
 	text-align: center;
 	font-size: 1rem;
 
-	cursor: ${props => props.cooldownOver && props.isRoom && 'pointer'};
+	cursor: ${props =>
+		props.cooldownOver && props.isRoom && !props.isCurrentRoom && 'pointer'};
 
 	color: white;
 	color: ${props => props.terrain === 'NORMAL' && '#0b6623'};
@@ -33,17 +34,17 @@ export const StyledCell = styled.div`
 	border-top: ${props => props.exitS && '0'};
 	border-bottom: ${props => props.exitN && '0'};
 
-	// border: ${props => props.isCurrentRoom && '3px solid red'};
-
 	background-color: lightcyan;
-	background-color: ${props => props.terrain === 'NORMAL' && '#7bb369'};
-	background-color: ${props => props.terrain === 'CAVE' && '#202020'};
-	background-color: ${props => props.terrain === 'TRAP' && '#202020'};
 	background-color: ${props =>
-		props.terrain === 'MOUNTAIN' && 'rgb(101, 67, 33)'};
-	// background-color: ${props => props.isSpecialRoom && 'yellow'};
-	background-color: ${props => props.isMiningRoom && 'orange'};
-	background-color: ${props => props.isRoomToFind && 'dodgerblue'};
+		props.terrain === 'NORMAL' && 'rgba(123, 179, 105, 1)'};
+	background-color: ${props =>
+		props.terrain === 'CAVE' && 'rgba(32, 32, 32, 1)'};
+	background-color: ${props =>
+		props.terrain === 'TRAP' && 'rgba(32, 32, 32, 1)'};
+	background-color: ${props =>
+		props.terrain === 'MOUNTAIN' && 'rgb(101, 67, 33, 1)'};
+	background-color: ${props => props.isMiningRoom && 'rgba(250, 190, 88, 1)'};
+	background-color: ${props => props.isRoomToFind && 'rgba(30, 144, 255, 1)'};
 	background-color: ${props => props.isDestination && 'purple'};
 	background-color: ${props => props.isCurrentRoom && 'white'};
 
@@ -54,7 +55,24 @@ export const StyledCell = styled.div`
 	opacity: ${props => props.elevation === 1 && '0.6'};
 
 	&:hover {
-		opacity: ${props => props.cooldownOver && props.isRoom && '0.75'};
+		background-color: ${props =>
+			props.terrain === 'NORMAL' && 'rgba(123, 179, 105, 0.75)'};
+		background-color: ${props =>
+			props.terrain === 'CAVE' && 'rgba(32, 32, 32, 0.75)'};
+		background-color: ${props =>
+			props.terrain === 'TRAP' && 'rgba(32, 32, 32, 0.75)'};
+		background-color: ${props =>
+			props.isMiningRoom && 'rgba(250, 190, 88, 0.75)'};
+		background-color: ${props =>
+			props.isRoomToFind && 'rgba(30, 144, 255, 0.75)'};
+		background-color: ${props => props.isCurrentRoom && 'white'};
+
+		background-color: ${props =>
+			props.elevation === 5 && 'rgb(101, 67, 33, 0.75)'};
+		opacity: ${props => props.elevation === 4 && '0.65'};
+		opacity: ${props => props.elevation === 3 && '0.55'};
+		opacity: ${props => props.elevation === 2 && '0.45'};
+		opacity: ${props => props.elevation === 1 && '0.35'};
 	}
 `;
 
@@ -74,17 +92,13 @@ export const StyledCellDark = styled(StyledCell)`
 	border-top: ${props => props.exitS && '0'};
 	border-bottom: ${props => props.exitN && '0'};
 
-	// border: ${props => props.isCurrentRoom && '3px solid red'};
-
 	background-color: #000d1a;
 	background-color: ${props => props.terrain === 'NORMAL' && '#013208'};
 	background-color: ${props => props.terrain === 'CAVE' && '#202020'};
 	background-color: ${props => props.terrain === 'TRAP' && 'red'};
 	background-color: ${props =>
 		props.terrain === 'MOUNTAIN' && 'rgb(101, 67, 33)'};
-	// background-color: ${props => props.isSpecialRoom && 'yellow'};
 	background-color: ${props => props.isRoomToFind && 'dodgerblue'};
-	// background-color: ${props => props.isOnPath && 'pink'};
 	background-color: ${props => props.isDestination && 'purple'};
 	background-color: ${props => props.isCurrentRoom && 'white'};
 

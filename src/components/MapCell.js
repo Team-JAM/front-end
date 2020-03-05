@@ -52,7 +52,7 @@ export default function MapCell({ cell }) {
 	}, [cell, destination, path]);
 
 	const handleClick = cell => {
-		if (cooldownOver && cell) {
+		if (cooldownOver && cell !== null && !isCurrentRoom) {
 			dispatch({ type: 'GET_DATA_START' });
 
 			const destination_room = cell.id;
