@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import Pusher from 'pusher-js';
 
-import { Map, PanelRight, Footer, IconAttrib } from './';
+import { Map, PanelRight, Footer } from './';
 
 export default function Game() {
 	useEffect(() => {
@@ -27,12 +27,11 @@ export default function Game() {
 				<PanelRight />
 			</GameWrapper>
 			<Footer />
-			<IconAttrib />
 		</div>
 	);
 }
 
 const GameWrapper = styled.div`
 	display: flex;
-	height: 60vh;
+	height: 65vh;
 `;

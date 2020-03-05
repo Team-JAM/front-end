@@ -164,7 +164,7 @@ export default function MapCell({ cell }) {
 							style={{
 								flexShrink: '0',
 								zIndex: '1000',
-								marginBottom: '0.5rem',
+								marginBottom: '0.2rem',
 							}}
 						/>
 					)}
@@ -206,7 +206,7 @@ export default function MapCell({ cell }) {
 							style={{
 								flexShrink: '0',
 								zIndex: '1000',
-								marginBottom: '0.5rem',
+								marginBottom: '0.2rem',
 							}}
 						/>
 					)}

@@ -20,18 +20,6 @@ export default function IconAttrib() {
 			</a>
 			{', '}
 			<a
-				href='https://www.flaticon.com/authors/vectors-market'
-				title='Vectors Market'>
-				Vectors Market
-			</a>
-			{', '}
-			<a
-				href='https://www.flaticon.com/authors/dimitry-miroliubov'
-				title='Dimitry Miroliubov'>
-				Dimitry Miroliubov
-			</a>
-			{', '}
-			<a
 				href='https://www.flaticon.com/authors/dinosoftlabs'
 				title='DinosoftLabs'>
 				DinosoftLabs
@@ -55,10 +43,6 @@ export default function IconAttrib() {
 				href='https://www.flaticon.com/authors/smalllikeart'
 				title='smalllikeart'>
 				smalllikeart
-			</a>
-			{', '}
-			<a href='https://www.flaticon.com/authors/surang' title='surang'>
-				surang
 			</a>
 			{', '}
 			<a href='https://www.flaticon.com/authors/good-ware' title='Good Ware'>
