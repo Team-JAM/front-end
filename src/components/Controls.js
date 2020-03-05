@@ -15,7 +15,7 @@ import {
 
 export default function Controls() {
 	const {
-		data: { cooldownOver, playerStatus },
+		data: { cooldownOver, autoTravelMode, playerStatus },
 	} = useDataContext();
 
 	const canFly = playerStatus.abilities.includes('fly');
@@ -23,7 +23,7 @@ export default function Controls() {
 	return (
 		<FooterComponentWrapper>
 			<h3>CONTROLS</h3>
-			{cooldownOver && (
+			{cooldownOver && !autoTravelMode && (
 				<ButtonsWrapper>
 					<div className='buttons-move'>
 						<ButtonsMove endpoint='move' header='Walk:' />

@@ -16,6 +16,7 @@ export const initialDataState = {
 	cooldown: 0,
 	cooldownOver: false,
 	warpMode: localStorage.getItem('warp_mode') === 'true',
+	autoTravelMode: false,
 	destination: '',
 	path: [],
 	isLoading: false,
@@ -133,6 +134,22 @@ export const dataReducer = (state = initialDataState, action) => {
 				...state,
 				destination: action.payload.destination,
 				path: action.payload.path,
+			};
+		case 'CLEAR_DESTINATION':
+			return {
+				...state,
+				destination: '',
+				path: [],
+			};
+		case 'SET_TRAVEL_MODE_TRUE':
+			return {
+				...state,
+				autoTravelMode: true,
+			};
+		case 'SET_TRAVEL_MODE_FALSE':
+			return {
+				...state,
+				autoTravelMode: false,
 			};
 		default:
 			return state;

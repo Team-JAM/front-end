@@ -15,8 +15,8 @@ export default function Messages() {
 				<ComponentWrapper>
 					<h3>MESSAGES</h3>
 					<ul>
-						{roomData.messages.map(message => (
-							<li key={message}>{message}</li>
+						{roomData.messages.map((message, index) => (
+							<li key={index}>{message}</li>
 						))}
 					</ul>
 				</ComponentWrapper>

@@ -20,9 +20,9 @@ export const FooterComponentWrapper = styled(ComponentWrapper)`
 `;
 
 export const StatusHeader = styled.h3`
-	cursor: pointer;
+	cursor: ${props => !props.autoTravelMode && 'pointer'};
 
 	&:hover {
-		color: #eb847d;
+		color: ${props => !props.autoTravelMode && '#eb847d'};
 	}
 `;

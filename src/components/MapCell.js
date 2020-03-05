@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { axiosTeamJamBackEnd } from '../utils/axiosTeamJamBackEnd';
 import { useDataContext } from '../contexts/DataContext';
 import { specialRooms } from '../data/specialRooms';
@@ -6,7 +7,15 @@ import { StyledCell, StyledCellDark } from '../styled-components/StyledCells';
 
 export default function MapCell({ cell }) {
 	const {
-		data: { warpMode, roomData, roomToFind, roomToMine, destination, path },
+		data: {
+			cooldownOver,
+			warpMode,
+			roomData,
+			roomToFind,
+			roomToMine,
+			destination,
+			path,
+		},
 		dispatch,
 	} = useDataContext();
 	const [isOnPath, setIsOnPath] = useState(false);
@@ -32,18 +41,18 @@ export default function MapCell({ cell }) {
 	}, [cell, destination, path]);
 
 	const handleClick = cell => {
-		if (cell) {
+		if (cooldownOver && cell) {
 			dispatch({ type: 'GET_DATA_START' });
 
 			const destination_room = cell.id;
 
-			axiosTeamJamBackEnd()
-				.post('/get_directions/', {
-					starting_room: roomData.room_id,
-					destination_room,
-				})
-				.then(res => {
-					// console.log('Path:', res.data.path);
+			(async () => {
+				try {
+					const res = await axiosTeamJamBackEnd().post('/get_directions/', {
+						starting_room: roomData.room_id,
+						destination_room,
+					});
+
 					const path = res.data.path.map(room => Number(room[1]));
 
 					dispatch({
@@ -51,42 +60,78 @@ export default function MapCell({ cell }) {
 						payload: { destination: path[path.length - 1], path },
 					});
 
+					dispatch({ type: 'SET_TRAVEL_MODE_TRUE' });
+
 					const directions = res.data.path_directions;
-					// console.log('Directions', directions);
-					while (directions.length > 0) {
-						if (directions[0][0] === 'dash') {
-							handleDash(directions[0]);
-						} else if (directions[0][0] === 'fly') {
-							handleFly(directions[0]);
-						} else if (directions[0][0] === 'move') {
-							handleMove(directions[0]);
-						} else if (directions[0][0] === 'recall') {
-							handleRecall(directions[0]);
-						}
-						directions.shift();
+
+					const asyncList = [];
+
+					const sleep = ms =>
+						new Promise(resolve => {
+							setTimeout(resolve, ms);
+						});
+
+					for (const direction of directions) {
+						const asyncFunction = async () => {
+							const cooldown = await handleDirection(direction);
+							return cooldown;
+						};
+
+						asyncList.push(asyncFunction);
 					}
-				})
-				.catch(err => {
+
+					for (const asyncFunction of asyncList) {
+						const cooldown = await asyncFunction();
+						await sleep(cooldown * 1000);
+					}
+
+					dispatch({ type: 'SET_TRAVEL_MODE_FALSE' });
+					dispatch({ type: 'CLEAR_DESTINATION' });
+				} catch (err) {
 					console.log(err);
 					dispatch({ type: 'GET_DATA_FAILURE' });
-				});
+				}
+			})();
 		}
 	};
 
-	const handleDash = directions => {
-		console.log(directions);
-	};
+	const handleDirection = async directions => {
+		dispatch({ type: 'GET_DATA_START' });
+		try {
+			if (directions[0] === 'fly' || directions[0] === 'move') {
+				const [endpoint, direction, next_room_id] = directions;
 
-	const handleFly = directions => {
-		console.log(directions);
-	};
+				const res = await axiosWithAuth().post(`/adv/${endpoint}/`, {
+					direction,
+					next_room_id,
+				});
 
-	const handleMove = directions => {
-		console.log(directions);
-	};
+				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
 
-	const handleRecall = directions => {
-		console.log(directions);
+				return res.data.cooldown;
+			} else if (directions[0] === 'dash') {
+				const [endpoint, direction, num_rooms, next_room_ids] = directions;
+
+				const res = await axiosWithAuth().post(`/adv/${endpoint}`, {
+					direction,
+					num_rooms,
+					next_room_ids,
+				});
+
+				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
+
+				return res.data.cooldown;
+			} else if (directions[0] === 'recall') {
+				const res = await axiosWithAuth().post(`/adv/recall`);
+
+				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
+
+				return res.data.cooldown;
+			}
+		} catch (err) {
+			console.log(err);
+			dispatch({ type: 'GET_DATA_FAILURE' });
+		}
 	};
 
 	return (
@@ -106,6 +151,7 @@ export default function MapCell({ cell }) {
 					exitS={cell && cell.exits.s}
 					exitE={cell && cell.exits.e}
 					exitW={cell && cell.exits.w}
+					cooldownOver={cooldownOver}
 					onClick={() => handleClick(cell)}>
 					<div>{cell && cell.id}</div>
 					<div>{(isSpecialRoom || isCurrentRoom) && cell.title}</div>
@@ -126,6 +172,7 @@ export default function MapCell({ cell }) {
 					exitS={cell && cell.exits.s}
 					exitE={cell && cell.exits.e}
 					exitW={cell && cell.exits.w}
+					cooldownOver={cooldownOver}
 					onClick={() => handleClick(cell)}>
 					<div>{cell && cell.id}</div>
 					<div>{(isSpecialRoom || isCurrentRoom) && cell.title}</div>

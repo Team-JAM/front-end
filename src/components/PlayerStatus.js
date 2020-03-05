@@ -11,7 +11,7 @@ import {
 
 export default function PlayerStatus() {
 	const {
-		data: { playerStatus },
+		data: { playerStatus, autoTravelMode },
 		dispatch,
 	} = useDataContext();
 
@@ -36,11 +36,17 @@ export default function PlayerStatus() {
 	// 	getStatus();
 	// }, []);
 
-	const handleClick = () => getStatus();
+	const handleStatus = () => {
+		if (!autoTravelMode) {
+			getStatus();
+		}
+	};
 
 	return (
 		<FooterComponentWrapper>
-			<StatusHeader onClick={handleClick}>PLAYER STATUS</StatusHeader>
+			<StatusHeader autoTravelMode={autoTravelMode} onClick={handleStatus}>
+				PLAYER STATUS
+			</StatusHeader>
 			{playerStatus.encumbrance && (
 				<div>
 					{/* <p>Name: {playerStatus.name}</p> */}

@@ -8,7 +8,10 @@ import {
 } from '../styled-components/StyledComponents';
 
 export default function() {
-	const { dispatch } = useDataContext();
+	const {
+		data: { autoTravelMode },
+		dispatch,
+	} = useDataContext();
 	const [roomToFind, setRoomToFind] = useState('');
 
 	const handleChange = e => setRoomToFind(e.target.value);
@@ -20,14 +23,18 @@ export default function() {
 	const handleClick = () => setRoomToFind('');
 
 	return (
-		<ComponentWrapper>
-			<StatusHeader onClick={handleClick}>LOCATE A ROOM</StatusHeader>
-			<input
-				type='text'
-				name='roomToFind'
-				value={roomToFind}
-				onChange={handleChange}
-			/>
-		</ComponentWrapper>
+		<>
+			{!autoTravelMode && (
+				<ComponentWrapper>
+					<StatusHeader onClick={handleClick}>LOCATE A ROOM</StatusHeader>
+					<input
+						type='text'
+						name='roomToFind'
+						value={roomToFind}
+						onChange={handleChange}
+					/>
+				</ComponentWrapper>
+			)}
+		</>
 	);
 }

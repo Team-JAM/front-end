@@ -11,28 +11,30 @@ import {
 
 export default function RoomInfo() {
 	const {
-		data: { roomData },
+		data: { roomData, autoTravelMode },
 		dispatch,
 	} = useDataContext();
 
 	const handleClick = () => {
-		dispatch({ type: 'GET_DATA_START' });
+		if (!autoTravelMode) {
+			dispatch({ type: 'GET_DATA_START' });
 
-		axiosWithAuth()
-			.get('/adv/init/')
-			.then(res => {
-				// console.log(res.data);
-				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
-			})
-			.catch(err => {
-				console.log(err);
-				dispatch({ type: 'GET_DATA_FAILURE' });
-			});
+			axiosWithAuth()
+				.get('/adv/init/')
+				.then(res => {
+					// console.log(res.data);
+					dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
+				})
+				.catch(err => {
+					console.log(err);
+					dispatch({ type: 'GET_DATA_FAILURE' });
+				});
+		}
 	};
 
 	return (
 		<RoomWrapper>
-			<StatusHeader onClick={handleClick}>
+			<StatusHeader autoTravelMode={autoTravelMode} onClick={handleClick}>
 				ROOM {roomData.room_id} {roomData.coordinates}: {roomData.title}
 			</StatusHeader>
 			<div>

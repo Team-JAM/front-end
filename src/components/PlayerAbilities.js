@@ -11,7 +11,7 @@ import {
 
 export default function PlayerAbilities() {
 	const {
-		data: { playerStatus },
+		data: { playerStatus, autoTravelMode },
 		dispatch,
 	} = useDataContext();
 
@@ -30,11 +30,17 @@ export default function PlayerAbilities() {
 			});
 	};
 
-	const handleClick = () => getStatus();
+	const handleStatus = () => {
+		if (!autoTravelMode) {
+			getStatus();
+		}
+	};
 
 	return (
 		<FooterComponentWrapper>
-			<StatusHeader onClick={handleClick}>ABILITIES</StatusHeader>
+			<StatusHeader autoTravelMode={autoTravelMode} onClick={handleStatus}>
+				ABILITIES
+			</StatusHeader>
 			<div>
 				<ul>
 					{playerStatus.abilities &&
