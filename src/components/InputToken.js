@@ -4,14 +4,18 @@ import React, {
 } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useDataContext } from '../contexts/DataContext';
+import { useGetStatus } from '../hooks/useGetStatus';
+import { useGetBalance } from '../hooks/useGetBalance';
 
 export default function InputToken() {
 	const { dispatch } = useDataContext();
 	// const [token, setToken] = useState(localStorage.getItem('token'));
+	const getStatus = useGetStatus();
+	const getBalance = useGetBalance();
 
 	const getData = async () => {
 		try {
-			const asyncList = [getRoomData, getPlayerStatus, getBalance];
+			const asyncList = [getRoomData, getStatus, getBalance];
 
 			const sleep = ms =>
 				new Promise(resolve => {
@@ -50,36 +54,36 @@ export default function InputToken() {
 		}
 	};
 
-	const getPlayerStatus = async () => {
-		dispatch({ type: 'GET_DATA_START' });
+	// const getPlayerStatus = async () => {
+	// 	dispatch({ type: 'GET_DATA_START' });
 
-		try {
-			const res = await axiosWithAuth().post('/adv/status/');
-			// localStorage.setItem('name', res.data.name)
+	// 	try {
+	// 		const res = await axiosWithAuth().post('/adv/status/');
+	// 		// localStorage.setItem('name', res.data.name)
 
-			dispatch({ type: 'GET_STATUS_SUCCESS', payload: res.data });
+	// 		dispatch({ type: 'GET_STATUS_SUCCESS', payload: res.data });
 
-			return res.data.cooldown;
-		} catch (err) {
-			console.log(err);
-			dispatch({ type: 'GET_DATA_FAILURE' });
-		}
-	};
+	// 		return res.data.cooldown;
+	// 	} catch (err) {
+	// 		console.log(err);
+	// 		dispatch({ type: 'GET_DATA_FAILURE' });
+	// 	}
+	// };
 
-	const getBalance = async () => {
-		dispatch({ type: 'GET_DATA_START' });
+	// const getBalance = async () => {
+	// 	dispatch({ type: 'GET_DATA_START' });
 
-		try {
-			const res = await axiosWithAuth().get('/bc/get_balance');
+	// 	try {
+	// 		const res = await axiosWithAuth().get('/bc/get_balance');
 
-			dispatch({ type: 'GET_BALANCE_SUCCESS', payload: res.data.messages[0] });
+	// 		dispatch({ type: 'GET_BALANCE_SUCCESS', payload: res.data.messages[0] });
 
-			return res.data.cooldown;
-		} catch (err) {
-			console.log(err);
-			dispatch({ type: 'GET_DATA_FAILURE' });
-		}
-	};
+	// 		return res.data.cooldown;
+	// 	} catch (err) {
+	// 		console.log(err);
+	// 		dispatch({ type: 'GET_DATA_FAILURE' });
+	// 	}
+	// };
 
 	useEffect(() => {
 		if (localStorage.getItem('token')) {
