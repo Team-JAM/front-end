@@ -19,8 +19,8 @@ export default function Map() {
 			.get('https://team-jam-api.herokuapp.com/api/map')
 			.then(res => {
 				// console.log(res.data);
-				setMapData(res.data.map);
-				setDarkMapData(res.data.dark_map);
+				setMapData(res.data.map.reverse());
+				setDarkMapData(res.data.dark_map.reverse());
 				dispatch({ type: 'GET_ROOMS_SUCCESS', payload: res.data.rooms });
 			})
 			.catch(err => {

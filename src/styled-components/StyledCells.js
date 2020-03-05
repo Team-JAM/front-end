@@ -35,8 +35,8 @@ export const StyledCell = styled.div`
 
 	border-left: ${props => props.exitW && '0'};
 	border-right: ${props => props.exitE && '0'};
-	border-top: ${props => props.exitS && '0'};
-	border-bottom: ${props => props.exitN && '0'};
+	border-top: ${props => props.exitN && '0'};
+	border-bottom: ${props => props.exitS && '0'};
 
 	background-color: lightcyan;
 	background-color: ${props =>
@@ -136,8 +136,8 @@ export const StyledCellDark = styled(StyledCell)`
 
 	border-left: ${props => props.exitW && '0'};
 	border-right: ${props => props.exitE && '0'};
-	border-top: ${props => props.exitS && '0'};
-	border-bottom: ${props => props.exitN && '0'};
+	border-top: ${props => props.exitN && '0'};
+	border-bottom: ${props => props.exitS && '0'};
 
 	background-color: #000d1a;
 	background-color: ${props => props.terrain === 'NORMAL' && '#013208'};
