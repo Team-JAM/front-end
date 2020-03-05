@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 // import styled from 'styled-components';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useDataContext } from '../contexts/DataContext';
-
+import { ButtonReceive } from './';
 import {
 	FooterComponentWrapper,
 	StatusHeader,
@@ -21,7 +21,7 @@ export default function PlayerStatus() {
 			.post('/adv/status')
 			.then(res => {
 				// console.log(res.data);
-				localStorage.setItem('name', res.data.name);
+				// localStorage.setItem('name', res.data.name);
 
 				dispatch({ type: 'GET_STATUS_SUCCESS', payload: res.data });
 			})
@@ -30,10 +30,6 @@ export default function PlayerStatus() {
 				dispatch({ type: 'GET_DATA_FAILURE' });
 			});
 	};
-
-	// useEffect(() => {
-	// 	getStatus();
-	// }, []);
 
 	const handleStatus = () => {
 		if (!autoTravelMode) {
@@ -59,6 +55,7 @@ export default function PlayerStatus() {
 						{playerStatus.status &&
 							playerStatus.status.map(status => <li key={status}>{status}</li>)}
 					</ul>
+					<ButtonReceive />
 				</div>
 			)}
 		</FooterComponentWrapper>

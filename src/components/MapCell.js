@@ -97,6 +97,7 @@ export default function MapCell({ cell }) {
 
 	const handleDirection = async directions => {
 		dispatch({ type: 'GET_DATA_START' });
+
 		try {
 			if (directions[0] === 'fly' || directions[0] === 'move') {
 				const [endpoint, direction, next_room_id] = directions;

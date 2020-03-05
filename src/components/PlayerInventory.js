@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useDataContext } from '../contexts/DataContext';
-import { Item, ButtonUndress, ButtonReceive } from './';
+import { Item, ButtonUndress } from './';
 import {
 	FooterComponentWrapper,
 	StatusHeader,
@@ -68,7 +68,6 @@ export default function PlayerInventory() {
 						</ul>
 					</>
 				)}
-				<ButtonReceive />
 			</div>
 		</InventoryWrapper>
 	);

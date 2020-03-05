@@ -15,7 +15,7 @@ export const ComponentWrapper = styled.div`
 `;
 
 export const FooterComponentWrapper = styled(ComponentWrapper)`
-	width: 19%;
+	width: 18%;
 	min-width: 24rem;
 `;
 

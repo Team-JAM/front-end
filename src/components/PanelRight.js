@@ -28,4 +28,5 @@ const PanelWrapper = styled.div`
 	background-color: #ebebe3;
 	display: flex;
 	flex-direction: column;
+	border-left: 3px solid #ddd6b9;
 `;
