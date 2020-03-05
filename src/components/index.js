@@ -26,6 +26,7 @@ import RoomInfo from './RoomInfo';
 // Buttons
 import ButtonsMove from './ButtonsMove';
 import ButtonNameChanger from './ButtonNameChanger';
+import ButtonBuyDonut from './ButtonBuyDonut';
 import ButtonExamineWell from './ButtonExamineWell';
 import ButtonExamineBoard from './ButtonExamineBoard';
 import ButtonPray from './ButtonPray';
@@ -73,6 +74,7 @@ export {
 	RoomInfo,
 	ButtonsMove,
 	ButtonNameChanger,
+	ButtonBuyDonut,
 	ButtonExamineWell,
 	ButtonExamineBoard,
 	ButtonPray,

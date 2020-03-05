@@ -44,13 +44,13 @@ export default function PlayerInventory() {
 				{playerStatus.bodywear && (
 					<InventoryRow>
 						<p>Bodywear: {playerStatus.bodywear}</p>
-						<ButtonUndress item={playerStatus.bodywear} />
+						{!autoTravelMode && <ButtonUndress item={playerStatus.bodywear} />}
 					</InventoryRow>
 				)}
 				{playerStatus.footwear && (
 					<InventoryRow>
 						<p>Footwear: {playerStatus.footwear}</p>
-						<ButtonUndress item={playerStatus.footwear} />
+						{!autoTravelMode && <ButtonUndress item={playerStatus.footwear} />}
 					</InventoryRow>
 				)}
 				{playerStatus.inventory && playerStatus.inventory[0] && (

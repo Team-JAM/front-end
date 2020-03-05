@@ -3,7 +3,12 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { axiosTeamJamBackEnd } from '../utils/axiosTeamJamBackEnd';
 import { useDataContext } from '../contexts/DataContext';
 import { specialRooms } from '../data/specialRooms';
-import { StyledCell, StyledCellDark } from '../styled-components/StyledCells';
+import {
+	StyledCell,
+	StyledCellDark,
+	Dot,
+	LightDot,
+} from '../styled-components/StyledCells';
 import Icon from '../icons/';
 
 export default function MapCell({ cell }) {
@@ -16,6 +21,7 @@ export default function MapCell({ cell }) {
 			roomToMine,
 			destination,
 			path,
+			playerStatus,
 		},
 		dispatch,
 	} = useDataContext();
@@ -27,20 +33,22 @@ export default function MapCell({ cell }) {
 	const isCurrentRoom =
 		roomData.room_id !== null && cell !== null && roomData.room_id === cell.id;
 
-	const isTrap = cell && cell.terrain === 'TRAP';
+	const isTrap = cell !== null && cell.terrain === 'TRAP';
 
 	const specialRoomIDs = Object.values(specialRooms);
-	const isSpecialRoom = cell && cell.id > 0 && specialRoomIDs.includes(cell.id);
+	const isSpecialRoom = cell !== null && specialRoomIDs.includes(cell.id);
 
 	const miningRoomID = Number(roomToMine.split('Mine your coin in room ')[1]);
-	const isMiningRoom = cell && cell.id === miningRoomID;
+	const isMiningRoom = cell !== null && cell.id === miningRoomID;
 
 	const isRoomToFind =
-		cell && cell.id === (roomToFind !== '' && Number(roomToFind));
+		cell !== null && cell.id === (roomToFind !== '' && Number(roomToFind));
+
+	const character = playerStatus.name;
 
 	useEffect(() => {
-		setIsDestination(cell && cell.id === destination);
-		setIsOnPath(cell && cell.id && path.includes(cell.id));
+		setIsDestination(cell !== null && cell.id === destination);
+		setIsOnPath(cell !== null && cell.id !== null && path.includes(cell.id));
 	}, [cell, destination, path]);
 
 	const handleClick = cell => {
@@ -55,6 +63,8 @@ export default function MapCell({ cell }) {
 						starting_room: roomData.room_id,
 						destination_room,
 					});
+
+					console.log(res.data);
 
 					const path = res.data.path.map(room => Number(room[1]));
 
@@ -158,6 +168,19 @@ export default function MapCell({ cell }) {
 					exitW={cell && cell.exits.w}
 					cooldownOver={cooldownOver}
 					onClick={() => handleClick(cell)}>
+					{isOnPath && !isDestination && <Dot />}
+					{isCurrentRoom && (
+						<Icon
+							name={character}
+							style={{
+								flexShrink: '0',
+								zIndex: '1100',
+								marginBottom: '0.2rem',
+								width: '5.75rem',
+								height: '5.75rem',
+							}}
+						/>
+					)}
 					{isSpecialRoom && (
 						<Icon
 							name={cell.title}
@@ -179,7 +202,7 @@ export default function MapCell({ cell }) {
 							}}
 						/>
 					)}
-					<div>{cell && cell.id}</div>
+					<div>{cell && !isOnPath && cell.id}</div>
 					{/* <div>{(isSpecialRoom || isCurrentRoom) && cell.title}</div> */}
 				</StyledCell>
 			)}
@@ -200,6 +223,19 @@ export default function MapCell({ cell }) {
 					exitW={cell && cell.exits.w}
 					cooldownOver={cooldownOver}
 					onClick={() => handleClick(cell)}>
+					{isOnPath && !isDestination && <LightDot />}
+					{isCurrentRoom && (
+						<Icon
+							name={character}
+							style={{
+								flexShrink: '0',
+								zIndex: '1100',
+								marginBottom: '0.2rem',
+								width: '5.75rem',
+								height: '5.75rem',
+							}}
+						/>
+					)}
 					{isSpecialRoom && (
 						<Icon
 							name={cell.title}
@@ -210,7 +246,7 @@ export default function MapCell({ cell }) {
 							}}
 						/>
 					)}
-					<div>{cell && cell.id}</div>
+					<div>{cell && !isOnPath && cell.id}</div>
 					{/* <div>{(isSpecialRoom || isCurrentRoom) && cell.title}</div> */}
 				</StyledCellDark>
 			)}

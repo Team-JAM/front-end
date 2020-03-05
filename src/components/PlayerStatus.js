@@ -20,7 +20,7 @@ export default function PlayerStatus() {
 		axiosWithAuth()
 			.post('/adv/status')
 			.then(res => {
-				// console.log(res.data);
+				console.log(res.data);
 				// localStorage.setItem('name', res.data.name);
 
 				dispatch({ type: 'GET_STATUS_SUCCESS', payload: res.data });
@@ -44,7 +44,10 @@ export default function PlayerStatus() {
 			</StatusHeader>
 			{playerStatus.encumbrance && (
 				<div>
-					{/* <p>Name: {playerStatus.name}</p> */}
+					{playerStatus.sugar_rush && (
+						<p>Sugar Rush: {playerStatus.sugar_rush}</p>
+					)}
+					{playerStatus.snitches && <p>Snitches: {playerStatus.snitches}</p>}
 					<p>Encumbrance: {playerStatus.encumbrance}</p>
 					<p>Strength: {playerStatus.strength}</p>
 					<p>Speed: {playerStatus.speed}</p>
