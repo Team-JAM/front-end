@@ -17,6 +17,7 @@ export const ComponentWrapper = styled.div`
 export const FooterComponentWrapper = styled(ComponentWrapper)`
 	width: 18%;
 	min-width: 24rem;
+	margin-bottom: 0;
 `;
 
 export const StatusHeader = styled.h3`

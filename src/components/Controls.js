@@ -7,6 +7,7 @@ import {
 	ButtonsMove,
 	ButtonNameChanger,
 	ButtonExamineWell,
+	ButtonExamineBoard,
 	ButtonPray,
 	ButtonRecall,
 	ButtonWarp,
@@ -32,6 +33,7 @@ export default function Controls() {
 						<ButtonPray />
 						<ButtonRecall />
 						<ButtonExamineWell />
+						<ButtonExamineBoard />
 						<ButtonNameChanger />
 						<ButtonWarp />
 					</div>

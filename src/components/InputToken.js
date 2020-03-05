@@ -31,10 +31,17 @@ export default function InputToken() {
 		dispatch({ type: 'GET_DATA_START' });
 
 		try {
-			console.log('GET ROOM DATA');
+			// console.log('GET ROOM DATA');
 			const res = await axiosWithAuth().get('/adv/init/');
 
 			dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
+
+			// console.log(res.data.room_id);
+
+			dispatch({
+				type: 'SET_WARP_MODE',
+				payload: res.data.room_id < 500 ? false : true,
+			});
 
 			return res.data.cooldown;
 		} catch (err) {

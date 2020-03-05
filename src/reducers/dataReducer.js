@@ -2,7 +2,8 @@ export const initialDataState = {
 	// token: '',
 	roomData: { messages: [] },
 	playerStatus: {
-		name: localStorage.getItem('name'),
+		name: '',
+		// name: localStorage.getItem('name'),
 		inventory: [],
 		abilities: [],
 		status: [],
@@ -12,11 +13,13 @@ export const initialDataState = {
 	rooms: {},
 	coinBalance: '',
 	// coinBalance: localStorage.getItem('coinBalance'),
-	roomToMine: localStorage.getItem('roomToMine'),
+	roomToMine: '',
+	// roomToMine: localStorage.getItem('roomToMine'),
 	roomToFind: undefined,
 	cooldown: 0,
 	cooldownOver: false,
-	warpMode: localStorage.getItem('warp_mode') === 'true',
+	warpMode: undefined,
+	// warpMode: localStorage.getItem('warp_mode') === 'true',
 	autoTravelMode: false,
 	destination: '',
 	path: [],
@@ -114,6 +117,11 @@ export const dataReducer = (state = initialDataState, action) => {
 				// 	messages: [...state.roomData.messages, action.payload],
 				// },
 				roomToMine: action.payload,
+			};
+		case 'SET_WARP_MODE':
+			return {
+				...state,
+				warpMode: action.payload,
 			};
 		case 'TOGGLE_WARP_MODE':
 			return {

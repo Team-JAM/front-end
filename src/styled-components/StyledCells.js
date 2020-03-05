@@ -7,20 +7,23 @@ export const StyledCell = styled.div`
 
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: ${props =>
+		props.isSpecialRoom || props.isTrap ? 'flex-end' : 'center'};
 	align-items: center;
 	text-align: center;
-	font-size: 0.8rem;
+	font-size: 1rem;
 
 	cursor: ${props => props.cooldownOver && props.isRoom && 'pointer'};
 
+	color: white;
+	color: ${props => props.terrain === 'NORMAL' && '#0b6623'};
 	color: ${props => props.terrain === 'CAVE' && 'white'};
-	color: ${props => props.isSpecialRoom && 'black'};
+	color: ${props => props.isCurrentRoom && 'black'};
 
 	border: 1px solid lightskyblue;
-	border: ${props => props.terrain === 'NORMAL' && '2px solid #013208'};
+	border: ${props => props.terrain === 'NORMAL' && '2px solid #0b6623'};
 	border: ${props => props.terrain === 'CAVE' && '2px solid gray'};
-	border: ${props => props.terrain === 'TRAP' && '2px solid black'};
+	border: ${props => props.terrain === 'TRAP' && '2px solid gray'};
 	border: ${props => props.terrain === 'MOUNTAIN' && '2px solid black'};
 
 	border-left: ${props => props.exitW && '0'};
@@ -31,12 +34,12 @@ export const StyledCell = styled.div`
 	border: ${props => props.isCurrentRoom && '3px solid red'};
 
 	background-color: lightcyan;
-	background-color: ${props => props.terrain === 'NORMAL' && '#567d46'};
+	background-color: ${props => props.terrain === 'NORMAL' && '#7bb369'};
 	background-color: ${props => props.terrain === 'CAVE' && '#202020'};
-	background-color: ${props => props.terrain === 'TRAP' && 'red'};
+	background-color: ${props => props.terrain === 'TRAP' && '#202020'};
 	background-color: ${props =>
 		props.terrain === 'MOUNTAIN' && 'rgb(101, 67, 33)'};
-	background-color: ${props => props.isSpecialRoom && 'yellow'};
+	// background-color: ${props => props.isSpecialRoom && 'yellow'};
 	background-color: ${props => props.isMiningRoom && 'orange'};
 	background-color: ${props => props.isRoomToFind && 'dodgerblue'};
 	background-color: ${props => props.isOnPath && 'pink'};
@@ -78,7 +81,7 @@ export const StyledCellDark = styled(StyledCell)`
 	background-color: ${props => props.terrain === 'TRAP' && 'red'};
 	background-color: ${props =>
 		props.terrain === 'MOUNTAIN' && 'rgb(101, 67, 33)'};
-	background-color: ${props => props.isSpecialRoom && 'yellow'};
+	// background-color: ${props => props.isSpecialRoom && 'yellow'};
 	background-color: ${props => props.isRoomToFind && 'dodgerblue'};
 	background-color: ${props => props.isOnPath && 'pink'};
 	background-color: ${props => props.isDestination && 'purple'};
