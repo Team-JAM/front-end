@@ -11,7 +11,7 @@ export default function ButtonBuyDonut() {
 	} = useDataContext();
 	const getStatus = useGetStatus();
 
-	const handleClick = () => {
+	const handleBuy = () => {
 		dispatch({ type: 'GET_DATA_START' });
 
 		(async () => {
@@ -34,7 +34,7 @@ export default function ButtonBuyDonut() {
 	return (
 		<div>
 			{roomData.room_id === specialRooms['JKMT Donuts'] && (
-				<button onClick={handleClick}>Buy Donut</button>
+				<button onClick={handleBuy}>Buy Donut</button>
 			)}
 		</div>
 	);
