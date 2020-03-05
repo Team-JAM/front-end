@@ -48,6 +48,20 @@ export default function IconAttrib() {
 			<a href='https://www.flaticon.com/authors/good-ware' title='Good Ware'>
 				Good Ware
 			</a>
+			{', '}
+			<a
+				href='https://www.flaticon.com/authors/pixelmeetup'
+				title='Pixelmeetup'>
+				Pixelmeetup
+			</a>
+			{', '}
+			<a href='https://www.flaticon.com/authors/skyclick' title='Skyclick'>
+				Skyclick
+			</a>
+			{', '}
+			<a href='https://www.flaticon.com/authors/surang' title='surang'>
+				surang
+			</a>
 			{', and '}
 			<a href='https://www.flaticon.com/authors/payungkead' title='Payungkead'>
 				Payungkead

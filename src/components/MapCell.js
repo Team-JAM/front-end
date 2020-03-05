@@ -3,7 +3,12 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { axiosTeamJamBackEnd } from '../utils/axiosTeamJamBackEnd';
 import { useDataContext } from '../contexts/DataContext';
 import { specialRooms } from '../data/specialRooms';
-import { StyledCell, StyledCellDark } from '../styled-components/StyledCells';
+import {
+	StyledCell,
+	StyledCellDark,
+	Dot,
+	LightDot,
+} from '../styled-components/StyledCells';
 import Icon from '../icons/';
 
 export default function MapCell({ cell }) {
@@ -55,6 +60,8 @@ export default function MapCell({ cell }) {
 						starting_room: roomData.room_id,
 						destination_room,
 					});
+
+					console.log(res.data);
 
 					const path = res.data.path.map(room => Number(room[1]));
 
@@ -158,6 +165,7 @@ export default function MapCell({ cell }) {
 					exitW={cell && cell.exits.w}
 					cooldownOver={cooldownOver}
 					onClick={() => handleClick(cell)}>
+					{isOnPath && !isDestination && <Dot />}
 					{isSpecialRoom && (
 						<Icon
 							name={cell.title}
@@ -179,7 +187,7 @@ export default function MapCell({ cell }) {
 							}}
 						/>
 					)}
-					<div>{cell && cell.id}</div>
+					<div>{cell && !isOnPath && cell.id}</div>
 					{/* <div>{(isSpecialRoom || isCurrentRoom) && cell.title}</div> */}
 				</StyledCell>
 			)}
@@ -200,6 +208,7 @@ export default function MapCell({ cell }) {
 					exitW={cell && cell.exits.w}
 					cooldownOver={cooldownOver}
 					onClick={() => handleClick(cell)}>
+					{isOnPath && !isDestination && <LightDot />}
 					{isSpecialRoom && (
 						<Icon
 							name={cell.title}
@@ -210,7 +219,7 @@ export default function MapCell({ cell }) {
 							}}
 						/>
 					)}
-					<div>{cell && cell.id}</div>
+					<div>{cell && !isOnPath && cell.id}</div>
 					{/* <div>{(isSpecialRoom || isCurrentRoom) && cell.title}</div> */}
 				</StyledCellDark>
 			)}

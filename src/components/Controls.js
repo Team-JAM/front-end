@@ -6,6 +6,7 @@ import { FooterComponentWrapper } from '../styled-components/StyledComponents';
 import {
 	ButtonsMove,
 	ButtonNameChanger,
+	ButtonBuyDonut,
 	ButtonExamineWell,
 	ButtonExamineBoard,
 	ButtonPray,
@@ -18,7 +19,8 @@ export default function Controls() {
 		data: { cooldownOver, autoTravelMode, playerStatus },
 	} = useDataContext();
 
-	const canFly = playerStatus.abilities.includes('fly');
+	const canFly =
+		playerStatus.abilities && playerStatus.abilities.includes('fly');
 
 	return (
 		<ControlsWrapper>
@@ -32,6 +34,7 @@ export default function Controls() {
 					<div className='buttons-abilities'>
 						<ButtonPray />
 						<ButtonRecall />
+						<ButtonBuyDonut />
 						<ButtonExamineWell />
 						<ButtonExamineBoard />
 						<ButtonNameChanger />

@@ -42,7 +42,7 @@ export const StyledCell = styled.div`
 	// background-color: ${props => props.isSpecialRoom && 'yellow'};
 	background-color: ${props => props.isMiningRoom && 'orange'};
 	background-color: ${props => props.isRoomToFind && 'dodgerblue'};
-	background-color: ${props => props.isOnPath && 'pink'};
+	// background-color: ${props => props.isOnPath && 'pink'};
 	background-color: ${props => props.isDestination && 'purple'};
 	background-color: ${props => props.isCurrentRoom && 'white'};
 
@@ -83,7 +83,7 @@ export const StyledCellDark = styled(StyledCell)`
 		props.terrain === 'MOUNTAIN' && 'rgb(101, 67, 33)'};
 	// background-color: ${props => props.isSpecialRoom && 'yellow'};
 	background-color: ${props => props.isRoomToFind && 'dodgerblue'};
-	background-color: ${props => props.isOnPath && 'pink'};
+	// background-color: ${props => props.isOnPath && 'pink'};
 	background-color: ${props => props.isDestination && 'purple'};
 	background-color: ${props => props.isCurrentRoom && 'white'};
 
@@ -92,4 +92,15 @@ export const StyledCellDark = styled(StyledCell)`
 	opacity: ${props => props.elevation === 3 && '0.8'};
 	opacity: ${props => props.elevation === 2 && '0.7'};
 	opacity: ${props => props.elevation === 1 && '0.6'};
+`;
+
+export const Dot = styled.div`
+	width: 1.5rem;
+	height: 1.5rem;
+	border-radius: 50%;
+	background-color: rgba(0, 0, 0, 0.4);
+`;
+
+export const LightDot = styled(Dot)`
+	background-color: rgba(255, 255, 255, 0.8);
 `;

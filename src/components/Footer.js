@@ -28,6 +28,8 @@ const StyledFooter = styled.div`
 	justify-content: space-between;
 	padding: 1rem 2rem;
 
+	overflow-x: auto;
+
 	background-color: #d73729;
 	border-top: 3px solid #e98681;
 `;

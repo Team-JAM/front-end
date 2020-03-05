@@ -13,6 +13,9 @@ import CrystalBall from './CrystalBall';
 import Church1 from './Church1';
 import Scores from './Scores';
 import Market from './Market';
+import AllisonJAM from './AllisonJAM';
+import MatthewJAM from './MatthewJAM';
+import JonathanJAM from './JonathanJAM';
 
 const Icon = props => {
 	switch (props.name) {
@@ -42,6 +45,12 @@ const Icon = props => {
 			return <Scores {...props} />;
 		case 'Shop':
 			return <Market {...props} />;
+		case 'allisonJAM':
+			return <AllisonJAM {...props} />;
+		case 'jonathanJAM':
+			return <JonathanJAM {...props} />;
+		case 'matthewJAM':
+			return <MatthewJAM {...props} />;
 		default:
 			return <div />;
 	}
