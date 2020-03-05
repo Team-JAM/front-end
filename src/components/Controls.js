@@ -8,6 +8,7 @@ import {
 	ButtonNameChanger,
 	ButtonBuyDonut,
 	ButtonExamineWell,
+	ButtonExamineBook,
 	ButtonExamineBoard,
 	ButtonPray,
 	ButtonRecall,
@@ -36,6 +37,7 @@ export default function Controls() {
 						<ButtonRecall />
 						<ButtonBuyDonut />
 						<ButtonExamineWell />
+						<ButtonExamineBook />
 						<ButtonExamineBoard />
 						<ButtonNameChanger />
 						<ButtonWarp />
