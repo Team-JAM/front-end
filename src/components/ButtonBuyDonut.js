@@ -1,6 +1,8 @@
 import React from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useDataContext } from '../contexts/DataContext';
+import { useGetStatus } from '../hooks/useGetStatus';
+import { sleep } from '../utils/sleep';
 import { specialRooms } from '../data/specialRooms';
 
 export default function ButtonBuyDonut() {
@@ -9,20 +11,28 @@ export default function ButtonBuyDonut() {
 		dispatch,
 	} = useDataContext();
 
+	const getStatus = useGetStatus();
+
 	const handleClick = () => {
-		// console.log(newName);
 		dispatch({ type: 'GET_DATA_START' });
 
-		axiosWithAuth()
-			.post('/adv/buy/', { name: 'donut', confirm: 'yes' })
-			.then(res => {
+		(async () => {
+			try {
+				const res = await axiosWithAuth().post('/adv/buy', {
+					name: 'donut',
+					confirm: 'yes',
+				});
 				// console.log(res.data);
 				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
-			})
-			.catch(err => {
+
+				const cooldown = res.data.cooldown;
+				await sleep(cooldown);
+				getStatus();
+			} catch (err) {
 				console.log(err);
 				dispatch({ type: 'GET_DATA_FAILURE' });
-			});
+			}
+		})();
 	};
 
 	return (

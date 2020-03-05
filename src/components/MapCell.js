@@ -26,6 +26,7 @@ export default function MapCell({ cell }) {
 		},
 		dispatch,
 	} = useDataContext();
+
 	const [isOnPath, setIsOnPath] = useState(false);
 	const [isDestination, setIsDestination] = useState(false);
 
@@ -64,8 +65,7 @@ export default function MapCell({ cell }) {
 						starting_room: roomData.room_id,
 						destination_room,
 					});
-
-					console.log(res.data);
+					// console.log(res.data);
 
 					const path = res.data.path.map(room => Number(room[1]));
 

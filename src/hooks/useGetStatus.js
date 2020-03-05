@@ -7,8 +7,6 @@ export const useGetStatus = () => {
 	const getPlayerStatus = async () => {
 		dispatch({ type: 'GET_DATA_START' });
 
-		console.log('useGetStatus');
-
 		try {
 			const res = await axiosWithAuth().post('/adv/status/');
 

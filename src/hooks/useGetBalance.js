@@ -7,8 +7,6 @@ export const useGetBalance = () => {
 	const getBalance = async () => {
 		dispatch({ type: 'GET_DATA_START' });
 
-		console.log('useGetBalance');
-
 		try {
 			const res = await axiosWithAuth().get('/bc/get_balance');
 
