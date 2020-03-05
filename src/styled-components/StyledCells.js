@@ -12,7 +12,7 @@ export const StyledCell = styled.div`
 	text-align: center;
 	font-size: 0.8rem;
 
-	cursor: ${props => props.isRoom && 'pointer'};
+	cursor: ${props => props.cooldownOver && props.isRoom && 'pointer'};
 
 	color: ${props => props.terrain === 'CAVE' && 'white'};
 	color: ${props => props.terrain === 'MOUNTAIN' && 'white'};
@@ -40,6 +40,8 @@ export const StyledCell = styled.div`
 	background-color: ${props => props.isSpecialRoom && 'yellow'};
 	background-color: ${props => props.isMiningRoom && 'orange'};
 	background-color: ${props => props.isRoomToFind && 'dodgerblue'};
+	background-color: ${props => props.isOnPath && 'pink'};
+	background-color: ${props => props.isDestination && 'purple'};
 	background-color: ${props => props.isCurrentRoom && 'white'};
 
 	opacity: ${props => props.elevation === 5 && '1'};
@@ -48,11 +50,8 @@ export const StyledCell = styled.div`
 	opacity: ${props => props.elevation === 2 && '0.7'};
 	opacity: ${props => props.elevation === 1 && '0.6'};
 
-	background-color: ${props => props.isOnPath && 'pink'};
-	background-color: ${props => props.isDestination && 'purple'};
-
 	&:hover {
-		opacity: ${props => props.isRoom && '0.75'};
+		opacity: ${props => props.cooldownOver && props.isRoom && '0.75'};
 	}
 `;
 

@@ -134,6 +134,12 @@ export const dataReducer = (state = initialDataState, action) => {
 				destination: action.payload.destination,
 				path: action.payload.path,
 			};
+		case 'CLEAR_DESTINATION':
+			return {
+				...state,
+				destination: '',
+				path: [],
+			};
 		default:
 			return state;
 	}
