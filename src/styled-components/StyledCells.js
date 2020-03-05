@@ -15,7 +15,6 @@ export const StyledCell = styled.div`
 	cursor: ${props => props.cooldownOver && props.isRoom && 'pointer'};
 
 	color: ${props => props.terrain === 'CAVE' && 'white'};
-	color: ${props => props.terrain === 'MOUNTAIN' && 'white'};
 	color: ${props => props.isSpecialRoom && 'black'};
 
 	border: 1px solid lightskyblue;

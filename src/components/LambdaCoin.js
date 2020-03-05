@@ -11,7 +11,7 @@ import {
 
 export default function LambdaCoin() {
 	const {
-		data: { coinBalance },
+		data: { coinBalance, autoTravelMode },
 		dispatch,
 	} = useDataContext();
 
@@ -42,9 +42,13 @@ export default function LambdaCoin() {
 	const handleClick = () => getBalance();
 
 	return (
-		<ComponentWrapper>
-			<StatusHeader onClick={handleClick}>LAMBDA COIN BALANCE</StatusHeader>
-			<p>{coinBalance}</p>
-		</ComponentWrapper>
+		<>
+			{!autoTravelMode && (
+				<ComponentWrapper>
+					<StatusHeader onClick={handleClick}>LAMBDA COIN BALANCE</StatusHeader>
+					<p>{coinBalance}</p>
+				</ComponentWrapper>
+			)}
+		</>
 	);
 }

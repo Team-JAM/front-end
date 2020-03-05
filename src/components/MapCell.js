@@ -60,6 +60,8 @@ export default function MapCell({ cell }) {
 						payload: { destination: path[path.length - 1], path },
 					});
 
+					dispatch({ type: 'SET_TRAVEL_MODE_TRUE' });
+
 					const directions = res.data.path_directions;
 
 					const asyncList = [];
@@ -83,6 +85,7 @@ export default function MapCell({ cell }) {
 						await sleep(cooldown * 1000);
 					}
 
+					dispatch({ type: 'SET_TRAVEL_MODE_FALSE' });
 					dispatch({ type: 'CLEAR_DESTINATION' });
 				} catch (err) {
 					console.log(err);

@@ -6,7 +6,7 @@ import { ComponentWrapper } from '../styled-components/StyledComponents';
 
 export default function RoomToMine() {
 	const {
-		data: { roomToMine },
+		data: { roomToMine, autoTravelMode },
 	} = useDataContext();
 
 	useEffect(() => {
@@ -15,7 +15,7 @@ export default function RoomToMine() {
 
 	return (
 		<>
-			{roomToMine && (
+			{!autoTravelMode && roomToMine && (
 				<ComponentWrapper>
 					<h3>ROOM TO MINE</h3>
 					<p>{roomToMine}</p>

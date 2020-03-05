@@ -12,7 +12,7 @@ import {
 
 export default function PlayerInventory() {
 	const {
-		data: { playerStatus },
+		data: { playerStatus, autoTravelMode },
 		dispatch,
 	} = useDataContext();
 
@@ -31,11 +31,17 @@ export default function PlayerInventory() {
 			});
 	};
 
-	const handleStatus = () => getStatus();
+	const handleStatus = () => {
+		if (!autoTravelMode) {
+			getStatus();
+		}
+	};
 
 	return (
 		<FooterComponentWrapper>
-			<StatusHeader onClick={handleStatus}>INVENTORY</StatusHeader>
+			<StatusHeader autoTravelMode={autoTravelMode} onClick={handleStatus}>
+				INVENTORY
+			</StatusHeader>
 			<div>
 				{playerStatus.bodywear && (
 					<InventoryRow>
