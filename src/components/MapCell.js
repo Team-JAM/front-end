@@ -25,6 +25,7 @@ export default function MapCell({ cell }) {
 		},
 		dispatch,
 	} = useDataContext();
+
 	const [isOnPath, setIsOnPath] = useState(false);
 	const [isDestination, setIsDestination] = useState(false);
 

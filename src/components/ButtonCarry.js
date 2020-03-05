@@ -1,28 +1,35 @@
 import React from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useDataContext } from '../contexts/DataContext';
+import { useGetStatus } from '../hooks/useGetStatus';
+import { sleep } from '../utils/sleep';
 
 export default function ButtonCarry({ item, inInventory }) {
 	const {
 		data: { playerStatus },
 		dispatch,
 	} = useDataContext();
+	const getStatus = useGetStatus();
 
 	const canCarry = playerStatus.abilities.includes('carry');
 
 	const handleCarry = name => {
 		dispatch({ type: 'GET_DATA_START' });
 
-		axiosWithAuth()
-			.post('/adv/carry', { name })
-			.then(res => {
+		(async () => {
+			try {
+				const res = await axiosWithAuth().post('/adv/carry/', { name });
 				// console.log(res.data);
 				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
-			})
-			.catch(err => {
+
+				const cooldown = res.data.cooldown;
+				await sleep(cooldown);
+				getStatus();
+			} catch (err) {
 				console.log(err);
 				dispatch({ type: 'GET_DATA_FAILURE' });
-			});
+			}
+		})();
 	};
 
 	return (

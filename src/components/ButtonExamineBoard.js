@@ -16,7 +16,7 @@ export default function ButtonExamineBoard() {
 			.post('/adv/examine/', { name: 'board' })
 			.then(res => {
 				console.log(res.data);
-				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
+				dispatch({ type: 'EXAMINE_ITEM_SUCCESS', payload: res.data });
 			})
 			.catch(err => {
 				console.log(err);

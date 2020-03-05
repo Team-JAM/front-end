@@ -6,6 +6,7 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useDataContext } from '../contexts/DataContext';
 import { useGetStatus } from '../hooks/useGetStatus';
 import { useGetBalance } from '../hooks/useGetBalance';
+import { sleep } from '../utils/sleep';
 
 export default function InputToken() {
 	const { dispatch } = useDataContext();
@@ -17,14 +18,9 @@ export default function InputToken() {
 		try {
 			const asyncList = [getRoomData, getStatus, getBalance];
 
-			const sleep = ms =>
-				new Promise(resolve => {
-					setTimeout(resolve, ms);
-				});
-
 			for (const asyncFunction of asyncList) {
 				const cooldown = await asyncFunction();
-				await sleep(cooldown * 1000);
+				await sleep(cooldown);
 			}
 		} catch (err) {
 			console.log(err);
@@ -35,7 +31,6 @@ export default function InputToken() {
 		dispatch({ type: 'GET_DATA_START' });
 
 		try {
-			// console.log('GET ROOM DATA');
 			const res = await axiosWithAuth().get('/adv/init/');
 
 			dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
@@ -53,37 +48,6 @@ export default function InputToken() {
 			dispatch({ type: 'GET_DATA_FAILURE' });
 		}
 	};
-
-	// const getPlayerStatus = async () => {
-	// 	dispatch({ type: 'GET_DATA_START' });
-
-	// 	try {
-	// 		const res = await axiosWithAuth().post('/adv/status/');
-	// 		// localStorage.setItem('name', res.data.name)
-
-	// 		dispatch({ type: 'GET_STATUS_SUCCESS', payload: res.data });
-
-	// 		return res.data.cooldown;
-	// 	} catch (err) {
-	// 		console.log(err);
-	// 		dispatch({ type: 'GET_DATA_FAILURE' });
-	// 	}
-	// };
-
-	// const getBalance = async () => {
-	// 	dispatch({ type: 'GET_DATA_START' });
-
-	// 	try {
-	// 		const res = await axiosWithAuth().get('/bc/get_balance');
-
-	// 		dispatch({ type: 'GET_BALANCE_SUCCESS', payload: res.data.messages[0] });
-
-	// 		return res.data.cooldown;
-	// 	} catch (err) {
-	// 		console.log(err);
-	// 		dispatch({ type: 'GET_DATA_FAILURE' });
-	// 	}
-	// };
 
 	useEffect(() => {
 		if (localStorage.getItem('token')) {
