@@ -1,11 +1,14 @@
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useDataContext } from '../contexts/DataContext';
+import { sleep } from '../utils/sleep';
 
 export const useGetStatus = () => {
 	const { dispatch } = useDataContext();
 
-	const getPlayerStatus = async () => {
+	const getPlayerStatus = async (cooldown = 0) => {
 		dispatch({ type: 'GET_DATA_START' });
+
+		if (cooldown) await sleep(cooldown);
 
 		try {
 			const res = await axiosWithAuth().post('/adv/status/');
