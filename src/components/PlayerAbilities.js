@@ -1,7 +1,6 @@
 import React from 'react';
+import styled from 'styled-components';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-// import styled from 'styled-components';
-
 import { useDataContext } from '../contexts/DataContext';
 
 import {
@@ -37,7 +36,7 @@ export default function PlayerAbilities() {
 	};
 
 	return (
-		<FooterComponentWrapper>
+		<AbilitiesWrapper>
 			<StatusHeader autoTravelMode={autoTravelMode} onClick={handleStatus}>
 				ABILITIES
 			</StatusHeader>
@@ -49,6 +48,10 @@ export default function PlayerAbilities() {
 						))}
 				</ul>
 			</div>
-		</FooterComponentWrapper>
+		</AbilitiesWrapper>
 	);
 }
+
+const AbilitiesWrapper = styled(FooterComponentWrapper)`
+	width: 10%;
+`;

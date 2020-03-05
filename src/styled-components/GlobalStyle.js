@@ -38,6 +38,20 @@ a {
   text-decoration: none;
   color: white;
 }
+
+::-webkit-scrollbar {
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+::-webkit-scrollbar-thumb {
+  // border-radius: 0.4rem;
+  background: #e98681;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b81e26;
+}
 `;
 
 export default GlobalStyle;

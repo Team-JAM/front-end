@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
 // import styled from 'styled-components';
-
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useDataContext } from '../contexts/DataContext';
-
 import {
 	ComponentWrapper,
 	StatusHeader,

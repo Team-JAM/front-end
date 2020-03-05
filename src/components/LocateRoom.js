@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-
+import styled from 'styled-components';
 import { useDataContext } from '../contexts/DataContext';
-
 import {
 	ComponentWrapper,
 	StatusHeader,
@@ -25,7 +24,7 @@ export default function() {
 	return (
 		<>
 			{!autoTravelMode && (
-				<ComponentWrapper>
+				<LocateWrapper>
 					<StatusHeader onClick={handleClick}>LOCATE A ROOM</StatusHeader>
 					<input
 						type='text'
@@ -33,8 +32,17 @@ export default function() {
 						value={roomToFind}
 						onChange={handleChange}
 					/>
-				</ComponentWrapper>
+				</LocateWrapper>
 			)}
 		</>
 	);
 }
+
+const LocateWrapper = styled(ComponentWrapper)`
+	display: flex;
+
+	input {
+		margin-left: 1rem;
+		width: 45%;
+	}
+`;

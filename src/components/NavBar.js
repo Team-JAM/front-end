@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-
 import { Logo, InputToken, PlayerName, SelectMode } from './';
 
 export default function NavBar() {
@@ -25,5 +24,5 @@ const NavBarWrapper = styled.div`
 
 	background-color: #d73729;
 	color: white;
-	border-bottom: 2px solid #b81e26;
+	border-bottom: 3px solid #b81e26;
 `;

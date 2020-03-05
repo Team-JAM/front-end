@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-
 import { useDataContext } from '../contexts/DataContext';
 
 export default function InputToken() {

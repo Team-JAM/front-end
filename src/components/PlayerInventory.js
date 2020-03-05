@@ -1,10 +1,8 @@
 import React from 'react';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
 import styled from 'styled-components';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useDataContext } from '../contexts/DataContext';
-
 import { Item, ButtonUndress, ButtonReceive } from './';
-
 import {
 	FooterComponentWrapper,
 	StatusHeader,
@@ -38,7 +36,7 @@ export default function PlayerInventory() {
 	};
 
 	return (
-		<FooterComponentWrapper>
+		<InventoryWrapper>
 			<StatusHeader autoTravelMode={autoTravelMode} onClick={handleStatus}>
 				INVENTORY
 			</StatusHeader>
@@ -72,9 +70,13 @@ export default function PlayerInventory() {
 				)}
 				<ButtonReceive />
 			</div>
-		</FooterComponentWrapper>
+		</InventoryWrapper>
 	);
 }
+
+const InventoryWrapper = styled(FooterComponentWrapper)`
+	width: 25%;
+`;
 
 const InventoryRow = styled.div`
 	display: flex;

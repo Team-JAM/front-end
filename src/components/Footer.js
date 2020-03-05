@@ -29,5 +29,5 @@ const StyledFooter = styled.div`
 	padding: 1rem 2rem;
 
 	background-color: #d73729;
-	border-top: 2px solid #e98681;
+	border-top: 3px solid #e98681;
 `;
