@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-
 import { useDataContext } from '../contexts/DataContext';
-
 import MapRow from './MapRow';
 
 export default function Map() {
@@ -46,6 +44,10 @@ export default function Map() {
 const MapWrapper = styled.div`
 	min-width: 79vw;
 	overflow: auto;
+
+	::-webkit-scrollbar {
+		display: none;
+	}
 
 	background-color: white;
 `;

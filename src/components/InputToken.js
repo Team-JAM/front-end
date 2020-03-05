@@ -1,46 +1,82 @@
-import React, { useState, useEffect } from 'react';
+import React, {
+	// useState,
+	useEffect,
+} from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-
 import { useDataContext } from '../contexts/DataContext';
 
 export default function InputToken() {
 	const { dispatch } = useDataContext();
 	// const [token, setToken] = useState(localStorage.getItem('token'));
 
-	const getInitData = () => {
-		dispatch({ type: 'GET_DATA_START' });
+	const getData = async () => {
+		try {
+			const asyncList = [getRoomData, getPlayerStatus, getBalance];
 
-		axiosWithAuth()
-			.get('/adv/init/')
-			.then(res => {
-				// console.log(res.data);
-				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
-			})
-			.catch(err => {
-				console.log(err);
-				dispatch({ type: 'GET_DATA_FAILURE' });
-			});
+			const sleep = ms =>
+				new Promise(resolve => {
+					setTimeout(resolve, ms);
+				});
+
+			for (const asyncFunction of asyncList) {
+				const cooldown = await asyncFunction();
+				await sleep(cooldown * 1000);
+			}
+		} catch (err) {
+			console.log(err);
+		}
 	};
 
-	// const getStatus = () => {
-	// 	dispatch({ type: 'GET_DATA_START' });
+	const getRoomData = async () => {
+		dispatch({ type: 'GET_DATA_START' });
 
-	// 	axiosWithAuth()
-	// 		.post('/adv/status')
-	// 		.then(res => {
-	// 			// console.log(res.data);
-	// 			dispatch({ type: 'GET_STATUS_SUCCESS', payload: res.data });
-	// 		})
-	// 		.catch(err => {
-	// 			console.log(err);
-	// 			dispatch({ type: 'GET_DATA_FAILURE' });
-	// 		});
-	// };
+		try {
+			console.log('GET ROOM DATA');
+			const res = await axiosWithAuth().get('/adv/init/');
+
+			dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
+
+			return res.data.cooldown;
+		} catch (err) {
+			console.log(err);
+			dispatch({ type: 'GET_DATA_FAILURE' });
+		}
+	};
+
+	const getPlayerStatus = async () => {
+		dispatch({ type: 'GET_DATA_START' });
+
+		try {
+			const res = await axiosWithAuth().post('/adv/status/');
+			// localStorage.setItem('name', res.data.name)
+
+			dispatch({ type: 'GET_STATUS_SUCCESS', payload: res.data });
+
+			return res.data.cooldown;
+		} catch (err) {
+			console.log(err);
+			dispatch({ type: 'GET_DATA_FAILURE' });
+		}
+	};
+
+	const getBalance = async () => {
+		dispatch({ type: 'GET_DATA_START' });
+
+		try {
+			const res = await axiosWithAuth().get('/bc/get_balance');
+
+			dispatch({ type: 'GET_BALANCE_SUCCESS', payload: res.data.messages[0] });
+
+			return res.data.cooldown;
+		} catch (err) {
+			console.log(err);
+			dispatch({ type: 'GET_DATA_FAILURE' });
+		}
+	};
 
 	useEffect(() => {
 		if (localStorage.getItem('token')) {
-			getInitData();
-			// getStatus();
+			getData();
 		}
 	}, []);
 
@@ -49,15 +85,13 @@ export default function InputToken() {
 	// const handleClick = () => {
 	// 	localStorage.setItem('token', token);
 	// 	getInitData();
-	// 	// getStatus();
 	// };
 
 	const handleSelect = e => {
 		console.log(e.target.value);
 		// setToken(e.target.value);
 		localStorage.setItem('token', e.target.value);
-		getInitData();
-		// getStatus();
+		getData();
 	};
 
 	return (

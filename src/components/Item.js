@@ -14,13 +14,13 @@ import {
 
 export default function Item({ item, action, inInventory }) {
 	const {
-		data: { cooldownOver },
+		data: { cooldownOver, autoTravelMode },
 	} = useDataContext();
 
 	return (
 		<StyledListItem>
 			{item}
-			{cooldownOver && (
+			{!autoTravelMode && cooldownOver && (
 				<>
 					<ButtonExamine item={item} />
 					<ButtonTakeDrop item={item} action={action} />

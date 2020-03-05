@@ -1,7 +1,5 @@
 import React from 'react';
-
 import { useDataContext } from '../contexts/DataContext';
-
 import { ComponentWrapper } from '../styled-components/StyledComponents';
 
 export default function Messages() {

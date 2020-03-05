@@ -80,6 +80,8 @@ export const StyledCellDark = styled(StyledCell)`
 		props.terrain === 'MOUNTAIN' && 'rgb(101, 67, 33)'};
 	background-color: ${props => props.isSpecialRoom && 'yellow'};
 	background-color: ${props => props.isRoomToFind && 'dodgerblue'};
+	background-color: ${props => props.isOnPath && 'pink'};
+	background-color: ${props => props.isDestination && 'purple'};
 	background-color: ${props => props.isCurrentRoom && 'white'};
 
 	opacity: ${props => props.elevation === 5 && '1'};

@@ -1,9 +1,7 @@
-import React, { useEffect } from 'react';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import React from 'react';
 // import styled from 'styled-components';
-
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useDataContext } from '../contexts/DataContext';
-
 import {
 	ComponentWrapper,
 	StatusHeader,
@@ -22,7 +20,7 @@ export default function LambdaCoin() {
 			.get('/bc/get_balance/')
 			.then(res => {
 				// console.log(res.data.messages[0]);
-				localStorage.setItem('coinBalance', res.data.messages[0]);
+				// localStorage.setItem('coinBalance', res.data.messages[0]);
 
 				dispatch({
 					type: 'GET_BALANCE_SUCCESS',
@@ -34,10 +32,6 @@ export default function LambdaCoin() {
 				dispatch({ type: 'GET_DATA_FAILURE' });
 			});
 	};
-
-	// useEffect(() => {
-	// 	getBalance();
-	// }, []);
 
 	const handleClick = () => getBalance();
 

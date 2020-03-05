@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { useDataContext } from '../contexts/DataContext';
-
 import { FooterComponentWrapper } from '../styled-components/StyledComponents';
 import {
 	ButtonsMove,
@@ -21,7 +20,7 @@ export default function Controls() {
 	const canFly = playerStatus.abilities.includes('fly');
 
 	return (
-		<FooterComponentWrapper>
+		<ControlsWrapper>
 			<h3>CONTROLS</h3>
 			{cooldownOver && !autoTravelMode && (
 				<ButtonsWrapper>
@@ -38,9 +37,13 @@ export default function Controls() {
 					</div>
 				</ButtonsWrapper>
 			)}
-		</FooterComponentWrapper>
+		</ControlsWrapper>
 	);
 }
+
+const ControlsWrapper = styled(FooterComponentWrapper)`
+	width: 22%;
+`;
 
 const ButtonsWrapper = styled.div`
 	display: flex;
@@ -48,6 +51,7 @@ const ButtonsWrapper = styled.div`
 
 	.buttons-move {
 		display: flex;
+		justify-content: space-around;
 	}
 
 	.buttons-abilities {
