@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDataContext } from '../contexts/DataContext';
 import { specialRooms } from '../data/specialRooms';
-import { useTravel } from '../hooks/useTravel';
+import { useTravel, useTravelTreasure } from '../hooks';
 import {
 	StyledCell,
 	StyledCellDark,
@@ -22,6 +22,7 @@ export default function MapCell({ cell }) {
 			path,
 			playerStatus,
 			autoTravelMode,
+			treasureMode,
 		},
 		dispatch,
 	} = useDataContext();
@@ -54,13 +55,15 @@ export default function MapCell({ cell }) {
 
 	const travel = useTravel();
 
+	const travelTreasure = useTravelTreasure();
+
 	const handleClick = cell => {
 		if (cooldownOver && cell !== null && !isCurrentRoom) {
 			dispatch({ type: 'GET_DATA_START' });
 
 			const destination_room = cell.id;
 
-			travel(destination_room);
+			treasureMode ? travelTreasure(destination_room) : travel(destination_room);
 		}
 	};
 
