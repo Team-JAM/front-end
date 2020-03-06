@@ -24,7 +24,7 @@ export const useTravel = () => {
 				starting_room: roomData.room_id,
 				destination_room,
 			});
-			console.log(res.data);
+			console.log(res.data.path);
 
 			const path = res.data.path.map(room => Number(room[1]));
 

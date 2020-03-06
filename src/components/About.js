@@ -4,6 +4,7 @@ import TeamCard from './TeamCard';
 import { teamInfo } from './TeamInfo';
 import { aboutGrid } from '../data/aboutGrid';
 import MapRow from './MapRow';
+import IconAttrib from './IconAttrib';
 
 export default function About() {
 	return (
@@ -60,6 +61,7 @@ export default function About() {
 						<span className='bold'>Dotenv</span> for environmental variables and
 						secrets, and is deployed on <span className='bold'>Netlify</span>.
 					</p>
+					<IconAttrib />
 				</div>
 				<div className='top-content-right'>
 					{aboutGrid.map((row, index) => (
@@ -91,11 +93,11 @@ const AboutWrapper = styled.div`
 	justify-content: space-between;
 
 	.top-content {
+		height: 80vh;
 		display: flex;
 	}
 
 	.top-content-text {
-		height: 80vh;
 		padding: 2rem;
 
 		p {

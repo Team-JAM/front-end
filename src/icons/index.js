@@ -16,6 +16,10 @@ import Market from './Market';
 import AllisonJAM from './AllisonJAM';
 import MatthewJAM from './MatthewJAM';
 import JonathanJAM from './JonathanJAM';
+import Grass from './Grass';
+import Cave from './Cave';
+import Hole from './Hole';
+import BlackHole from './BlackHole';
 
 const Icon = props => {
 	switch (props.name) {
@@ -51,6 +55,14 @@ const Icon = props => {
 			return <JonathanJAM {...props} />;
 		case 'matthewJAM':
 			return <MatthewJAM {...props} />;
+		case 'normal':
+			return <Grass {...props} />;
+		case 'cave':
+			return <Cave {...props} />;
+		case 'hole':
+			return <Hole {...props} />;
+		// case 'hole':
+		// 	return <BlackHole {...props} />;
 		default:
 			return <div />;
 	}
