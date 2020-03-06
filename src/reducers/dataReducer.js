@@ -22,6 +22,7 @@ export const initialDataState = {
 	autoTravelMode: false,
 	destination: '',
 	path: [],
+	wormholeRooms: [],
 	isLoading: false,
 	error: '',
 	treasureMode: false,
@@ -155,6 +156,11 @@ export const dataReducer = (state = initialDataState, action) => {
 				destination: action.payload.destination,
 				path: action.payload.path,
 			};
+		case 'SET_WORMHOLE_ROOMS':
+			return {
+				...state,
+				wormholeRooms: action.payload.path,
+			};
 		case 'CLEAR_DESTINATION':
 			return {
 				...state,
@@ -180,7 +186,7 @@ export const dataReducer = (state = initialDataState, action) => {
 			return {
 				...state,
 				isJAM: true,
-			}
+			};
 		default:
 			return state;
 	}

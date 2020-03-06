@@ -59,7 +59,7 @@ const Icon = props => {
 			return <Grass {...props} />;
 		case 'cave':
 			return <Cave {...props} />;
-		case 'hole':
+		case 'wormhole':
 			return <Hole {...props} />;
 		// case 'hole':
 		// 	return <BlackHole {...props} />;
