@@ -13,10 +13,10 @@ export const useSell = () => {
         dispatch({ type: 'GET_DATA_START' });
 
         try {
-            const res = await axiosWithAuth().post('/adv/sell', { name: item, confirm: 'yes' })
+            const res = await axiosWithAuth().post('/adv/sell', { name: item, confirm: 'yes' });
 
             dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
-            return res.data.cooldown
+            return res.data.cooldown;
 
         } catch (err) {
             console.log(err);
