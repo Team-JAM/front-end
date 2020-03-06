@@ -42,22 +42,6 @@ export const useTravel = () => {
 				await sleep(cooldown);
 			}
 
-			// const asyncList = [];
-
-			// for (const direction of directions) {
-			// 	const asyncFunction = async () => {
-			// 		const cooldown = await handleDirection(direction);
-			// 		return cooldown;
-			// 	};
-
-			// 	asyncList.push(asyncFunction);
-			// }
-
-			// for (const asyncFunction of asyncList) {
-			// 	const cooldown = await asyncFunction();
-			// 	await sleep(cooldown);
-			// }
-
 			dispatch({ type: 'SET_TRAVEL_MODE_FALSE' });
 			dispatch({ type: 'CLEAR_DESTINATION' });
 		} catch (err) {
