@@ -19,8 +19,8 @@ export const teamInfo = [
 		name: 'Matthew Mauney',
 		role: 'Data Scientist',
 		imgPath: 'matthew.jfif',
-		linkedinUrl: '',
+		linkedinUrl: 'https://www.linkedin.com/in/matthew-mauney-0707644/',
 		githubUrl: 'https://github.com/mauney',
-		portfolioUrl: '',
+		portfolioUrl: 'https://mauney.org/',
 	},
 ];

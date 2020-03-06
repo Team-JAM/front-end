@@ -8,9 +8,7 @@ export const StyledCell = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: ${props =>
-		props.isSpecialRoom || props.isTrap || props.isCurrentRoom
-			? 'flex-end'
-			: 'center'};
+		props.isSpecialRoom || props.isCurrentRoom ? 'flex-end' : 'center'};
 	align-items: center;
 	text-align: center;
 	font-size: 1rem;

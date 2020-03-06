@@ -35,6 +35,9 @@ export default function MapCell({ cell }) {
 	const isCurrentRoom =
 		roomData.room_id !== null && cell !== null && roomData.room_id === cell.id;
 
+	const isNormal = cell !== null && cell.terrain === 'NORMAL';
+	const isMountain = cell !== null && cell.terrain === 'MOUNTAIN';
+	const isCave = cell !== null && cell.terrain === 'CAVE';
 	const isTrap = cell !== null && cell.terrain === 'TRAP';
 
 	const specialRoomIDs = Object.values(specialRooms);
@@ -63,7 +66,9 @@ export default function MapCell({ cell }) {
 
 			const destination_room = cell.id;
 
-			treasureMode ? travelTreasure(destination_room) : travel(destination_room);
+			treasureMode
+				? travelTreasure(destination_room)
+				: travel(destination_room);
 		}
 	};
 
@@ -104,7 +109,7 @@ export default function MapCell({ cell }) {
 							}}
 						/>
 					)}
-					{isSpecialRoom && (
+					{isSpecialRoom && !isCurrentRoom && (
 						<Icon
 							name={cell.title}
 							style={{
@@ -114,13 +119,47 @@ export default function MapCell({ cell }) {
 							}}
 						/>
 					)}
-					{isTrap && (
+					{isNormal && !isSpecialRoom && !isCurrentRoom && !isOnPath && (
+						<Icon
+							name='normal'
+							style={{
+								flexShrink: '0',
+								width: '1.5rem',
+								height: '1.5rem',
+								zIndex: '1000',
+							}}
+						/>
+					)}
+					{/* {isMountain && !isSpecialRoom && !isCurrentRoom && !isOnPath && (
+						<Icon
+							name='mountain'
+							style={{
+								flexShrink: '0',
+								width: '2rem',
+								height: '2rem',
+								zIndex: '1000',
+							}}
+						/>
+					)} */}
+					{isCave && !isCurrentRoom && !isOnPath && (
+						<Icon
+							name='cave'
+							style={{
+								flexShrink: '0',
+								width: '3.5rem',
+								height: '3.5rem',
+								marginBottom: '1.5rem',
+								zIndex: '1000',
+							}}
+						/>
+					)}
+					{isTrap && !isOnPath && (
 						<Icon
 							name='trap'
 							style={{
 								flexShrink: '0',
-								width: '4rem',
-								height: '4rem',
+								width: '3.5rem',
+								height: '3.5rem',
 								zIndex: '1000',
 							}}
 						/>
@@ -170,6 +209,17 @@ export default function MapCell({ cell }) {
 								flexShrink: '0',
 								zIndex: '1000',
 								marginBottom: '0.2rem',
+							}}
+						/>
+					)}
+					{isNormal && !isSpecialRoom && !isCurrentRoom && !isOnPath && (
+						<Icon
+							name='normal'
+							style={{
+								flexShrink: '0',
+								width: '1.5rem',
+								height: '1.5rem',
+								zIndex: '1000',
 							}}
 						/>
 					)}
