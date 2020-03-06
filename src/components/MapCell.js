@@ -109,7 +109,7 @@ export default function MapCell({ cell }) {
 							}}
 						/>
 					)}
-					{isSpecialRoom && !isCurrentRoom && (
+					{isSpecialRoom && (
 						<Icon
 							name={cell.title}
 							style={{
