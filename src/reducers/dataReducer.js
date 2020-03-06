@@ -25,6 +25,7 @@ export const initialDataState = {
 	isLoading: false,
 	error: '',
 	treasureMode: false,
+	isJAM: localStorage.getItem('isJAM'),
 };
 
 export const dataReducer = (state = initialDataState, action) => {
@@ -174,6 +175,11 @@ export const dataReducer = (state = initialDataState, action) => {
 			return {
 				...state,
 				treasureMode: !state.treasureMode,
+			};
+		case 'SET_IS_JAM':
+			return {
+				...state,
+				isJAM: true,
 			}
 		default:
 			return state;

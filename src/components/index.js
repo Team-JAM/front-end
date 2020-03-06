@@ -2,6 +2,7 @@
 import NavBar from './NavBar';
 import Game from './Game';
 import About from './About';
+import Login from './Login';
 
 // NavBar Components
 import Logo from './Logo';
@@ -107,4 +108,5 @@ export {
 	ButtonCarry,
 	ButtonReceive,
 	ButtonSellAllItems,
+	Login,
 };
