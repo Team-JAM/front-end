@@ -14,7 +14,7 @@ export default function MapCell({ cell }) {
 	const {
 		data: {
 			cooldownOver,
-			warpMode,
+			inShadowWorld,
 			roomData,
 			roomToFind,
 			roomToMine,
@@ -66,7 +66,7 @@ export default function MapCell({ cell }) {
 
 	return (
 		<>
-			{!warpMode && (
+			{!inShadowWorld && (
 				<StyledCell
 					isRoom={isRoom}
 					isCurrentRoom={isCurrentRoom}
@@ -123,7 +123,7 @@ export default function MapCell({ cell }) {
 					{/* <div>{(isSpecialRoom || isCurrentRoom) && cell.title}</div> */}
 				</StyledCell>
 			)}
-			{warpMode && (
+			{inShadowWorld && (
 				<StyledCellDark
 					isRoom={isRoom}
 					isCurrentRoom={isCurrentRoom}

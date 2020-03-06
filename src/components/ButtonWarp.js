@@ -16,10 +16,13 @@ export default function ButtonWarp() {
 		axiosWithAuth()
 			.post('/adv/warp/')
 			.then(res => {
-				console.log(res.data);
+				// console.log(res.data);
 
 				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
-				dispatch({ type: 'TOGGLE_WARP_MODE' });
+				dispatch({
+					type: 'SET_SHADOW_WORLD_STATUS',
+					payload: res.data.room_id < 500 ? false : true,
+				});
 			})
 			.catch(err => {
 				console.log(err);

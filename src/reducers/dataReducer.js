@@ -18,7 +18,7 @@ export const initialDataState = {
 	roomToFind: undefined,
 	cooldown: 0,
 	cooldownOver: false,
-	warpMode: undefined,
+	inShadowWorld: undefined,
 	autoTravelMode: false,
 	destination: '',
 	path: [],
@@ -117,15 +117,25 @@ export const dataReducer = (state = initialDataState, action) => {
 				// },
 				roomToMine: action.payload,
 			};
-		case 'SET_WARP_MODE':
+		case 'SET_SHADOW_WORLD_STATUS':
 			return {
 				...state,
-				warpMode: action.payload,
+				inShadowWorld: action.payload,
 			};
-		case 'TOGGLE_WARP_MODE':
+		case 'SET_SHADOW_WORLD_TRUE':
 			return {
 				...state,
-				warpMode: !state.warpMode,
+				inShadowWorld: true,
+			};
+		case 'SET_SHADOW_WORLD_FALSE':
+			return {
+				...state,
+				inShadowWorld: false,
+			};
+		case 'TOGGLE_SHADOW_WORLD_STATUS':
+			return {
+				...state,
+				inShadowWorld: !state.inShadowWorld,
 			};
 		case 'SET_ROOM_TO_FIND':
 			return {

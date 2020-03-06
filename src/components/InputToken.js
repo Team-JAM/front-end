@@ -38,7 +38,7 @@ export default function InputToken() {
 			// console.log(res.data.room_id);
 
 			dispatch({
-				type: 'SET_WARP_MODE',
+				type: 'SET_SHADOW_WORLD_STATUS',
 				payload: res.data.room_id < 500 ? false : true,
 			});
 

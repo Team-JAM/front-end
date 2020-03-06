@@ -4,7 +4,7 @@ import { useDataContext } from '../contexts/DataContext';
 
 export default function ButtonRecall() {
 	const {
-		data: { playerStatus, warpMode },
+		data: { playerStatus, inShadowWorld },
 		dispatch,
 	} = useDataContext();
 
@@ -17,10 +17,8 @@ export default function ButtonRecall() {
 			.post('/adv/recall/')
 			.then(res => {
 				// console.log(res.data);
-				if (warpMode) {
-					// localStorage.setItem('warp_mode', false);
-					dispatch({ type: 'TOGGLE_WARP_MODE ' });
-				}
+				if (inShadowWorld)
+					dispatch({ type: 'SET_SHADOW_WORLD_STATUS', payload: false });
 
 				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
 			})

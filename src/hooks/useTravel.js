@@ -89,7 +89,7 @@ export const useTravel = () => {
 				const res = await axiosWithAuth().post(`/adv/warp/`);
 
 				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
-				dispatch({ type: 'TOGGLE_WARP_MODE' });
+				dispatch({ type: 'TOGGLE_SHADOW_WORLD_STATUS' });
 
 				return res.data.cooldown;
 			}

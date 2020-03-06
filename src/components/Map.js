@@ -6,7 +6,7 @@ import { MapRow, ButtonToggleMap } from './';
 
 export default function Map() {
 	const {
-		data: { warpMode },
+		data: { inShadowWorld },
 		dispatch,
 	} = useDataContext();
 	const [mapData, setMapData] = useState();
@@ -32,10 +32,10 @@ export default function Map() {
 	return (
 		<MapWrapper>
 			<ButtonToggleMap />
-			{!warpMode &&
+			{!inShadowWorld &&
 				mapData &&
 				mapData.map((row, index) => <MapRow row={row} key={index} />)}
-			{warpMode &&
+			{inShadowWorld &&
 				darkMapData &&
 				darkMapData.map((row, index) => <MapRow row={row} key={index} />)}
 		</MapWrapper>
