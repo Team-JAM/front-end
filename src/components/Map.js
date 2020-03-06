@@ -45,9 +45,5 @@ const MapWrapper = styled.div`
 	min-width: 79vw;
 	overflow: auto;
 
-	::-webkit-scrollbar {
-		display: none;
-	}
-
 	background-color: white;
 `;

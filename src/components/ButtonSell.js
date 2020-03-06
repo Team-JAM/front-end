@@ -15,7 +15,7 @@ export default function ButtonSell({ item }) {
 
 	const handleSell = async (item) => {
 		const cooldown = await sell(item);
-		await getStatus(cooldown);
+		getStatus(cooldown);
 	}
 
 	return (

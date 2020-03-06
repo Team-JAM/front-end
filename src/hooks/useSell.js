@@ -16,7 +16,7 @@ export const useSell = () => {
             const res = await axiosWithAuth().post('/adv/sell', { name: item, confirm: 'yes' })
 
             dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
-            return res.data.cooldownown
+            return res.data.cooldown
 
         } catch (err) {
             console.log(err);
