@@ -8,6 +8,7 @@ export default function ButtonReceive() {
 		data: { cooldownOver, playerStatus },
 		dispatch,
 	} = useDataContext();
+
 	const getStatus = useGetStatus();
 
 	const ghostCarrying =

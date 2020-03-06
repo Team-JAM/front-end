@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { useDataContext } from '../contexts/DataContext';
-import MapRow from './MapRow';
+import { MapRow, ButtonToggleMap } from './';
 
 export default function Map() {
 	const {
-		data: { warpMode },
+		data: { inShadowWorld },
 		dispatch,
 	} = useDataContext();
 	const [mapData, setMapData] = useState();
@@ -31,10 +31,11 @@ export default function Map() {
 
 	return (
 		<MapWrapper>
-			{!warpMode &&
+			<ButtonToggleMap />
+			{!inShadowWorld &&
 				mapData &&
 				mapData.map((row, index) => <MapRow row={row} key={index} />)}
-			{warpMode &&
+			{inShadowWorld &&
 				darkMapData &&
 				darkMapData.map((row, index) => <MapRow row={row} key={index} />)}
 		</MapWrapper>

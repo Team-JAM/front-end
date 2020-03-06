@@ -5,6 +5,7 @@ import { useGetStatus } from '../hooks/useGetStatus';
 
 export default function ButtonPray() {
 	const { dispatch } = useDataContext();
+
 	const getStatus = useGetStatus();
 
 	const handlePray = () => {

@@ -35,7 +35,7 @@ export default function ButtonExamineWell() {
 		// 	.post('/adv/examine/', { name: 'well' })
 		// 	.then(res => {
 		// 		console.log(res.data);
-		// 		dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
+		// 		dispatch({ type: 'EXAMINE_ITEM_SUCCESS', payload: res.data });
 		// 	})
 		// 	.catch(err => {
 		// 		console.log(err);

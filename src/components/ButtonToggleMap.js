@@ -11,7 +11,7 @@ export default function ButtonToggleMap() {
 	const canWarp = playerStatus.abilities.includes('warp');
 
 	const handleClick = () => {
-		dispatch({ type: 'TOGGLE_WARP_MODE' });
+		dispatch({ type: 'TOGGLE_SHADOW_WORLD_STATUS' });
 	};
 
 	return (
@@ -21,4 +21,8 @@ export default function ButtonToggleMap() {
 	);
 }
 
-const StyledButton = styled.button``;
+const StyledButton = styled.button`
+	position: absolute;
+	margin: 1rem;
+	z-index: 1200;
+`;

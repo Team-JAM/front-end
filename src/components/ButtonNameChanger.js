@@ -9,7 +9,9 @@ export default function ButtonNameChanger() {
 		data: { roomData },
 		dispatch,
 	} = useDataContext();
+
 	const [newName, setNewName] = useState('');
+
 	const getStatus = useGetStatus();
 
 	const handleChange = e => setNewName(e.target.value);

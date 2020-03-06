@@ -11,7 +11,9 @@ import { sleep } from '../utils/sleep';
 export default function InputToken() {
 	const { dispatch } = useDataContext();
 	// const [token, setToken] = useState(localStorage.getItem('token'));
+
 	const getStatus = useGetStatus();
+
 	const getBalance = useGetBalance();
 
 	const getData = async () => {
@@ -38,7 +40,7 @@ export default function InputToken() {
 			// console.log(res.data.room_id);
 
 			dispatch({
-				type: 'SET_WARP_MODE',
+				type: 'SET_SHADOW_WORLD_STATUS',
 				payload: res.data.room_id < 500 ? false : true,
 			});
 
