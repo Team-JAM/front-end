@@ -125,7 +125,7 @@ export default function MapCell({ cell }) {
 							}}
 						/>
 					)}
-					<div>{cell && !isOnPath && cell.id}</div>
+					{/* <div>{cell && !isOnPath && cell.id}</div> */}
 					{/* <div>{(isSpecialRoom || isCurrentRoom) && cell.title}</div> */}
 				</StyledCell>
 			)}
@@ -173,7 +173,7 @@ export default function MapCell({ cell }) {
 							}}
 						/>
 					)}
-					<div>{cell && !isOnPath && cell.id}</div>
+					{/* <div>{cell && !isOnPath && cell.id}</div> */}
 					{/* <div>{(isSpecialRoom || isCurrentRoom) && cell.title}</div> */}
 				</StyledCellDark>
 			)}
