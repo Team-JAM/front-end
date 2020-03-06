@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import {
 	CooldownTimer,
 	LambdaCoin,
-	LocateRoom,
+	// LocateRoom,
 	RoomToMine,
+	// RoomWithSnitch,
 	Messages,
 	RoomInfo,
 } from './';
@@ -14,8 +15,9 @@ export default function PanelRight() {
 		<PanelWrapper>
 			<CooldownTimer />
 			<LambdaCoin />
-			<LocateRoom />
+			{/* <LocateRoom /> */}
 			<RoomToMine />
+			{/* <RoomWithSnitch /> */}
 			<Messages />
 			<RoomInfo />
 		</PanelWrapper>

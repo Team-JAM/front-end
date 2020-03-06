@@ -20,6 +20,7 @@ export default function MapCell({ cell }) {
 			roomToMine,
 			destination,
 			path,
+			// wormholeRooms,
 			playerStatus,
 			autoTravelMode,
 			treasureMode,
@@ -29,6 +30,7 @@ export default function MapCell({ cell }) {
 
 	const [isOnPath, setIsOnPath] = useState(false);
 	const [isDestination, setIsDestination] = useState(false);
+	const [isWormhole, setIsWormhole] = useState(false);
 
 	const isRoom = cell !== null;
 
@@ -36,7 +38,7 @@ export default function MapCell({ cell }) {
 		roomData.room_id !== null && cell !== null && roomData.room_id === cell.id;
 
 	const isNormal = cell !== null && cell.terrain === 'NORMAL';
-	const isMountain = cell !== null && cell.terrain === 'MOUNTAIN';
+	// const isMountain = cell !== null && cell.terrain === 'MOUNTAIN';
 	const isCave = cell !== null && cell.terrain === 'CAVE';
 	const isTrap = cell !== null && cell.terrain === 'TRAP';
 
@@ -54,6 +56,9 @@ export default function MapCell({ cell }) {
 	useEffect(() => {
 		setIsDestination(cell !== null && cell.id === destination);
 		setIsOnPath(cell !== null && cell.id !== null && path.includes(cell.id));
+		// setIsWormhole(
+		// 	cell !== null && cell.id !== null && wormholeRooms.includes(cell.id),
+		// );
 	}, [cell, destination, path]);
 
 	const travel = useTravel();
@@ -94,6 +99,9 @@ export default function MapCell({ cell }) {
 					autoTravelMode={autoTravelMode}
 					onClick={() => handleClick(cell)}>
 					{isOnPath && !isDestination && <Dot />}
+					{/* {isWormhole && !isDestination && (
+						<Icon name='wormhole' style={{ flexShrink: '0', zIndex: '1000' }} />
+					)} */}
 					{isCurrentRoom && (
 						<Icon
 							name={character}
@@ -141,7 +149,7 @@ export default function MapCell({ cell }) {
 							}}
 						/>
 					)} */}
-					{isCave && !isCurrentRoom && !isOnPath && (
+					{isCave && !isCurrentRoom && !isSpecialRoom && !isOnPath && (
 						<Icon
 							name='cave'
 							style={{

@@ -24,9 +24,22 @@ export const useTravel = () => {
 				starting_room: roomData.room_id,
 				destination_room,
 			});
-			console.log(res.data.path);
+			// console.log(res.data.path);
 
 			const path = res.data.path.map(room => Number(room[1]));
+			// const wormholePaths = res.data.path.filter(room => room[0] === 'warp');
+
+			// if (wormholePaths) {
+			// 	console.log(wormholePaths);
+
+			// 	const wormholeRooms = wormholePaths.map(room => Number(room[1]));
+			// 	console.log(wormholeRooms);
+
+			// 	dispatch({
+			// 		type: 'SET_WORMHOLE_ROOMS',
+			// 		payload: wormholeRooms,
+			// 	});
+			// }
 
 			dispatch({
 				type: 'SET_PATH',

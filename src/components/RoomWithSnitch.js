@@ -2,9 +2,9 @@ import React from 'react';
 import { useDataContext } from '../contexts/DataContext';
 import { ComponentWrapper } from '../styled-components/StyledComponents';
 
-export default function RoomToMine() {
+export default function RoomWithSnitch() {
 	const {
-		data: { roomToMine, roomWithSnitch, autoTravelMode },
+		data: { roomWithSnitch, autoTravelMode },
 	} = useDataContext();
 
 	// useEffect(() => {
@@ -13,11 +13,10 @@ export default function RoomToMine() {
 
 	return (
 		<>
-			{!autoTravelMode && (
+			{!autoTravelMode && roomWithSnitch && (
 				<ComponentWrapper>
-					<h3>KEY ROOMS</h3>
-					{roomToMine && <p>{roomToMine}</p>}
-					{roomWithSnitch && <p>{roomWithSnitch}</p>}
+					<h3>ROOM WITH SNITCH</h3>
+					<p>{roomWithSnitch}</p>
 				</ComponentWrapper>
 			)}
 		</>
