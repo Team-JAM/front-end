@@ -4,7 +4,7 @@ import { useDataContext } from '../contexts/DataContext';
 
 export default function ButtonWarp() {
 	const {
-		data: { playerStatus, warpMode },
+		data: { playerStatus },
 		dispatch,
 	} = useDataContext();
 
@@ -16,9 +16,8 @@ export default function ButtonWarp() {
 		axiosWithAuth()
 			.post('/adv/warp/')
 			.then(res => {
-				localStorage.setItem('warp_mode', !warpMode);
-
 				// console.log(res.data);
+
 				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
 				dispatch({ type: 'TOGGLE_WARP_MODE' });
 			})
