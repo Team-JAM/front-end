@@ -2,18 +2,14 @@ import React, {
 	// useState,
 	useEffect,
 } from 'react';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { useDataContext } from '../contexts/DataContext';
-import { useGetStatus } from '../hooks/useGetStatus';
-import { useGetBalance } from '../hooks/useGetBalance';
+import { useGetRoomData, useGetStatus, useGetBalance } from '../hooks';
 import { sleep } from '../utils/sleep';
 
 export default function InputToken() {
-	const { dispatch } = useDataContext();
 	// const [token, setToken] = useState(localStorage.getItem('token'));
 
+	const getRoomData = useGetRoomData();
 	const getStatus = useGetStatus();
-
 	const getBalance = useGetBalance();
 
 	const getData = async () => {
@@ -26,28 +22,6 @@ export default function InputToken() {
 			}
 		} catch (err) {
 			console.log(err);
-		}
-	};
-
-	const getRoomData = async () => {
-		dispatch({ type: 'GET_DATA_START' });
-
-		try {
-			const res = await axiosWithAuth().get('/adv/init/');
-
-			dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
-
-			// console.log(res.data.room_id);
-
-			dispatch({
-				type: 'SET_SHADOW_WORLD_STATUS',
-				payload: res.data.room_id < 500 ? false : true,
-			});
-
-			return res.data.cooldown;
-		} catch (err) {
-			console.log(err);
-			dispatch({ type: 'GET_DATA_FAILURE' });
 		}
 	};
 
