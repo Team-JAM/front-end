@@ -2,6 +2,7 @@ import React, {
 	// useState,
 	useEffect,
 } from 'react';
+import styled from 'styled-components';
 import { useGetRoomData, useGetStatus, useGetBalance } from '../hooks';
 import { sleep } from '../utils/sleep';
 
@@ -46,7 +47,7 @@ export default function InputToken() {
 	};
 
 	return (
-		<div>
+		<StyledInputWrapper>
 			<select id='players' name='players' onChange={handleSelect}>
 				<option>Please select a player:</option>
 				<option value={process.env.REACT_APP_ALLISON_TOKEN}>Allison</option>
@@ -61,6 +62,10 @@ export default function InputToken() {
 				onChange={handleChange}
 			/>
 			<button onClick={handleClick}>Set Token</button> */}
-		</div>
+		</StyledInputWrapper>
 	);
 }
+
+const StyledInputWrapper = styled.div`
+	margin-left: 4rem;
+`;
