@@ -6,5 +6,14 @@ export default function PlayerName() {
 		data: { playerStatus },
 	} = useDataContext();
 
-	return <>{playerStatus.name && <p>Player: {playerStatus.name}</p>}</>;
+	return (
+		<>
+			{playerStatus.name && (
+				<p>
+					<span style={{ fontWeight: 'bold' }}>Player:</span>{' '}
+					{playerStatus.name}
+				</p>
+			)}
+		</>
+	);
 }
