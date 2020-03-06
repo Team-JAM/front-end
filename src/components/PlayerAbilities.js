@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useDataContext } from '../contexts/DataContext';
-
+import { useGetStatus } from '../hooks';
 import {
 	FooterComponentWrapper,
 	StatusHeader,
@@ -11,23 +10,9 @@ import {
 export default function PlayerAbilities() {
 	const {
 		data: { playerStatus, autoTravelMode },
-		dispatch,
 	} = useDataContext();
 
-	const getStatus = () => {
-		dispatch({ type: 'GET_DATA_START' });
-
-		axiosWithAuth()
-			.post('/adv/status')
-			.then(res => {
-				// console.log(res.data);
-				dispatch({ type: 'GET_STATUS_SUCCESS', payload: res.data });
-			})
-			.catch(err => {
-				console.log(err);
-				dispatch({ type: 'GET_DATA_FAILURE' });
-			});
-	};
+	const getStatus = useGetStatus();
 
 	const handleStatus = () => {
 		if (!autoTravelMode) {
