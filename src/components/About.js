@@ -1,14 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import TeamCard from './TeamCard';
 import { teamInfo } from './TeamInfo';
+import { aboutGrid } from '../data/aboutGrid';
+import MapRow from './MapRow';
 
 export default function About() {
 	return (
 		<AboutWrapper>
 			<div className='top-content'>
-				<div className='top-content-left'></div>
+				<div className='top-content-left'>
+					{aboutGrid.map((row, index) => (
+						<MapRow row={row} key={index} />
+					))}
+				</div>
 				<div className='top-content-text'>
 					<h2>The Game</h2>
 					<p>
@@ -33,7 +38,7 @@ export default function About() {
 						<span className='bold'>Graph Theory</span>, and{' '}
 						<span className='bold'>Computer Architecture</span>.
 					</p>
-					<h2>The Tech Stack</h2>
+					<h2 style={{ marginTop: '5rem' }}>The Tech Stack</h2>
 					<p>
 						JAMbda Treasure Hunt is built as a full-stack application with{' '}
 						<span className='bold'>back-end</span> and{' '}
@@ -56,7 +61,11 @@ export default function About() {
 						secrets, and is deployed on <span className='bold'>Netlify</span>.
 					</p>
 				</div>
-				<div className='top-content-right'></div>
+				<div className='top-content-right'>
+					{aboutGrid.map((row, index) => (
+						<MapRow row={row} key={index} />
+					))}
+				</div>
 			</div>
 			<TeamWrapper>
 				<div className='team-content'>
@@ -80,6 +89,10 @@ const AboutWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+
+	.top-content {
+		display: flex;
+	}
 
 	.top-content-text {
 		height: 80vh;
