@@ -4,12 +4,16 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import DataProvider from './contexts/DataContext';
+
 require('dotenv').config();
 
 ReactDOM.render(
-	<Router>
-		<App />
-	</Router>,
+	<DataProvider>
+		<Router>
+			<App />
+		</Router>
+	</DataProvider>,
 	document.getElementById('root'),
 );
 
