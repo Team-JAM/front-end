@@ -49,8 +49,9 @@ export const StyledCell = styled.div`
 		props.terrain === 'MOUNTAIN' && 'rgb(101, 67, 33, 1)'};
 	background-color: ${props => props.isMiningRoom && 'rgba(250, 190, 88, 1)'};
 	background-color: ${props => props.isRoomToFind && 'rgba(30, 144, 255, 1)'};
-	background-color: ${props => props.isDestination && 'purple'};
-	background-color: ${props => props.isCurrentRoom && 'white'};
+	background-color: ${props => props.isDestination && 'pink'};
+	background-color: ${props =>
+		props.isCurrentRoom && 'rgba(123, 179, 105, 0.6)'};
 
 	opacity: ${props => props.elevation === 5 && '1'};
 	opacity: ${props => props.elevation === 4 && '0.9'};
@@ -93,7 +94,7 @@ export const StyledCell = styled.div`
 			props.cooldownOver &&
 			!props.autoTravelMode &&
 			props.isCurrentRoom &&
-			'white'};
+			'rgba(123, 179, 105, 0.6)'};
 
 		background-color: ${props =>
 			props.cooldownOver &&
@@ -146,8 +147,9 @@ export const StyledCellDark = styled(StyledCell)`
 	background-color: ${props =>
 		props.terrain === 'MOUNTAIN' && 'rgb(101, 67, 33)'};
 	background-color: ${props => props.isRoomToFind && 'dodgerblue'};
-	background-color: ${props => props.isDestination && 'purple'};
-	background-color: ${props => props.isCurrentRoom && 'white'};
+	background-color: ${props => props.isDestination && 'pink'};
+	background-color: ${props =>
+		props.isCurrentRoom && 'rgba(123, 179, 105, 0.6)'};
 
 	opacity: ${props => props.elevation === 5 && '1'};
 	opacity: ${props => props.elevation === 4 && '0.9'};

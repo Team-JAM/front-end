@@ -95,6 +95,9 @@ export default function MapCell({ cell }) {
 								marginBottom: '0.2rem',
 								width: '5.75rem',
 								height: '5.75rem',
+								position: isSpecialRoom ? 'relative' : 'static',
+								top: '6rem',
+								right: '1.5rem',
 							}}
 						/>
 					)}
@@ -151,6 +154,9 @@ export default function MapCell({ cell }) {
 								marginBottom: '0.2rem',
 								width: '5.75rem',
 								height: '5.75rem',
+								position: isSpecialRoom ? 'relative' : 'static',
+								top: '6rem',
+								right: '1.5rem',
 							}}
 						/>
 					)}
