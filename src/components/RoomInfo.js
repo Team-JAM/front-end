@@ -29,11 +29,19 @@ export default function RoomInfo() {
 					Room {roomData.room_id} {roomData.coordinates}: {roomData.title}
 				</p> */}
 				<p>{roomData.description}</p>
-				<p>Elevation: {roomData.elevation}</p>
-				<p>Terrain: {roomData.terrain}</p>
+				<p>
+					<span style={{ fontWeight: 'bold' }}>Elevation:</span>{' '}
+					{roomData.elevation}
+				</p>
+				<p>
+					<span style={{ fontWeight: 'bold' }}>Terrain:</span>{' '}
+					{roomData.terrain}
+				</p>
 				{roomData.items && roomData.items[0] && (
 					<>
-						<p>Items:</p>
+						<p>
+							<span style={{ fontWeight: 'bold' }}>Items:</span>
+						</p>
 						<ul>
 							{roomData.items.map((item, index) => (
 								<Item
@@ -48,7 +56,9 @@ export default function RoomInfo() {
 				)}
 				{roomData.players && roomData.players[0] && (
 					<>
-						<p>Players:</p>
+						<p>
+							<span style={{ fontWeight: 'bold' }}>Players:</span>
+						</p>
 						<ul>
 							{roomData.players.map(player => (
 								<li key={player}>{player}</li>
@@ -57,7 +67,9 @@ export default function RoomInfo() {
 						</ul>
 					</>
 				)}
-				<p>Exits:</p>
+				<p>
+					<span style={{ fontWeight: 'bold' }}>Exits:</span>
+				</p>
 				<ul>
 					{roomData.exits &&
 						roomData.exits.map(exit => <li key={exit}>{exit}</li>)}

@@ -27,22 +27,30 @@ export default function PlayerInventory() {
 				INVENTORY
 			</StatusHeader>
 			<ButtonSellAllItems />
-			<div>
+			<div style={{ marginTop: '0.5rem' }}>
 				{playerStatus.bodywear && (
 					<InventoryRow>
-						<p>Bodywear: {playerStatus.bodywear}</p>
+						<p>
+							<span style={{ fontWeight: 'bold' }}>Bodywear:</span>{' '}
+							{playerStatus.bodywear}
+						</p>
 						{!autoTravelMode && <ButtonUndress item={playerStatus.bodywear} />}
 					</InventoryRow>
 				)}
 				{playerStatus.footwear && (
 					<InventoryRow>
-						<p>Footwear: {playerStatus.footwear}</p>
+						<p>
+							<span style={{ fontWeight: 'bold' }}>Footwear:</span>{' '}
+							{playerStatus.footwear}
+						</p>
 						{!autoTravelMode && <ButtonUndress item={playerStatus.footwear} />}
 					</InventoryRow>
 				)}
 				{playerStatus.inventory && playerStatus.inventory[0] && (
 					<>
-						<p>Inventory:</p>
+						<span style={{ fontWeight: 'bold' }}>
+							<p>Inventory:</p>
+						</span>
 						<ul>
 							{playerStatus.inventory.map((item, index) => (
 								<Item
