@@ -15,7 +15,7 @@ export const useTravel = () => {
 				starting_room: roomData.room_id,
 				destination_room,
 			});
-			// console.log(res.data);
+			console.log(res.data);
 
 			const path = res.data.path.map(room => Number(room[1]));
 
@@ -70,7 +70,7 @@ export const useTravel = () => {
 			} else if (directions[0] === 'dash') {
 				const [endpoint, direction, num_rooms, next_room_ids] = directions;
 
-				const res = await axiosWithAuth().post(`/adv/${endpoint}`, {
+				const res = await axiosWithAuth().post(`/adv/${endpoint}/`, {
 					direction,
 					num_rooms,
 					next_room_ids,
@@ -80,9 +80,16 @@ export const useTravel = () => {
 
 				return res.data.cooldown;
 			} else if (directions[0] === 'recall') {
-				const res = await axiosWithAuth().post(`/adv/recall`);
+				const res = await axiosWithAuth().post(`/adv/recall/`);
 
 				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
+
+				return res.data.cooldown;
+			} else if (directions[0] === 'warp') {
+				const res = await axiosWithAuth().post(`/adv/warp/`);
+
+				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
+				dispatch({ type: 'TOGGLE_WARP_MODE' });
 
 				return res.data.cooldown;
 			}
