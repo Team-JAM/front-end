@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useDataContext } from '../contexts/DataContext';
-import { Item, ButtonUndress } from './';
+import { Item, ButtonUndress, ButtonSellAllItems } from './';
 import {
 	FooterComponentWrapper,
 	StatusHeader,
@@ -40,6 +40,7 @@ export default function PlayerInventory() {
 			<StatusHeader autoTravelMode={autoTravelMode} onClick={handleStatus}>
 				INVENTORY
 			</StatusHeader>
+			<ButtonSellAllItems />
 			<div>
 				{playerStatus.bodywear && (
 					<InventoryRow>
