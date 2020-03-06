@@ -8,7 +8,7 @@ import { useGetStatus } from '../hooks/useGetStatus';
 
 export default function ButtonSellAllItems({ item }) {
 	const {
-		data: { playerStatus, roomData, cooldownOver },
+		data: { playerStatus, roomData, cooldownOver, autoTravelMode },
 	} = useDataContext();
 
 	const travel = useTravel();
@@ -38,9 +38,14 @@ export default function ButtonSellAllItems({ item }) {
 
 	return (
 		<>
-			{roomData.room_id <= 499 && inventory.length > 0 && cooldownOver && (
-				<button onClick={() => handleSellAllItems(item)}>Sell All Items</button>
-			)}
+			{roomData.room_id <= 499 &&
+				inventory.length > 0 &&
+				cooldownOver &&
+				!autoTravelMode && (
+					<button onClick={() => handleSellAllItems(item)}>
+						Sell All Items
+					</button>
+				)}
 		</>
 	);
 }

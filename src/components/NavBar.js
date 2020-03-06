@@ -31,6 +31,8 @@ const NavBarWrapper = styled.div`
 	align-items: center;
 	padding: 1rem 2rem;
 
+	width: 100%;
+
 	background-color: #d73729;
 	color: white;
 	border-bottom: 3px solid #b81e26;
