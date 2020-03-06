@@ -1,7 +1,7 @@
 import React from 'react';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
 import styled from 'styled-components';
 import { useDataContext } from '../contexts/DataContext';
+import { useGetRoomData } from '../hooks';
 import { Item } from './';
 import {
 	ComponentWrapper,
@@ -11,24 +11,12 @@ import {
 export default function RoomInfo() {
 	const {
 		data: { roomData, autoTravelMode },
-		dispatch,
 	} = useDataContext();
 
-	const handleClick = () => {
-		if (!autoTravelMode) {
-			dispatch({ type: 'GET_DATA_START' });
+	const getRoomData = useGetRoomData();
 
-			axiosWithAuth()
-				.get('/adv/init/')
-				.then(res => {
-					// console.log(res.data);
-					dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
-				})
-				.catch(err => {
-					console.log(err);
-					dispatch({ type: 'GET_DATA_FAILURE' });
-				});
-		}
+	const handleClick = () => {
+		if (!autoTravelMode) getRoomData();
 	};
 
 	return (
