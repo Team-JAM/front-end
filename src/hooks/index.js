@@ -6,6 +6,7 @@ import { useRecall } from './useRecall';
 import { useSell } from './useSell';
 import { useTravel } from './useTravel';
 import { useWarp } from './useWarp';
+import { useTravelTreasure } from './useTravelTreasure';
 
 export {
 	useGetBalance,
@@ -16,4 +17,5 @@ export {
 	useSell,
 	useTravel,
 	useWarp,
+	useTravelTreasure,
 };

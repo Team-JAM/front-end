@@ -32,31 +32,9 @@ export default function ButtonSellAllItems({ item }) {
 			await sleep(cooldown);
 		}
 
-		// const asyncList = [];
-
-		// for (let item of inventory) {
-		//     const asyncFunction = async () => {
-		//         const cooldown = await handleSell(item);
-		//         return cooldown;
-		//     };
-
-		//     asyncList.push(asyncFunction);
-		// }
-
-		// for (const asyncFunction of asyncList) {
-		//     const cooldown = await asyncFunction();
-		//     await sleep(cooldown);
-		// }
-
 		// update status
 		getStatus();
 	};
-
-	// const handleSell = async item => {
-	// 	const cooldown = await sell(item);
-	// 	// await sleep(cooldown)
-	// 	return cooldown;
-	// };
 
 	return (
 		<>

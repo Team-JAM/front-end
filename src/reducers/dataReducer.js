@@ -24,6 +24,7 @@ export const initialDataState = {
 	path: [],
 	isLoading: false,
 	error: '',
+	treasureMode: false,
 };
 
 export const dataReducer = (state = initialDataState, action) => {
@@ -169,6 +170,11 @@ export const dataReducer = (state = initialDataState, action) => {
 				...state,
 				autoTravelMode: false,
 			};
+		case 'TOGGLE_TREASURE_MODE':
+			return {
+				...state,
+				treasureMode: !state.treasureMode,
+			}
 		default:
 			return state;
 	}

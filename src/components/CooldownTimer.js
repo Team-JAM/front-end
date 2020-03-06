@@ -5,7 +5,7 @@ import { ComponentWrapper } from '../styled-components/StyledComponents';
 
 export default function CooldownTimer() {
 	const {
-		data: { cooldown, cooldownOver },
+		data: { cooldown, cooldownOver, autoTravelMode },
 		dispatch,
 	} = useDataContext();
 
@@ -30,16 +30,29 @@ export default function CooldownTimer() {
 	}, [timeLeft]);
 
 	return (
-		<CooldownWrapper cooldownOver={cooldownOver} timeLeft={timeLeft}>
-			<h3>COOLDOWN TIMER</h3>
-			<p>Cooldown: {cooldown}</p>
-			{timeLeft <= 0 ? <p>Go!</p> : <p>Remaining Time: {timeLeft}</p>}
+		<CooldownWrapper cooldownOver={cooldownOver} timeLeft={timeLeft} autoTravelMode={autoTravelMode}>
+			{autoTravelMode ? (
+				<>
+					<h3>Auto Travel Mode Engaged</h3>
+					<p>please stand by</p>
+				</>
+			) : (
+				<>
+					<h3>COOLDOWN TIMER</h3>
+					<p>Cooldown: {cooldown}</p>
+					{timeLeft <= 0 ? <p>Go!</p> : <p>Remaining Time: {timeLeft}</p>}
+				</>
+			)}
 		</CooldownWrapper>
 	);
 }
 
 const CooldownWrapper = styled(ComponentWrapper)`
-	background-color: ${props => (props.timeLeft <= 0 ? '#33a532' : '#cc0605')};
+	background-color: ${props => {
+			if (props.autoTravelMode) return '#33a532'
+			return props.timeLeft <= 0 ? '#33a532' : '#cc0605'
+		}
+	};
 
 	color: white;
 `;
