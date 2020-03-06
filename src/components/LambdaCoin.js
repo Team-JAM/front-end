@@ -1,7 +1,7 @@
 import React from 'react';
 // import styled from 'styled-components';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useDataContext } from '../contexts/DataContext';
+import { useGetBalance } from '../hooks';
 import {
 	ComponentWrapper,
 	StatusHeader,
@@ -10,28 +10,9 @@ import {
 export default function LambdaCoin() {
 	const {
 		data: { coinBalance, autoTravelMode },
-		dispatch,
 	} = useDataContext();
 
-	const getBalance = () => {
-		dispatch({ type: 'GET_DATA_START' });
-
-		axiosWithAuth()
-			.get('/bc/get_balance/')
-			.then(res => {
-				// console.log(res.data.messages[0]);
-				// localStorage.setItem('coinBalance', res.data.messages[0]);
-
-				dispatch({
-					type: 'GET_BALANCE_SUCCESS',
-					payload: res.data.messages[0],
-				});
-			})
-			.catch(err => {
-				console.log(err);
-				dispatch({ type: 'GET_DATA_FAILURE' });
-			});
-	};
+	const getBalance = useGetBalance();
 
 	const handleClick = () => getBalance();
 
