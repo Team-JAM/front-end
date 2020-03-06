@@ -6,6 +6,7 @@ export default function ButtonWarp() {
 	const {
 		data: { playerStatus },
 	} = useDataContext();
+
 	const warp = useWarp();
 
 	const canWarp = playerStatus.abilities.includes('warp');

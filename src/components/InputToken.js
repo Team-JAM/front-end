@@ -11,7 +11,9 @@ import { sleep } from '../utils/sleep';
 export default function InputToken() {
 	const { dispatch } = useDataContext();
 	// const [token, setToken] = useState(localStorage.getItem('token'));
+
 	const getStatus = useGetStatus();
+
 	const getBalance = useGetBalance();
 
 	const getData = async () => {

@@ -1,11 +1,11 @@
 import { useDataContext } from '../contexts/DataContext';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { useGetStatus } from '../hooks/useGetStatus';
+// import { useGetStatus } from '../hooks/useGetStatus';
 
 export const useSell = () => {
 	const { dispatch } = useDataContext();
 
-	const getStatus = useGetStatus();
+	// const getStatus = useGetStatus();
 
 	const sell = async item => {
 		dispatch({ type: 'GET_DATA_START' });

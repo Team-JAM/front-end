@@ -8,6 +8,7 @@ export default function ButtonCarry({ item, inInventory }) {
 		data: { playerStatus },
 		dispatch,
 	} = useDataContext();
+
 	const getStatus = useGetStatus();
 
 	const canCarry = playerStatus.abilities.includes('carry');

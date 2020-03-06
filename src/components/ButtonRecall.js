@@ -6,6 +6,7 @@ export default function ButtonRecall() {
 	const {
 		data: { playerStatus },
 	} = useDataContext();
+
 	const recall = useRecall();
 
 	const canRecall = playerStatus.abilities.includes('recall');

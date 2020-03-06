@@ -1,6 +1,7 @@
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useDataContext } from '../contexts/DataContext';
 import { axiosTeamJamBackEnd } from '../utils/axiosTeamJamBackEnd';
+import { useMove } from './useMove';
 import { useRecall } from './useRecall';
 import { useWarp } from './useWarp';
 import { sleep } from '../utils/sleep';
@@ -10,7 +11,11 @@ export const useTravel = () => {
 		data: { roomData },
 		dispatch,
 	} = useDataContext();
+
+	const move = useMove();
+
 	const recall = useRecall();
+
 	const warp = useWarp();
 
 	const travel = async destination_room => {
@@ -64,17 +69,9 @@ export const useTravel = () => {
 	const handleDirection = async directions => {
 		try {
 			if (directions[0] === 'fly' || directions[0] === 'move') {
-				dispatch({ type: 'GET_DATA_START' });
 				const [endpoint, direction, next_room_id] = directions;
 
-				const res = await axiosWithAuth().post(`/adv/${endpoint}/`, {
-					direction,
-					next_room_id,
-				});
-
-				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
-
-				return res.data.cooldown;
+				return move(endpoint, direction, next_room_id);
 			} else if (directions[0] === 'dash') {
 				dispatch({ type: 'GET_DATA_START' });
 

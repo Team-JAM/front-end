@@ -5,6 +5,7 @@ import { useGetStatus } from '../hooks/useGetStatus';
 
 export default function ButtonTakeDrop({ item, action }) {
 	const { dispatch } = useDataContext();
+
 	const getStatus = useGetStatus();
 
 	const handleTakeDrop = name => {

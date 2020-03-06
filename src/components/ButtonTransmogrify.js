@@ -11,7 +11,9 @@ export default function ButtonTransmogrify({ item }) {
 		data: { roomData },
 		dispatch,
 	} = useDataContext();
+
 	const getStatus = useGetStatus();
+
 	const getBalance = useGetBalance();
 
 	const handleClick = name => {

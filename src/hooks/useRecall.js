@@ -21,6 +21,8 @@ export const useRecall = () => {
 				dispatch({ type: 'SET_SHADOW_WORLD_STATUS', payload: false });
 
 			dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
+
+			return res.data.cooldown;
 		} catch (err) {
 			console.log(err);
 			dispatch({ type: 'GET_DATA_FAILURE' });
