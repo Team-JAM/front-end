@@ -75,9 +75,13 @@ export default function IconAttrib() {
 }
 
 const StyledIconAttrib = styled.div`
-	margin-bottom: 2rem;
+	margin-top: 10rem;
 	padding: 0 2rem;
 
 	text-align: right;
-	font-size: 1rem;
+	font-size: 1.2rem;
+
+	a {
+		color: #d73729;
+	}
 `;
