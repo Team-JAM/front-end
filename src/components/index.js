@@ -25,6 +25,7 @@ import CooldownTimer from './CooldownTimer';
 import LambdaCoin from './LambdaCoin';
 import LocateRoom from './LocateRoom';
 import RoomToMine from './RoomToMine';
+import RoomWithSnitch from './RoomWithSnitch';
 import Messages from './Messages';
 import RoomInfo from './RoomInfo';
 
@@ -79,6 +80,7 @@ export {
 	LambdaCoin,
 	LocateRoom,
 	RoomToMine,
+	RoomWithSnitch,
 	Messages,
 	RoomInfo,
 	ButtonsMove,

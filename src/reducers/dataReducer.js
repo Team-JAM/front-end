@@ -14,6 +14,7 @@ export const initialDataState = {
 	coinBalance: '',
 	// coinBalance: localStorage.getItem('coinBalance'),
 	roomToMine: '',
+	roomWithSnitch: '',
 	// roomToMine: localStorage.getItem('roomToMine'),
 	roomToFind: undefined,
 	cooldown: 0,
@@ -119,6 +120,11 @@ export const dataReducer = (state = initialDataState, action) => {
 				// 	messages: [...state.roomData.messages, action.payload],
 				// },
 				roomToMine: action.payload,
+			};
+		case 'GET_SNITCH_ROOM_SUCCESS':
+			return {
+				...state,
+				roomWithSnitch: action.payload,
 			};
 		case 'SET_SHADOW_WORLD_STATUS':
 			return {

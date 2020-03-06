@@ -149,7 +149,7 @@ export default function MapCell({ cell }) {
 							}}
 						/>
 					)} */}
-					{isCave && !isCurrentRoom && !isOnPath && (
+					{isCave && !isCurrentRoom && !isSpecialRoom && !isOnPath && (
 						<Icon
 							name='cave'
 							style={{

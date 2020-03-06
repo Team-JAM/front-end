@@ -21,10 +21,18 @@ export default function ButtonExamineWell() {
 				// console.log(res.data.message);
 				// console.log(res.data.room);
 				dispatch({ type: 'EXAMINE_ITEM_SUCCESS', payload: res.data.room });
-				dispatch({
-					type: 'GET_MINING_ROOM_SUCCESS',
-					payload: res.data.message,
-				});
+
+				if (roomData.room_id < 500) {
+					dispatch({
+						type: 'GET_MINING_ROOM_SUCCESS',
+						payload: res.data.message,
+					});
+				} else {
+					dispatch({
+						type: 'GET_SNITCH_ROOM_SUCCESS',
+						payload: res.data.message,
+					});
+				}
 			})
 			.catch(err => {
 				console.log(err);
