@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { useDataContext } from '../contexts/DataContext';
-import MapRow from './MapRow';
+import { MapRow, ButtonToggleMap } from './';
 
 export default function Map() {
 	const {
@@ -31,6 +31,7 @@ export default function Map() {
 
 	return (
 		<MapWrapper>
+			<ButtonToggleMap />
 			{!warpMode &&
 				mapData &&
 				mapData.map((row, index) => <MapRow row={row} key={index} />)}

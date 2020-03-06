@@ -15,6 +15,10 @@ import PanelRight from './PanelRight';
 import Footer from './Footer';
 import IconAttrib from './IconAttrib';
 
+// Map Components
+import MapRow from './MapRow';
+import ButtonToggleMap from './ButtonToggleMap';
+
 // Right Panel Components
 import CooldownTimer from './CooldownTimer';
 import LambdaCoin from './LambdaCoin';
@@ -67,6 +71,8 @@ export {
 	PanelRight,
 	Footer,
 	IconAttrib,
+	MapRow,
+	ButtonToggleMap,
 	CooldownTimer,
 	LambdaCoin,
 	LocateRoom,

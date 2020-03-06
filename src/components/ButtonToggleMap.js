@@ -21,4 +21,8 @@ export default function ButtonToggleMap() {
 	);
 }
 
-const StyledButton = styled.button``;
+const StyledButton = styled.button`
+	position: absolute;
+	margin: 1rem;
+	z-index: 1200;
+`;

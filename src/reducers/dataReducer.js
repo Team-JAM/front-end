@@ -19,7 +19,6 @@ export const initialDataState = {
 	cooldown: 0,
 	cooldownOver: false,
 	warpMode: undefined,
-	// warpMode: localStorage.getItem('warp_mode') === 'true',
 	autoTravelMode: false,
 	destination: '',
 	path: [],

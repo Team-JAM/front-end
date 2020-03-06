@@ -16,7 +16,7 @@ export default function ButtonWarp() {
 		axiosWithAuth()
 			.post('/adv/warp/')
 			.then(res => {
-				// console.log(res.data);
+				console.log(res.data);
 
 				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
 				dispatch({ type: 'TOGGLE_WARP_MODE' });
