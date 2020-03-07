@@ -145,6 +145,7 @@ export const StyledCellDark = styled(StyledCell)`
 	background-color: ${props =>
 		props.terrain === 'MOUNTAIN' && 'rgb(101, 67, 33)'};
 	background-color: ${props => props.isRoomToFind && 'dodgerblue'};
+	background-color: ${props => props.isSnitchRoom && 'rgba(250, 190, 88, 1)'};
 	background-color: ${props => props.isDestination && 'pink'};
 	background-color: ${props =>
 		props.isCurrentRoom && 'rgba(123, 179, 105, 0.6)'};

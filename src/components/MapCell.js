@@ -18,9 +18,10 @@ export default function MapCell({ cell }) {
 			roomData,
 			roomToFind,
 			roomToMine,
+			roomWithSnitch,
 			destination,
 			path,
-			// wormholeRooms,
+			wormholeRooms,
 			playerStatus,
 			autoTravelMode,
 			treasureMode,
@@ -35,38 +36,47 @@ export default function MapCell({ cell }) {
 	const isRoom = cell !== null;
 
 	const isCurrentRoom =
-		roomData.room_id !== null && cell !== null && roomData.room_id === cell.id;
+		isRoom && roomData.room_id !== null && roomData.room_id === cell.id;
 
-	const isNormal = cell !== null && cell.terrain === 'NORMAL';
-	// const isMountain = cell !== null && cell.terrain === 'MOUNTAIN';
-	const isCave = cell !== null && cell.terrain === 'CAVE';
-	const isTrap = cell !== null && cell.terrain === 'TRAP';
+	const isNormal = isRoom && cell.terrain === 'NORMAL';
+	// const isMountain = isRoom && cell.terrain === 'MOUNTAIN';
+	const isCave = isRoom && cell.terrain === 'CAVE';
+	const isTrap = isRoom && cell.terrain === 'TRAP';
 
 	const specialRoomIDs = Object.values(specialRooms);
-	const isSpecialRoom = cell !== null && specialRoomIDs.includes(cell.id);
+	const isSpecialRoom = isRoom && specialRoomIDs.includes(cell.id);
 
 	const miningRoomID = Number(roomToMine.split('Mine your coin in room ')[1]);
-	const isMiningRoom = cell !== null && cell.id === miningRoomID;
+	const isMiningRoom = isRoom && cell.id === miningRoomID;
+
+	const snitchRoomID = Number(
+		roomWithSnitch.split('Find the snitch in room ')[1],
+	);
+	const isSnitchRoom = isRoom && cell.id === snitchRoomID;
 
 	const isRoomToFind =
-		cell !== null && cell.id === (roomToFind !== '' && Number(roomToFind));
+		isRoom && cell.id === (roomToFind !== '' && Number(roomToFind));
 
 	const character = playerStatus.name;
 
 	useEffect(() => {
-		setIsDestination(cell !== null && cell.id === destination);
-		setIsOnPath(cell !== null && cell.id !== null && path.includes(cell.id));
-		// setIsWormhole(
-		// 	cell !== null && cell.id !== null && wormholeRooms.includes(cell.id),
-		// );
-	}, [cell, destination, path]);
+		setIsDestination(isRoom && cell.id === destination);
+		setIsOnPath(isRoom && cell.id !== null && path.includes(cell.id));
+		setIsWormhole(
+			isRoom &&
+				cell.id !== null &&
+				(wormholeRooms.includes(cell.id) ||
+					wormholeRooms.includes(
+						cell.id < 500 ? cell.id + 500 : cell.id - 500,
+					)),
+		);
+	}, [cell, destination, path, wormholeRooms]);
 
 	const travel = useTravel();
-
 	const travelTreasure = useTravelTreasure();
 
 	const handleClick = cell => {
-		if (cooldownOver && cell !== null && !isCurrentRoom) {
+		if (cooldownOver && isRoom && !isCurrentRoom) {
 			dispatch({ type: 'GET_DATA_START' });
 
 			const destination_room = cell.id;
@@ -98,10 +108,18 @@ export default function MapCell({ cell }) {
 					cooldownOver={cooldownOver}
 					autoTravelMode={autoTravelMode}
 					onClick={() => handleClick(cell)}>
-					{isOnPath && !isDestination && <Dot />}
-					{/* {isWormhole && !isDestination && (
-						<Icon name='wormhole' style={{ flexShrink: '0', zIndex: '1000' }} />
-					)} */}
+					{isOnPath && !isDestination && !isWormhole && <Dot />}
+					{isWormhole && !isDestination && !isSpecialRoom && !isCurrentRoom && (
+						<Icon
+							name='wormhole'
+							style={{
+								flexShrink: '0',
+								zIndex: '1000',
+								width: '4rem',
+								height: '4rem',
+							}}
+						/>
+					)}
 					{isCurrentRoom && (
 						<Icon
 							name={character}
@@ -127,17 +145,21 @@ export default function MapCell({ cell }) {
 							}}
 						/>
 					)}
-					{isNormal && !isSpecialRoom && !isCurrentRoom && !isOnPath && (
-						<Icon
-							name='normal'
-							style={{
-								flexShrink: '0',
-								width: '1.5rem',
-								height: '1.5rem',
-								zIndex: '1000',
-							}}
-						/>
-					)}
+					{isNormal &&
+						!isSpecialRoom &&
+						!isCurrentRoom &&
+						!isOnPath &&
+						!isWormhole && (
+							<Icon
+								name='normal'
+								style={{
+									flexShrink: '0',
+									width: '1.5rem',
+									height: '1.5rem',
+									zIndex: '1000',
+								}}
+							/>
+						)}
 					{/* {isMountain && !isSpecialRoom && !isCurrentRoom && !isOnPath && (
 						<Icon
 							name='mountain'
@@ -149,19 +171,23 @@ export default function MapCell({ cell }) {
 							}}
 						/>
 					)} */}
-					{isCave && !isCurrentRoom && !isSpecialRoom && !isOnPath && (
-						<Icon
-							name='cave'
-							style={{
-								flexShrink: '0',
-								width: '3.5rem',
-								height: '3.5rem',
-								marginBottom: '1.5rem',
-								zIndex: '1000',
-							}}
-						/>
-					)}
-					{isTrap && !isOnPath && (
+					{isCave &&
+						!isCurrentRoom &&
+						!isSpecialRoom &&
+						!isOnPath &&
+						!isWormhole && (
+							<Icon
+								name='cave'
+								style={{
+									flexShrink: '0',
+									width: '3.5rem',
+									height: '3.5rem',
+									marginBottom: '1.5rem',
+									zIndex: '1000',
+								}}
+							/>
+						)}
+					{isTrap && !isOnPath && !isWormhole && (
 						<Icon
 							name='trap'
 							style={{
@@ -181,7 +207,7 @@ export default function MapCell({ cell }) {
 					isRoom={isRoom}
 					isCurrentRoom={isCurrentRoom}
 					isSpecialRoom={isSpecialRoom}
-					isMiningRoom={isMiningRoom}
+					isSnitchRoom={isSnitchRoom}
 					isRoomToFind={isRoomToFind}
 					isOnPath={isOnPath}
 					isDestination={isDestination}
@@ -194,7 +220,18 @@ export default function MapCell({ cell }) {
 					cooldownOver={cooldownOver}
 					autoTravelMode={autoTravelMode}
 					onClick={() => handleClick(cell)}>
-					{isOnPath && !isDestination && <LightDot />}
+					{isOnPath && !isDestination && !isWormhole && <LightDot />}
+					{isWormhole && !isDestination && !isSpecialRoom && !isCurrentRoom && (
+						<Icon
+							name='wormhole'
+							style={{
+								flexShrink: '0',
+								zIndex: '1000',
+								width: '4rem',
+								height: '4rem',
+							}}
+						/>
+					)}
 					{isCurrentRoom && (
 						<Icon
 							name={character}
@@ -220,17 +257,21 @@ export default function MapCell({ cell }) {
 							}}
 						/>
 					)}
-					{isNormal && !isSpecialRoom && !isCurrentRoom && !isOnPath && (
-						<Icon
-							name='normal'
-							style={{
-								flexShrink: '0',
-								width: '1.5rem',
-								height: '1.5rem',
-								zIndex: '1000',
-							}}
-						/>
-					)}
+					{isNormal &&
+						!isSpecialRoom &&
+						!isCurrentRoom &&
+						!isOnPath &&
+						!isWormhole && (
+							<Icon
+								name='normal'
+								style={{
+									flexShrink: '0',
+									width: '1.5rem',
+									height: '1.5rem',
+									zIndex: '1000',
+								}}
+							/>
+						)}
 					{/* <div>{cell && !isOnPath && cell.id}</div> */}
 					{/* <div>{(isSpecialRoom || isCurrentRoom) && cell.title}</div> */}
 				</StyledCellDark>
