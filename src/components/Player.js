@@ -1,11 +1,11 @@
 import React from 'react';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+// import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useDataContext } from '../contexts/DataContext';
 
 export default function Player({ player }) {
 	const {
 		data: { cooldownOver },
-		dispatch,
+		// dispatch,
 	} = useDataContext();
 
 	const handleExamine = name => {
