@@ -165,13 +165,14 @@ export const dataReducer = (state = initialDataState, action) => {
 		case 'SET_WORMHOLE_ROOMS':
 			return {
 				...state,
-				wormholeRooms: action.payload.path,
+				wormholeRooms: action.payload,
 			};
 		case 'CLEAR_DESTINATION':
 			return {
 				...state,
 				destination: '',
 				path: [],
+				wormholeRooms: [],
 			};
 		case 'SET_TRAVEL_MODE_TRUE':
 			return {

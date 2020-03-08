@@ -2,13 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useDataContext } from '../contexts/DataContext';
 import { specialRooms } from '../data/specialRooms';
 import { useTravel, useTravelTreasure } from '../hooks';
-import {
-	StyledCell,
-	StyledCellDark,
-	Dot,
-	LightDot,
-} from '../styled-components/StyledCells';
-import Icon from '../icons/';
+import { StyledCell, StyledCellDark } from '../styled-components/StyledCells';
+import IconHandler from './IconHandler';
 
 export default function MapCell({ cell }) {
 	const {
@@ -18,9 +13,10 @@ export default function MapCell({ cell }) {
 			roomData,
 			roomToFind,
 			roomToMine,
+			roomWithSnitch,
 			destination,
 			path,
-			// wormholeRooms,
+			wormholeRooms,
 			playerStatus,
 			autoTravelMode,
 			treasureMode,
@@ -28,45 +24,54 @@ export default function MapCell({ cell }) {
 		dispatch,
 	} = useDataContext();
 
-	const [isOnPath, setIsOnPath] = useState(false);
+	const travel = useTravel();
+	const travelTreasure = useTravelTreasure();
+
 	const [isDestination, setIsDestination] = useState(false);
+	const [isOnPath, setIsOnPath] = useState(false);
 	const [isWormhole, setIsWormhole] = useState(false);
 
 	const isRoom = cell !== null;
 
 	const isCurrentRoom =
-		roomData.room_id !== null && cell !== null && roomData.room_id === cell.id;
+		isRoom && roomData.room_id !== null && roomData.room_id === cell.id;
 
-	const isNormal = cell !== null && cell.terrain === 'NORMAL';
-	// const isMountain = cell !== null && cell.terrain === 'MOUNTAIN';
-	const isCave = cell !== null && cell.terrain === 'CAVE';
-	const isTrap = cell !== null && cell.terrain === 'TRAP';
+	const isNormal = isRoom && cell.terrain === 'NORMAL';
+	const isMountain = isRoom && cell.terrain === 'MOUNTAIN';
+	const isCave = isRoom && cell.terrain === 'CAVE';
+	const isTrap = isRoom && cell.terrain === 'TRAP';
 
 	const specialRoomIDs = Object.values(specialRooms);
-	const isSpecialRoom = cell !== null && specialRoomIDs.includes(cell.id);
+	const isSpecialRoom = isRoom && specialRoomIDs.includes(cell.id);
 
 	const miningRoomID = Number(roomToMine.split('Mine your coin in room ')[1]);
-	const isMiningRoom = cell !== null && cell.id === miningRoomID;
+	const isMiningRoom = isRoom && cell.id === miningRoomID;
+
+	const snitchRoomID = Number(
+		roomWithSnitch.split('Find the snitch in room ')[1],
+	);
+	const isSnitchRoom = isRoom && cell.id === snitchRoomID;
 
 	const isRoomToFind =
-		cell !== null && cell.id === (roomToFind !== '' && Number(roomToFind));
+		isRoom && cell.id === (roomToFind !== '' && Number(roomToFind));
 
-	const character = playerStatus.name;
+	const canInteract = cooldownOver && !autoTravelMode;
 
 	useEffect(() => {
-		setIsDestination(cell !== null && cell.id === destination);
-		setIsOnPath(cell !== null && cell.id !== null && path.includes(cell.id));
-		// setIsWormhole(
-		// 	cell !== null && cell.id !== null && wormholeRooms.includes(cell.id),
-		// );
-	}, [cell, destination, path]);
-
-	const travel = useTravel();
-
-	const travelTreasure = useTravelTreasure();
+		setIsDestination(isRoom && cell.id === destination);
+		setIsOnPath(isRoom && cell.id !== null && path.includes(cell.id));
+		setIsWormhole(
+			isRoom &&
+				cell.id !== null &&
+				(wormholeRooms.includes(cell.id) ||
+					wormholeRooms.includes(
+						cell.id < 500 ? cell.id + 500 : cell.id - 500,
+					)),
+		);
+	}, [isRoom, cell, destination, path, wormholeRooms]);
 
 	const handleClick = cell => {
-		if (cooldownOver && cell !== null && !isCurrentRoom) {
+		if (cooldownOver && isRoom && !isCurrentRoom) {
 			dispatch({ type: 'GET_DATA_START' });
 
 			const destination_room = cell.id;
@@ -77,162 +82,50 @@ export default function MapCell({ cell }) {
 		}
 	};
 
+	const room = {
+		isRoom,
+		isCurrentRoom,
+		isSpecialRoom,
+		isMiningRoom,
+		isSnitchRoom,
+		isRoomToFind,
+		isNormal,
+		isCave,
+		isTrap,
+		isMountain,
+		isOnPath,
+		isDestination,
+		isWormhole,
+		elevation: isRoom && cell.elevation,
+		exits: isRoom && cell.exits,
+	};
+
 	return (
 		<>
 			{!inShadowWorld && (
 				<StyledCell
-					isRoom={isRoom}
-					isCurrentRoom={isCurrentRoom}
-					isSpecialRoom={isSpecialRoom}
-					isMiningRoom={isMiningRoom}
-					isRoomToFind={isRoomToFind}
-					isTrap={isTrap}
-					isOnPath={isOnPath}
-					isDestination={isDestination}
-					terrain={cell && cell.terrain}
-					elevation={cell && cell.elevation}
-					exitN={cell && cell.exits.n}
-					exitS={cell && cell.exits.s}
-					exitE={cell && cell.exits.e}
-					exitW={cell && cell.exits.w}
-					cooldownOver={cooldownOver}
-					autoTravelMode={autoTravelMode}
+					room={room}
+					canInteract={canInteract}
 					onClick={() => handleClick(cell)}>
-					{isOnPath && !isDestination && <Dot />}
-					{/* {isWormhole && !isDestination && (
-						<Icon name='wormhole' style={{ flexShrink: '0', zIndex: '1000' }} />
-					)} */}
-					{isCurrentRoom && (
-						<Icon
-							name={character}
-							style={{
-								flexShrink: '0',
-								zIndex: '1100',
-								marginBottom: '0.2rem',
-								width: '5.75rem',
-								height: '5.75rem',
-								position: isSpecialRoom ? 'relative' : 'static',
-								top: '6rem',
-								right: '1.5rem',
-							}}
-						/>
-					)}
-					{isSpecialRoom && (
-						<Icon
-							name={cell.title}
-							style={{
-								flexShrink: '0',
-								zIndex: '1000',
-								marginBottom: '0.2rem',
-							}}
-						/>
-					)}
-					{isNormal && !isSpecialRoom && !isCurrentRoom && !isOnPath && (
-						<Icon
-							name='normal'
-							style={{
-								flexShrink: '0',
-								width: '1.5rem',
-								height: '1.5rem',
-								zIndex: '1000',
-							}}
-						/>
-					)}
-					{/* {isMountain && !isSpecialRoom && !isCurrentRoom && !isOnPath && (
-						<Icon
-							name='mountain'
-							style={{
-								flexShrink: '0',
-								width: '2rem',
-								height: '2rem',
-								zIndex: '1000',
-							}}
-						/>
-					)} */}
-					{isCave && !isCurrentRoom && !isSpecialRoom && !isOnPath && (
-						<Icon
-							name='cave'
-							style={{
-								flexShrink: '0',
-								width: '3.5rem',
-								height: '3.5rem',
-								marginBottom: '1.5rem',
-								zIndex: '1000',
-							}}
-						/>
-					)}
-					{isTrap && !isOnPath && (
-						<Icon
-							name='trap'
-							style={{
-								flexShrink: '0',
-								width: '3.5rem',
-								height: '3.5rem',
-								zIndex: '1000',
-							}}
-						/>
-					)}
-					{/* <div>{cell && !isOnPath && cell.id}</div> */}
-					{/* <div>{(isSpecialRoom || isCurrentRoom) && cell.title}</div> */}
+					<IconHandler
+						room={room}
+						character={playerStatus.name}
+						title={room.isRoom && cell.title}
+						inShadowWorld={inShadowWorld}
+					/>
 				</StyledCell>
 			)}
 			{inShadowWorld && (
 				<StyledCellDark
-					isRoom={isRoom}
-					isCurrentRoom={isCurrentRoom}
-					isSpecialRoom={isSpecialRoom}
-					isMiningRoom={isMiningRoom}
-					isRoomToFind={isRoomToFind}
-					isOnPath={isOnPath}
-					isDestination={isDestination}
-					terrain={cell && cell.terrain}
-					elevation={cell && cell.elevation}
-					exitN={cell && cell.exits.n}
-					exitS={cell && cell.exits.s}
-					exitE={cell && cell.exits.e}
-					exitW={cell && cell.exits.w}
-					cooldownOver={cooldownOver}
-					autoTravelMode={autoTravelMode}
+					room={room}
+					canInteract={canInteract}
 					onClick={() => handleClick(cell)}>
-					{isOnPath && !isDestination && <LightDot />}
-					{isCurrentRoom && (
-						<Icon
-							name={character}
-							style={{
-								flexShrink: '0',
-								zIndex: '1100',
-								marginBottom: '0.2rem',
-								width: '5.75rem',
-								height: '5.75rem',
-								position: isSpecialRoom ? 'relative' : 'static',
-								top: '6rem',
-								right: '1.5rem',
-							}}
-						/>
-					)}
-					{isSpecialRoom && (
-						<Icon
-							name={cell.title}
-							style={{
-								flexShrink: '0',
-								zIndex: '1000',
-								marginBottom: '0.2rem',
-							}}
-						/>
-					)}
-					{isNormal && !isSpecialRoom && !isCurrentRoom && !isOnPath && (
-						<Icon
-							name='normal'
-							style={{
-								flexShrink: '0',
-								width: '1.5rem',
-								height: '1.5rem',
-								zIndex: '1000',
-							}}
-						/>
-					)}
-					{/* <div>{cell && !isOnPath && cell.id}</div> */}
-					{/* <div>{(isSpecialRoom || isCurrentRoom) && cell.title}</div> */}
+					<IconHandler
+						room={room}
+						character={playerStatus.name}
+						title={room.isRoom && cell.title}
+						inShadowWorld={inShadowWorld}
+					/>
 				</StyledCellDark>
 			)}
 		</>

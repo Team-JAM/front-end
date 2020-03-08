@@ -19,7 +19,6 @@ import JonathanJAM from './JonathanJAM';
 import Grass from './Grass';
 import Cave from './Cave';
 import Hole from './Hole';
-import BlackHole from './BlackHole';
 
 const Icon = props => {
 	switch (props.name) {
@@ -61,8 +60,6 @@ const Icon = props => {
 			return <Cave {...props} />;
 		case 'wormhole':
 			return <Hole {...props} />;
-		// case 'hole':
-		// 	return <BlackHole {...props} />;
 		default:
 			return <div />;
 	}

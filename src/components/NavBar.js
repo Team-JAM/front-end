@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
-import { Logo, InputToken, PlayerName, SelectMode } from './';
+import { Logo, InputToken, PlayerName } from './';
 
 export default function NavBar() {
 	const { pathname } = useLocation();
@@ -16,7 +16,6 @@ export default function NavBar() {
 					<InputToken />
 				</div>
 			)}
-			{/* <SelectMode /> */}
 			<div>
 				<NavLink to='/'>Game</NavLink>
 				<NavLink to='/about'>About</NavLink>
