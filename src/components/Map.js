@@ -33,11 +33,9 @@ export default function Map() {
 		<MapWrapper>
 			<ButtonToggleMap />
 			{!inShadowWorld &&
-				mapData &&
-				mapData.map((row, index) => <MapRow row={row} key={index} />)}
+				mapData?.map((row, index) => <MapRow row={row} key={index} />)}
 			{inShadowWorld &&
-				darkMapData &&
-				darkMapData.map((row, index) => <MapRow row={row} key={index} />)}
+				darkMapData?.map((row, index) => <MapRow row={row} key={index} />)}
 		</MapWrapper>
 	);
 }

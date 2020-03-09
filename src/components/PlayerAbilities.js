@@ -27,10 +27,9 @@ export default function PlayerAbilities() {
 			</StatusHeader>
 			<div>
 				<ul>
-					{playerStatus.abilities &&
-						playerStatus.abilities.map(ability => (
-							<li key={ability}>{ability}</li>
-						))}
+					{playerStatus.abilities?.map(ability => (
+						<li key={ability}>{ability}</li>
+					))}
 				</ul>
 			</div>
 		</AbilitiesWrapper>
