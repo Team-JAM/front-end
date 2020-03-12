@@ -4,11 +4,10 @@
 // import About from './main/About';
 // // import Login from './Login';
 
-// NavBar Components
-import Logo from './Logo';
-import InputToken from './InputToken';
-import PlayerName from './PlayerName';
-import SelectMode from './unused/SelectMode';
+// // NavBar Components
+// import Logo from './navbar/Logo';
+// import InputToken from './navbar/InputToken';
+// import PlayerName from './navbar/PlayerName';
 
 // Game Components
 import Map from './Map';
@@ -64,10 +63,9 @@ export {
 	// NavBar,
 	// Game,
 	// About,
-	Logo,
-	InputToken,
-	PlayerName,
-	SelectMode,
+	// Logo,
+	// InputToken,
+	// PlayerName,
 	Map,
 	PanelRight,
 	Footer,

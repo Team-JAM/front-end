@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDataContext } from '../contexts/DataContext';
+import { useDataContext } from '../../contexts/DataContext';
 
 export default function PlayerName() {
 	const {

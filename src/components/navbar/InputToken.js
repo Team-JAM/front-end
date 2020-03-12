@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { useGetRoomData, useGetStatus, useGetBalance } from '../hooks';
-import { sleep } from '../utils/sleep';
+import { useGetRoomData, useGetStatus, useGetBalance } from '../../hooks';
+import { sleep } from '../../utils/sleep';
 
 export default function InputToken() {
 	// const [token, setToken] = useState(localStorage.getItem('token'));
