@@ -6,7 +6,7 @@ import {
 	StyledCell,
 	StyledCellDark,
 } from '../../styled-components/StyledCells';
-import IconHandler from '../IconHandler';
+import IconHandler from './IconHandler';
 
 export default function MapCell({ cell }) {
 	const {

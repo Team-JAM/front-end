@@ -1,10 +1,8 @@
 import React from 'react';
-import { useDataContext } from '../contexts/DataContext';
-import { specialRooms } from '../data/specialRooms';
-import { useTravel } from '../hooks/useTravel';
-import { useSell } from '../hooks/useSell';
-import { sleep } from '../utils/sleep';
-import { useGetStatus } from '../hooks/useGetStatus';
+import { useDataContext } from '../../contexts/DataContext';
+import { specialRooms } from '../../data/specialRooms';
+import { useTravel, useSell, useGetStatus } from '../../hooks';
+import { sleep } from '../../utils/sleep';
 
 export default function ButtonSellAllItems({ item }) {
 	const {

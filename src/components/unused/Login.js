@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useDataContext } from '../contexts/DataContext';
+import { useDataContext } from '../../contexts/DataContext';
 
 const Login = () => {
 	const { dispatch } = useDataContext();

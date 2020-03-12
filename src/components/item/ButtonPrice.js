@@ -1,7 +1,7 @@
 import React from 'react';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { useDataContext } from '../contexts/DataContext';
-import { specialRooms } from '../data/specialRooms';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { useDataContext } from '../../contexts/DataContext';
+import { specialRooms } from '../../data/specialRooms';
 
 export default function ButtonPrice({ item }) {
 	const {

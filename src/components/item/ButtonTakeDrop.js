@@ -1,7 +1,7 @@
 import React from 'react';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { useDataContext } from '../contexts/DataContext';
-import { useGetStatus } from '../hooks/useGetStatus';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { useDataContext } from '../../contexts/DataContext';
+import { useGetStatus } from '../../hooks/useGetStatus';
 
 // The component handles both Taking and Dropping an item, depending on the action specified
 export default function ButtonTakeDrop({ item, action }) {

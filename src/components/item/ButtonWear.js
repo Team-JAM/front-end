@@ -1,6 +1,6 @@
 import React from 'react';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { useDataContext } from '../contexts/DataContext';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { useDataContext } from '../../contexts/DataContext';
 
 export default function ButtonWear({ item, inInventory }) {
 	const { dispatch } = useDataContext();

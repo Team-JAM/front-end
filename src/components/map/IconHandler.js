@@ -1,6 +1,6 @@
 import React from 'react';
-import { Dot, LightDot } from '../styled-components/StyledCells';
-import Icon from '../icons';
+import { Dot, LightDot } from '../../styled-components/StyledCells';
+import Icon from '../../icons';
 
 // This component handles which icon should be rendered given conditions
 export default function IconHandler({ room, character, title, inShadowWorld }) {

@@ -1,22 +1,21 @@
 import React from 'react';
-import { useDataContext } from '../contexts/DataContext';
-import { specialRooms } from '../data/specialRooms';
-import { useSell } from '../hooks/useSell';
-import { useGetStatus } from '../hooks/useGetStatus';
+import { useDataContext } from '../../contexts/DataContext';
+import { specialRooms } from '../../data/specialRooms';
+import { useSell, useGetStatus } from '../../hooks';
 
 export default function ButtonSell({ item }) {
 	const {
-		data: { roomData }
+		data: { roomData },
 	} = useDataContext();
 
 	const getStatus = useGetStatus();
 
 	const sell = useSell();
 
-	const handleSell = async (item) => {
+	const handleSell = async item => {
 		const cooldown = await sell(item);
 		getStatus(cooldown);
-	}
+	};
 
 	return (
 		<>

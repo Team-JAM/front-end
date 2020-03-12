@@ -1,10 +1,9 @@
 import React from 'react';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { useDataContext } from '../contexts/DataContext';
-import { useGetStatus } from '../hooks/useGetStatus';
-import { useGetBalance } from '../hooks/useGetBalance';
-import { sleep } from '../utils/sleep';
-import { specialRooms } from '../data/specialRooms';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { useDataContext } from '../../contexts/DataContext';
+import { useGetStatus, useGetBalance } from '../../hooks';
+import { sleep } from '../../utils/sleep';
+import { specialRooms } from '../../data/specialRooms';
 
 export default function ButtonTransmogrify({ item }) {
 	const {

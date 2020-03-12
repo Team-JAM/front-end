@@ -2,7 +2,7 @@ import React from 'react';
 // import styled from 'styled-components';
 import { useDataContext } from '../../contexts/DataContext';
 import { useGetStatus } from '../../hooks';
-import { ButtonReceive } from '..';
+import { ButtonReceive } from '../item';
 import {
 	FooterComponentWrapper,
 	StatusHeader,

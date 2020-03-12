@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useDataContext } from '../contexts/DataContext';
+import { useDataContext } from '../../contexts/DataContext';
 
 import {
 	ButtonExamine,
@@ -10,7 +10,7 @@ import {
 	ButtonWear,
 	ButtonTransmogrify,
 	ButtonCarry,
-} from '.';
+} from './';
 
 export default function Item({ item, action, inInventory }) {
 	const {
