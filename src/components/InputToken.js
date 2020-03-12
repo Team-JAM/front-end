@@ -1,13 +1,10 @@
-import React, {
-	// useState,
-	useEffect,
-} from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useGetRoomData, useGetStatus, useGetBalance } from '../hooks';
 import { sleep } from '../utils/sleep';
 
 export default function InputToken() {
-	// const [token, setToken] = useState(localStorage.getItem('token'));
+	const [token, setToken] = useState(localStorage.getItem('token'));
 
 	const getRoomData = useGetRoomData();
 	const getStatus = useGetStatus();
@@ -32,40 +29,56 @@ export default function InputToken() {
 		}
 	}, []);
 
-	// const handleChange = e => setToken(e.target.value);
+	const handleChange = e => setToken(e.target.value);
 
-	// const handleClick = () => {
-	// 	localStorage.setItem('token', token);
-	// 	getInitData();
-	// };
+	const handleClick = () => {
+		localStorage.setItem('token', token);
+		getData();
+	};
 
 	const handleSelect = e => {
 		console.log(e.target.value);
-		// setToken(e.target.value);
+		setToken(e.target.value);
 		localStorage.setItem('token', e.target.value);
 		getData();
 	};
 
 	return (
 		<StyledInputWrapper>
-			<select id='players' name='players' onChange={handleSelect}>
+			<select
+				className='select'
+				id='players'
+				name='players'
+				onChange={handleSelect}>
 				<option>Please select a player:</option>
 				<option value={process.env.REACT_APP_ALLISON_TOKEN}>Allison</option>
 				<option value={process.env.REACT_APP_JONATHAN_TOKEN}>Jonathan</option>
-				<option value={process.env.REACT_APP_MATTHEW_TOKEN}>Matthew</option>
+				{/* <option value={process.env.REACT_APP_MATTHEW_TOKEN}>Matthew</option> */}
 			</select>
-			{/* <input
+			<span>or</span>
+			<input
+				className='token-input'
 				type='text'
 				name='token'
 				placeholder='Enter token'
 				value={token}
 				onChange={handleChange}
 			/>
-			<button onClick={handleClick}>Set Token</button> */}
+			<button onClick={handleClick}>Set Token</button>
 		</StyledInputWrapper>
 	);
 }
 
 const StyledInputWrapper = styled.div`
 	margin-left: 4rem;
+	display: flex;
+	align-items: center;
+
+	.select {
+		margin-right: 2rem;
+	}
+
+	.token-input {
+		margin: 0 1rem 0 2rem;
+	}
 `;

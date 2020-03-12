@@ -16,14 +16,12 @@ import {
 } from './';
 
 export default function Controls() {
-
 	const {
 		data: { cooldownOver, autoTravelMode, playerStatus, treasureMode },
 		dispatch,
 	} = useDataContext();
 
-	const canFly =
-		playerStatus.abilities && playerStatus.abilities.includes('fly');
+	const canFly = playerStatus.abilities?.includes('fly');
 
 	function handleToggle() {
 		dispatch({ type: 'TOGGLE_TREASURE_MODE' });
@@ -41,7 +39,7 @@ export default function Controls() {
 					<div className='toggle-treasure'>
 						<h4>Pick up treasure:</h4>
 						<label className='container' onClick={handleToggle}>
-							<input type='hidden' name='toggle' value={treasureMode}/>
+							<input type='hidden' name='toggle' value={treasureMode} />
 							<Track className='track' toggle={treasureMode} />
 							<ToggleButton className='button' toggle={treasureMode} />
 						</label>
@@ -105,15 +103,15 @@ const Track = styled.span`
 	right: 0;
 	bottom: 0;
 	border-radius: 50px;
-	background-color: ${props => props.toggle ? '#FFDA44' : '#cccccc'};
+	background-color: ${props => (props.toggle ? '#FFDA44' : '#cccccc')};
 `;
 
 const ToggleButton = styled.span`
 	position: absolute;
 	top: 2px;
 	bottom: 2px;
-	right: ${props => props.toggle ? '2px' : '11px' };
-	left: ${props => props.toggle ? '11px' : '2px'};
+	right: ${props => (props.toggle ? '2px' : '11px')};
+	left: ${props => (props.toggle ? '11px' : '2px')};
 	background-color: #fff;
 	border-radius: 50px;
 	transition: all 100ms ease;

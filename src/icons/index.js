@@ -19,6 +19,7 @@ import JonathanJAM from './JonathanJAM';
 import Grass from './Grass';
 import Cave from './Cave';
 import Hole from './Hole';
+import Chick from './Chick';
 
 const Icon = props => {
 	switch (props.name) {
@@ -54,6 +55,8 @@ const Icon = props => {
 			return <JonathanJAM {...props} />;
 		case 'matthewJAM':
 			return <MatthewJAM {...props} />;
+		case 'genericAvatar':
+			return <Chick {...props} />;
 		case 'normal':
 			return <Grass {...props} />;
 		case 'cave':

@@ -5,7 +5,9 @@ import MapCell from './MapCell';
 export default function MapRow({ row }) {
 	return (
 		<StyledRow>
-			{row && row.map((cell, index) => <MapCell cell={cell} key={index} />)}
+			{row?.map((cell, index) => (
+				<MapCell cell={cell} key={index} />
+			))}
 		</StyledRow>
 	);
 }

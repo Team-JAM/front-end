@@ -37,7 +37,7 @@ export default function RoomInfo() {
 					<span style={{ fontWeight: 'bold' }}>Terrain:</span>{' '}
 					{roomData.terrain}
 				</p>
-				{roomData.items && roomData.items[0] && (
+				{roomData.items?.[0] && (
 					<>
 						<p>
 							<span style={{ fontWeight: 'bold' }}>Items:</span>
@@ -54,7 +54,7 @@ export default function RoomInfo() {
 						</ul>
 					</>
 				)}
-				{roomData.players && roomData.players[0] && (
+				{roomData.players?.[0] && (
 					<>
 						<p>
 							<span style={{ fontWeight: 'bold' }}>Players:</span>
@@ -71,14 +71,10 @@ export default function RoomInfo() {
 					<span style={{ fontWeight: 'bold' }}>Exits:</span>
 				</p>
 				<ul>
-					{roomData.exits &&
-						roomData.exits.map(exit => <li key={exit}>{exit}</li>)}
+					{roomData.exits?.map(exit => (
+						<li key={exit}>{exit}</li>
+					))}
 				</ul>
-				{/* <p>Messages:</p>
-				<ul>
-					{roomData.messages &&
-						roomData.messages.map(message => <li key={message}>{message}</li>)}
-				</ul> */}
 			</div>
 		</RoomWrapper>
 	);
