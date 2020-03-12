@@ -1,10 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import TeamCard from '../TeamCard';
-import { teamInfo } from '../TeamInfo';
+import { IconAttrib, TeamCard, teamInfo } from '../team';
 import { aboutGrid } from '../../data/aboutGrid';
 import MapRow from '../MapRow';
-import IconAttrib from '../IconAttrib';
 
 export default function About() {
 	return (

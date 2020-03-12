@@ -13,7 +13,9 @@
 import Map from './Map';
 import PanelRight from './PanelRight';
 import Footer from './Footer';
-import IconAttrib from './IconAttrib';
+
+// Team Components
+import IconAttrib from './team/IconAttrib';
 
 // Map Components
 import MapRow from './MapRow';
