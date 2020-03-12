@@ -1,75 +1,43 @@
-## Environment Variables
+# Team JAM React Client
+
+You can find the deployed project at [teamjam.netlify.com](https://teamjam.netlify.com/).
+
+## Project Overview
+
+JAMbda Treasure Hunt is a Multi-User Dungeon Role-Playing Game where players compete with one another to traverse an island maze, solve puzzles, unearth powerful artifacts, and more! The game is run as part of the computer science curriculum at Lambda School.
+
+Players explore a 1000-room map seeking treasure, equipment, and information. Along the way, they visit shrines to grow their skills and abilities, acquire gear to enhance their strength and speed, engage in interdimensional travel, and eat a whole lot of donuts... all in pursuit of the elusive Golden Snitch!
+
+Navigating JAMbda Treasure Hunt requires an understanding of a variety of topics in Computer Science, including Algorithms and Data Structures, Blockchain Technology, Graph Theory, and Computer Architecture.
+
+This client includes most of the functionality in the game, aside from blockchain mining which was run locally. Pathfinding and decoding are powered by algorithms that run on a Heroku server. See [Backend Documentation](https://github.com/Team-JAM/back-end) for more details.
+
+### Tech Stack
+
+- React
+- React Router
+- Axios
+- Context API
+- styled-components
+- Dotenv
+
+## Installation
+
+Clone this repo, then from the project directory run `yarn` then `yarn start`.
+
+### Environment Variables
 
 ```
-REACT_APP_PUSHER_KEY
-REACT_APP_PUSHER_CLUSTER
+REACT_APP_ALLISON_TOKEN
+REACT_APP_JONATHAN_TOKEN
+REACT_APP_MATTHEW_TOKEN
 ```
+
+## Contributors
+
+- [Allison Donnelly](https://github.com/allisonkydy)
+- [Jonathan Ho](https://github.com/Jonathan-YungHsin-Ho)
+- [Matthew Mauney](https://github.com/mauney)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
