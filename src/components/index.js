@@ -17,9 +17,9 @@
 // // Team Components
 // import IconAttrib from './team/IconAttrib';
 
-// Map Components
-import MapRow from './MapRow';
-import ButtonToggleMap from './ButtonToggleMap';
+// // Map Components
+// import MapRow from './map/MapRow';
+// import ButtonToggleMap from './map/ButtonToggleMap';
 
 // Right Panel Components
 import CooldownTimer from './CooldownTimer';
@@ -72,8 +72,8 @@ export {
 	// PanelRight,
 	// Footer,
 	// IconAttrib,
-	MapRow,
-	ButtonToggleMap,
+	// MapRow,
+	// ButtonToggleMap,
 	CooldownTimer,
 	LambdaCoin,
 	LocateRoom,

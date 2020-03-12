@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useDataContext } from '../contexts/DataContext';
-import { specialRooms } from '../data/specialRooms';
-import { useTravel, useTravelTreasure } from '../hooks';
-import { StyledCell, StyledCellDark } from '../styled-components/StyledCells';
-import IconHandler from './IconHandler';
+import { useDataContext } from '../../contexts/DataContext';
+import { specialRooms } from '../../data/specialRooms';
+import { useTravel, useTravelTreasure } from '../../hooks';
+import {
+	StyledCell,
+	StyledCellDark,
+} from '../../styled-components/StyledCells';
+import IconHandler from '../IconHandler';
 
 export default function MapCell({ cell }) {
 	const {

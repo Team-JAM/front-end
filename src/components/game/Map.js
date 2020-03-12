@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { useDataContext } from '../../contexts/DataContext';
-import { MapRow, ButtonToggleMap } from '..';
+import { MapRow, ButtonToggleMap } from '../map';
 
 export default function Map() {
 	const {

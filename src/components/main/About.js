@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { IconAttrib, TeamCard, teamInfo } from '../team';
 import { aboutGrid } from '../../data/aboutGrid';
-import MapRow from '../MapRow';
+import MapRow from '../map/MapRow';
 
 export default function About() {
 	return (
