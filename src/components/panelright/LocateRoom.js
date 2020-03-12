@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { useDataContext } from '../contexts/DataContext';
+import { useDataContext } from '../../contexts/DataContext';
 import {
 	ComponentWrapper,
 	StatusHeader,
-} from '../styled-components/StyledComponents';
+} from '../../styled-components/StyledComponents';
 
 export default function() {
 	const {

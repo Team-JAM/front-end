@@ -5,10 +5,9 @@ import {
 	LambdaCoin,
 	// LocateRoom,
 	RoomToMine,
-	// RoomWithSnitch,
 	Messages,
 	RoomInfo,
-} from '..';
+} from '../panelright';
 
 export default function PanelRight() {
 	return (
@@ -17,7 +16,6 @@ export default function PanelRight() {
 			<LambdaCoin />
 			{/* <LocateRoom /> */}
 			<RoomToMine />
-			{/* <RoomWithSnitch /> */}
 			<Messages />
 			<RoomInfo />
 		</PanelWrapper>

@@ -21,14 +21,14 @@
 // import MapRow from './map/MapRow';
 // import ButtonToggleMap from './map/ButtonToggleMap';
 
-// Right Panel Components
-import CooldownTimer from './CooldownTimer';
-import LambdaCoin from './LambdaCoin';
-import LocateRoom from './LocateRoom';
-import RoomToMine from './RoomToMine';
-import RoomWithSnitch from './RoomWithSnitch';
-import Messages from './Messages';
-import RoomInfo from './RoomInfo';
+// // Right Panel Components
+// import CooldownTimer from './panelright/CooldownTimer';
+// import LambdaCoin from './panelright/LambdaCoin';
+// import LocateRoom from './panelright/LocateRoom';
+// import RoomToMine from './panelright/RoomToMine';
+// import RoomWithSnitch from './panelright/RoomWithSnitch';
+// import Messages from './panelright/Messages';
+// import RoomInfo from './panelright/RoomInfo';
 
 // Buttons
 import ButtonsMove from './ButtonsMove';
@@ -74,13 +74,13 @@ export {
 	// IconAttrib,
 	// MapRow,
 	// ButtonToggleMap,
-	CooldownTimer,
-	LambdaCoin,
-	LocateRoom,
-	RoomToMine,
-	RoomWithSnitch,
-	Messages,
-	RoomInfo,
+	// CooldownTimer,
+	// LambdaCoin,
+	// LocateRoom,
+	// RoomToMine,
+	// RoomWithSnitch,
+	// Messages,
+	// RoomInfo,
 	ButtonsMove,
 	ButtonNameChanger,
 	ButtonBuyDonut,

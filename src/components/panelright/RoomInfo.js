@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useDataContext } from '../contexts/DataContext';
-import { useGetRoomData } from '../hooks';
-import { Item } from './';
+import { useDataContext } from '../../contexts/DataContext';
+import { useGetRoomData } from '../../hooks';
+import { Item } from '..';
 import {
 	ComponentWrapper,
 	StatusHeader,
-} from '../styled-components/StyledComponents';
+} from '../../styled-components/StyledComponents';
 
 export default function RoomInfo() {
 	const {
