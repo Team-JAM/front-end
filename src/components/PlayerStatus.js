@@ -66,8 +66,9 @@ export default function PlayerStatus() {
 						</p>
 					)}
 					<ul>
-						{playerStatus.status &&
-							playerStatus.status.map(status => <li key={status}>{status}</li>)}
+						{playerStatus.status?.map(status => (
+							<li key={status}>{status}</li>
+						))}
 					</ul>
 					<ButtonReceive />
 				</div>

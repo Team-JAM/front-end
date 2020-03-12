@@ -9,8 +9,7 @@ export default function ButtonsMove({ endpoint, header }) {
 		dispatch,
 	} = useDataContext();
 
-	const exitsObj =
-		rooms && rooms[roomData.room_id] && rooms[roomData.room_id].exits;
+	const exitsObj = rooms && rooms[roomData.room_id]?.exits;
 	const exitsArr = exitsObj && Object.keys(exitsObj);
 
 	const handleMove = direction => {

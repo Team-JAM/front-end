@@ -14,6 +14,13 @@ export default function IconHandler({ room, character, title, inShadowWorld }) {
 		isTrap,
 	} = room;
 
+	const characterIcon =
+		character === 'allisonJAM' ||
+		character === 'JonathanJAM' ||
+		character === 'matthewJAM'
+			? character
+			: 'genericAvatar';
+
 	const render = {
 		dot: isOnPath && !isDestination && !isWormhole && !inShadowWorld,
 		lightDod: isOnPath && !isDestination && !isWormhole && inShadowWorld,
@@ -44,7 +51,7 @@ export default function IconHandler({ room, character, title, inShadowWorld }) {
 			)}
 			{render.avatar && (
 				<Icon
-					name={character}
+					name={characterIcon}
 					style={{
 						flexShrink: '0',
 						zIndex: '1100',

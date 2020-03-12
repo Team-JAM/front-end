@@ -62,6 +62,12 @@ export default function IconAttrib() {
 			<a href='https://www.flaticon.com/authors/surang' title='surang'>
 				surang
 			</a>
+			{', '}
+			<a
+				href='https://www.flaticon.com/authors/vitaly-gorbachev'
+				title='Vitaly Gorbachev'>
+				Vitaly Gorbachev
+			</a>
 			{', and '}
 			<a href='https://www.flaticon.com/authors/payungkead' title='Payungkead'>
 				Payungkead

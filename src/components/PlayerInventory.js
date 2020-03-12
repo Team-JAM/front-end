@@ -46,7 +46,7 @@ export default function PlayerInventory() {
 						{!autoTravelMode && <ButtonUndress item={playerStatus.footwear} />}
 					</InventoryRow>
 				)}
-				{playerStatus.inventory && playerStatus.inventory[0] && (
+				{playerStatus.inventory?.[0] && (
 					<>
 						<span style={{ fontWeight: 'bold' }}>
 							<p>Inventory:</p>

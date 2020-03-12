@@ -11,8 +11,7 @@ export default function ButtonReceive() {
 
 	const getStatus = useGetStatus();
 
-	const ghostCarrying =
-		playerStatus.status[0] && playerStatus.status[0].includes('Glasowyn');
+	const ghostCarrying = playerStatus.status[0]?.includes('Glasowyn');
 
 	const handleReceive = () => {
 		dispatch({ type: 'GET_DATA_START' });
