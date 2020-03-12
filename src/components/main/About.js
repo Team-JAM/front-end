@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import TeamCard from './TeamCard';
-import { teamInfo } from './TeamInfo';
-import { aboutGrid } from '../data/aboutGrid';
-import MapRow from './MapRow';
-import IconAttrib from './IconAttrib';
+import TeamCard from '../TeamCard';
+import { teamInfo } from '../TeamInfo';
+import { aboutGrid } from '../../data/aboutGrid';
+import MapRow from '../MapRow';
+import IconAttrib from '../IconAttrib';
 
 export default function About() {
 	return (

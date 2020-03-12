@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
-import { Logo, InputToken, PlayerName } from './';
+import { Logo, InputToken, PlayerName } from '..';
 
 export default function NavBar() {
 	const { pathname } = useLocation();

@@ -4,7 +4,8 @@ import { useGetRoomData, useGetStatus, useGetBalance } from '../hooks';
 import { sleep } from '../utils/sleep';
 
 export default function InputToken() {
-	const [token, setToken] = useState(localStorage.getItem('token'));
+	// const [token, setToken] = useState(localStorage.getItem('token'));
+	const [token, setToken] = useState('');
 
 	const getRoomData = useGetRoomData();
 	const getStatus = useGetStatus();
@@ -37,7 +38,7 @@ export default function InputToken() {
 	};
 
 	const handleSelect = e => {
-		console.log(e.target.value);
+		// console.log(e.target.value);
 		// setToken(e.target.value);
 		localStorage.setItem('token', e.target.value);
 		getData();

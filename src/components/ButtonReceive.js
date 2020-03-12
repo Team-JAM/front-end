@@ -5,7 +5,7 @@ import { useGetStatus } from '../hooks/useGetStatus';
 
 export default function ButtonReceive() {
 	const {
-		data: { cooldownOver, playerStatus },
+		data: { cooldownOver, autoTravelMode, playerStatus },
 		dispatch,
 	} = useDataContext();
 
@@ -32,7 +32,7 @@ export default function ButtonReceive() {
 
 	return (
 		<>
-			{cooldownOver && ghostCarrying && (
+			{cooldownOver && !autoTravelMode && ghostCarrying && (
 				<button onClick={handleReceive}>Receive</button>
 			)}
 		</>

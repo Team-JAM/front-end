@@ -1,8 +1,8 @@
-// Main Components
-import NavBar from './NavBar';
-import Game from './Game';
-import About from './About';
-import Login from './Login';
+// // Main Components
+// import NavBar from './main/NavBar';
+// import Game from './main/Game';
+// import About from './main/About';
+// // import Login from './Login';
 
 // NavBar Components
 import Logo from './Logo';
@@ -48,8 +48,6 @@ import PlayerInventory from './PlayerInventory';
 import Controls from './Controls';
 import ExamineItem from './ExamineItem';
 import Item from './Item';
-// import PlayerInfo from './unused/PlayerInfo';
-// import Player from './Player';
 
 // Item Buttons
 import ButtonExamine from './ButtonExamine';
@@ -63,9 +61,9 @@ import ButtonCarry from './ButtonCarry';
 import ButtonReceive from './ButtonReceive';
 
 export {
-	NavBar,
-	Game,
-	About,
+	// NavBar,
+	// Game,
+	// About,
 	Logo,
 	InputToken,
 	PlayerName,
@@ -98,8 +96,6 @@ export {
 	Controls,
 	ExamineItem,
 	Item,
-	// PlayerInfo,
-	// Player,
 	ButtonExamine,
 	ButtonTakeDrop,
 	ButtonPrice,
@@ -110,5 +106,5 @@ export {
 	ButtonCarry,
 	ButtonReceive,
 	ButtonSellAllItems,
-	Login,
+	// Login,
 };

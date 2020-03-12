@@ -26,7 +26,7 @@ export default function IconHandler({ room, character, title, inShadowWorld }) {
 	// Render logic
 	const render = {
 		dot: isOnPath && !isDestination && !isWormhole && !inShadowWorld,
-		lightDod: isOnPath && !isDestination && !isWormhole && inShadowWorld,
+		lightDot: isOnPath && !isDestination && !isWormhole && inShadowWorld,
 		wormhole: isWormhole && !isDestination && !isSpecialRoom && !isCurrentRoom,
 		avatar: isCurrentRoom,
 		specialRoom: isSpecialRoom,
