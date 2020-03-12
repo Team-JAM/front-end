@@ -5,17 +5,16 @@ import GlobalStyle from './styled-components/GlobalStyle';
 
 import DataProvider from './contexts/DataContext';
 
-import { NavBar, Game, About } from './components';
+import { NavBar, Game, About } from './components/main';
 
 function App() {
-
 	return (
 		<div className='App'>
 			<GlobalStyle />
 			<DataProvider>
-					<NavBar />
-					<Route exact path='/' component={Game} />
-					<Route path='/about' component={About} />
+				<NavBar />
+				<Route exact path='/' component={Game} />
+				<Route path='/about' component={About} />
 			</DataProvider>
 		</div>
 	);

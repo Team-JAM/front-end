@@ -1,9 +1,7 @@
 export const initialDataState = {
-	// token: '',
 	roomData: { messages: [] },
 	playerStatus: {
 		name: '',
-		// name: localStorage.getItem('name'),
 		inventory: [],
 		abilities: [],
 		status: [],
@@ -12,10 +10,8 @@ export const initialDataState = {
 	playerInfo: {},
 	rooms: {},
 	coinBalance: '',
-	// coinBalance: localStorage.getItem('coinBalance'),
 	roomToMine: '',
 	roomWithSnitch: '',
-	// roomToMine: localStorage.getItem('roomToMine'),
 	roomToFind: undefined,
 	cooldown: 0,
 	cooldownOver: false,
@@ -114,10 +110,6 @@ export const dataReducer = (state = initialDataState, action) => {
 		case 'GET_MINING_ROOM_SUCCESS':
 			return {
 				...state,
-				// roomData: {
-				// 	...state.roomData,
-				// 	messages: [...state.roomData.messages, action.payload],
-				// },
 				roomToMine: action.payload,
 			};
 		case 'GET_SNITCH_ROOM_SUCCESS':
