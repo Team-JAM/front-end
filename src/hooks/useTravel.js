@@ -12,6 +12,7 @@ export const useTravel = () => {
 		dispatch,
 	} = useDataContext();
 
+	// Access axios calls for movements from other custom hooks
 	const move = useMove();
 
 	const recall = useRecall();
@@ -29,6 +30,7 @@ export const useTravel = () => {
 			const path = res.data.path.map(room => Number(room[1]));
 			const wormholePaths = res.data.path.filter(room => room[0] === 'warp');
 
+			// Update Context state with wormholes for rendering
 			if (wormholePaths) {
 				const wormholeRooms = wormholePaths.map(room => Number(room[1]));
 
@@ -38,6 +40,7 @@ export const useTravel = () => {
 				});
 			}
 
+			// Update Context state with path for rendering
 			dispatch({
 				type: 'SET_PATH',
 				payload: { destination: path[path.length - 1], path },
@@ -47,11 +50,13 @@ export const useTravel = () => {
 
 			const directions = res.data.path_directions;
 
+			// Iterate through directions include appropriate cooldown period in between axios calls
 			for (const direction of directions) {
 				const cooldown = await handleDirection(direction);
 				await sleep(cooldown);
 			}
 
+			// Update Context state to remove travel path render
 			dispatch({ type: 'SET_TRAVEL_MODE_FALSE' });
 			dispatch({ type: 'CLEAR_DESTINATION' });
 		} catch (err) {
@@ -60,12 +65,15 @@ export const useTravel = () => {
 		}
 	};
 
+	// Make appropriate axios call depending on direction given/
 	const handleDirection = async directions => {
 		try {
+			// handle Move or Fly directions (from custom hook)
 			if (directions[0] === 'fly' || directions[0] === 'move') {
 				const [endpoint, direction, next_room_id] = directions;
 
 				return move(endpoint, direction, next_room_id);
+				// handle Dash directions (not from custom hook)
 			} else if (directions[0] === 'dash') {
 				dispatch({ type: 'GET_DATA_START' });
 
@@ -80,7 +88,9 @@ export const useTravel = () => {
 				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
 
 				return res.data.cooldown;
+				// handle Recall directions (from custom hook)
 			} else if (directions[0] === 'recall') return recall();
+			// handle Warp directions (from custom hook)
 			else if (directions[0] === 'warp') return warp();
 		} catch (err) {
 			console.log(err);

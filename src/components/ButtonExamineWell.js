@@ -13,6 +13,7 @@ export default function ButtonExamineWell() {
 	const handleClick = () => {
 		dispatch({ type: 'GET_DATA_START' });
 
+		// This axios call hits our Django back-end, which then hits the Lambda game server endpoint for the well information and feeds it through an 8-bit emulator on the back-end to decode the instructions before sending the result back to the front-end
 		axiosTeamJamBackEnd()
 			.post('/well/', {
 				token: localStorage.getItem('token'),
@@ -22,6 +23,7 @@ export default function ButtonExamineWell() {
 				// console.log(res.data.room);
 				dispatch({ type: 'EXAMINE_ITEM_SUCCESS', payload: res.data.room });
 
+				// Depending on room ID, this determines which world the player is in and whether the information returned is the Mining Room or the Snitch Room
 				if (roomData.room_id < 500) {
 					dispatch({
 						type: 'GET_MINING_ROOM_SUCCESS',

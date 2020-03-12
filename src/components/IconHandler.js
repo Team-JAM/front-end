@@ -2,6 +2,7 @@ import React from 'react';
 import { Dot, LightDot } from '../styled-components/StyledCells';
 import Icon from '../icons';
 
+// This component handles which icon should be rendered given conditions
 export default function IconHandler({ room, character, title, inShadowWorld }) {
 	const {
 		isOnPath,
@@ -14,6 +15,7 @@ export default function IconHandler({ room, character, title, inShadowWorld }) {
 		isTrap,
 	} = room;
 
+	// Checks if current player is on TeamJAM and renders the appropriate avatar if so, as well as a generic avatar if not
 	const characterIcon =
 		character === 'allisonJAM' ||
 		character === 'JonathanJAM' ||
@@ -21,6 +23,7 @@ export default function IconHandler({ room, character, title, inShadowWorld }) {
 			? character
 			: 'genericAvatar';
 
+	// Render logic
 	const render = {
 		dot: isOnPath && !isDestination && !isWormhole && !inShadowWorld,
 		lightDod: isOnPath && !isDestination && !isWormhole && inShadowWorld,

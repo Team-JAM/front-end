@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useDataContext } from '../contexts/DataContext';
 
+// This component is used for both Moving (Walking) and Flying, depending on the endpoint specified
 export default function ButtonsMove({ endpoint, header }) {
 	const {
 		data: { roomData, rooms },
@@ -15,6 +16,7 @@ export default function ButtonsMove({ endpoint, header }) {
 	const handleMove = direction => {
 		dispatch({ type: 'GET_DATA_START' });
 
+		// This logic determines whether the player is traveling in Wise Traveler mode (knowing the next room's ID)
 		if (exitsObj) {
 			if (exitsObj[direction] !== null) {
 				const next_room_id = exitsObj[direction].toString();

@@ -15,6 +15,7 @@ export default function Map() {
 	useEffect(() => {
 		dispatch({ type: 'GET_DATA_START' });
 
+		// Pulls in map data from Django back-end for both worlds
 		axios
 			.get('https://team-jam-api.herokuapp.com/api/map')
 			.then(res => {

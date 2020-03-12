@@ -3,6 +3,7 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useDataContext } from '../contexts/DataContext';
 import { useGetStatus } from '../hooks/useGetStatus';
 
+// The component handles both Taking and Dropping an item, depending on the action specified
 export default function ButtonTakeDrop({ item, action }) {
 	const { dispatch } = useDataContext();
 
@@ -20,16 +21,6 @@ export default function ButtonTakeDrop({ item, action }) {
 				dispatch({ type: 'GET_DATA_SUCCESS', payload: res.data });
 
 				getStatus(res.data.cooldown);
-
-				// const message = res.data.messages[0];
-
-				// if (actionLC === 'take') {
-				// 	const item = message.split('You have picked up ')[1];
-				// 	dispatch({ type: 'TAKE_ITEM', payload: item });
-				// } else if (actionLC === 'drop') {
-				// 	const item = message.split('You have dropped ')[1];
-				// 	dispatch({ type: 'DROP_ITEM', payload: item });
-				// }
 			} catch (err) {
 				console.log(err);
 				dispatch({ type: 'GET_DATA_FAILURE' });

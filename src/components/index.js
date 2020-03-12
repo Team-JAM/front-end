@@ -8,7 +8,7 @@ import Login from './Login';
 import Logo from './Logo';
 import InputToken from './InputToken';
 import PlayerName from './PlayerName';
-import SelectMode from './SelectMode';
+import SelectMode from './unused/SelectMode';
 
 // Game Components
 import Map from './Map';
@@ -48,8 +48,8 @@ import PlayerInventory from './PlayerInventory';
 import Controls from './Controls';
 import ExamineItem from './ExamineItem';
 import Item from './Item';
-import PlayerInfo from './PlayerInfo';
-import Player from './Player';
+// import PlayerInfo from './unused/PlayerInfo';
+// import Player from './Player';
 
 // Item Buttons
 import ButtonExamine from './ButtonExamine';
@@ -98,8 +98,8 @@ export {
 	Controls,
 	ExamineItem,
 	Item,
-	PlayerInfo,
-	Player,
+	// PlayerInfo,
+	// Player,
 	ButtonExamine,
 	ButtonTakeDrop,
 	ButtonPrice,

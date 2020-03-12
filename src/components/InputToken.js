@@ -38,7 +38,7 @@ export default function InputToken() {
 
 	const handleSelect = e => {
 		console.log(e.target.value);
-		setToken(e.target.value);
+		// setToken(e.target.value);
 		localStorage.setItem('token', e.target.value);
 		getData();
 	};

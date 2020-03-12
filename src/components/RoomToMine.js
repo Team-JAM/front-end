@@ -7,10 +7,6 @@ export default function RoomToMine() {
 		data: { roomToMine, roomWithSnitch, autoTravelMode },
 	} = useDataContext();
 
-	// useEffect(() => {
-	// 	localStorage.setItem('roomToMine', roomToMine);
-	// }, [roomToMine]);
-
 	return (
 		<>
 			{!autoTravelMode && (

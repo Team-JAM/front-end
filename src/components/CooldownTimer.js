@@ -11,10 +11,12 @@ export default function CooldownTimer() {
 
 	const [timeLeft, setTimeLeft] = useState(cooldown);
 
+	// Sets timeLeft state to 0 if the cooldown is over
 	useEffect(() => {
 		setTimeLeft(cooldownOver ? 0 : cooldown);
 	}, [cooldownOver]);
 
+	// Updates timeLeft state by decrementing every second
 	useEffect(() => {
 		const myTimeout = setTimeout(() => {
 			setTimeLeft(timeLeft - 1);
@@ -23,6 +25,7 @@ export default function CooldownTimer() {
 		return () => clearTimeout(myTimeout);
 	});
 
+	// Updates Context state when cooldown is over
 	useEffect(() => {
 		if (timeLeft <= 0) {
 			dispatch({ type: 'SET_CAN_MOVE_TRUE' });
@@ -30,7 +33,10 @@ export default function CooldownTimer() {
 	}, [timeLeft]);
 
 	return (
-		<CooldownWrapper cooldownOver={cooldownOver} timeLeft={timeLeft} autoTravelMode={autoTravelMode}>
+		<CooldownWrapper
+			cooldownOver={cooldownOver}
+			timeLeft={timeLeft}
+			autoTravelMode={autoTravelMode}>
 			{autoTravelMode ? (
 				<>
 					<h3>Auto Travel Mode Engaged</h3>
@@ -49,10 +55,9 @@ export default function CooldownTimer() {
 
 const CooldownWrapper = styled(ComponentWrapper)`
 	background-color: ${props => {
-			if (props.autoTravelMode) return '#33a532'
-			return props.timeLeft <= 0 ? '#33a532' : '#cc0605'
-		}
-	};
+		if (props.autoTravelMode) return '#33a532';
+		return props.timeLeft <= 0 ? '#33a532' : '#cc0605';
+	}};
 
 	color: white;
 `;

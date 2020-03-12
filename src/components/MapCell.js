@@ -31,6 +31,7 @@ export default function MapCell({ cell }) {
 	const [isOnPath, setIsOnPath] = useState(false);
 	const [isWormhole, setIsWormhole] = useState(false);
 
+	// The lines below detail the logic for determining what to render in each MapCell
 	const isRoom = cell !== null;
 
 	const isCurrentRoom =
@@ -100,6 +101,7 @@ export default function MapCell({ cell }) {
 		exits: isRoom && cell.exits,
 	};
 
+	// Conditionally renders MapCell along with the relevant Icon given specified conditions
 	return (
 		<>
 			{!inShadowWorld && (

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+// Render Map Cell given conditions passed in as props
 export const StyledCell = styled.div`
 	flex-shrink: 0;
 	width: 6rem;
@@ -21,22 +22,20 @@ export const StyledCell = styled.div`
 		!props.room.isCurrentRoom &&
 		'pointer'};
 
-	/* color: white; */
-	/* color: ${props => props.isNormal && '#0b6623'}; */
-	/* color: ${props => props.isCave && 'white'}; */
-	/* color: ${props => props.isCurrentRoom && 'black'}; */
-
+	/* Cell border given conditions */
 	border: 1px solid lightskyblue;
 	border: ${props => props.room.isNormal && '2px solid #0b6623'};
 	border: ${props => props.room.isCave && '2px solid gray'};
 	border: ${props => props.room.isTrap && '2px solid gray'};
 	border: ${props => props.room.isMountain && '2px solid black'};
 
+	/* Openings in borders to render maze */
 	border-left: ${props => props.room.exits.w && '0'};
 	border-right: ${props => props.room.exits.e && '0'};
 	border-top: ${props => props.room.exits.n && '0'};
 	border-bottom: ${props => props.room.exits.s && '0'};
 
+	/* Cell color given conditions */
 	background-color: lightcyan;
 	background-color: ${props => props.room.isNormal && 'rgba(123, 179, 105, 1)'};
 	background-color: ${props => props.room.isCave && 'rgba(32, 32, 32, 1)'};
@@ -48,6 +47,7 @@ export const StyledCell = styled.div`
 	background-color: ${props =>
 		props.room.isCurrentRoom && 'rgba(123, 179, 105, 0.6)'};
 
+	/* Styles given elevation */
 	opacity: ${props => props.room.elevation === 5 && '1'};
 	opacity: ${props => props.room.elevation === 4 && '0.9'};
 	opacity: ${props => props.room.elevation === 3 && '0.8'};
@@ -76,22 +76,23 @@ export const StyledCell = styled.div`
 			props.room.isCurrentRoom &&
 			'rgba(123, 179, 105, 0.6)'};
 
+		/* Hover effects given elevation */
 		background-color: ${props =>
 			props.canInteract &&
 			props.room.elevation === 5 &&
 			'rgb(101, 67, 33, 0.75)'};
-		opacity: ${props => props.canInteract && props.room.elevation === 4 && '0.65'};
-		opacity: ${props => props.canInteract && props.room.elevation === 3 && '0.55'};
-		opacity: ${props => props.canInteract && props.room.elevation === 2 && '0.45'};
-		opacity: ${props => props.canInteract && props.room.elevation === 1 && '0.35'};
+		opacity: ${props =>
+			props.canInteract && props.room.elevation === 4 && '0.65'};
+		opacity: ${props =>
+			props.canInteract && props.room.elevation === 3 && '0.55'};
+		opacity: ${props =>
+			props.canInteract && props.room.elevation === 2 && '0.45'};
+		opacity: ${props =>
+			props.canInteract && props.room.elevation === 1 && '0.35'};
 	}
 `;
 
 export const StyledCellDark = styled(StyledCell)`
-	/* color: white; */
-	/* color: ${props => props.room.isSpecialRoom && 'black'}; */
-	/* color: ${props => props.room.isCurrentRoom && 'black'}; */
-
 	border: 1px solid #004080;
 	border: ${props => props.room.isNormal && '2px solid darkgreen'};
 
@@ -109,6 +110,7 @@ export const StyledCellDark = styled(StyledCell)`
 		props.room.isCurrentRoom && 'rgba(123, 179, 105, 0.6)'};
 `;
 
+/* Components to render path */
 export const Dot = styled.div`
 	width: 1.5rem;
 	height: 1.5rem;
