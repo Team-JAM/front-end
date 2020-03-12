@@ -1,11 +1,11 @@
 import React from 'react';
 // import styled from 'styled-components';
-import { useDataContext } from '../contexts/DataContext';
+import { useDataContext } from '../../contexts/DataContext';
 
 import {
 	FooterComponentWrapper,
 	StatusHeader,
-} from '../styled-components/StyledComponents';
+} from '../../styled-components/StyledComponents';
 
 export default function ExamineItem() {
 	const {

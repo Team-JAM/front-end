@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useDataContext } from '../contexts/DataContext';
-import { useGetStatus } from '../hooks';
-import { Item, ButtonUndress, ButtonSellAllItems } from './';
+import { useDataContext } from '../../contexts/DataContext';
+import { useGetStatus } from '../../hooks';
+import { Item, ButtonUndress, ButtonSellAllItems } from '..';
 import {
 	FooterComponentWrapper,
 	StatusHeader,
-} from '../styled-components/StyledComponents';
+} from '../../styled-components/StyledComponents';
 
 export default function PlayerInventory() {
 	const {

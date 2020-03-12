@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { useDataContext } from '../contexts/DataContext';
-import { FooterComponentWrapper } from '../styled-components/StyledComponents';
+import { useDataContext } from '../../contexts/DataContext';
+import { FooterComponentWrapper } from '../../styled-components/StyledComponents';
 import {
 	ButtonsMove,
 	ButtonNameChanger,
@@ -13,7 +13,7 @@ import {
 	ButtonPray,
 	ButtonRecall,
 	ButtonWarp,
-} from './';
+} from '..';
 
 export default function Controls() {
 	const {

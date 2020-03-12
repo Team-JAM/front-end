@@ -42,12 +42,13 @@ import ButtonRecall from './ButtonRecall';
 import ButtonWarp from './ButtonWarp';
 import ButtonSellAllItems from './ButtonSellAllItems';
 
-// Footer Components
-import PlayerStatus from './PlayerStatus';
-import PlayerAbilities from './PlayerAbilities';
-import PlayerInventory from './PlayerInventory';
-import Controls from './Controls';
-import ExamineItem from './ExamineItem';
+// // Footer Components
+// import PlayerStatus from './footer/PlayerStatus';
+// import PlayerAbilities from './footer/PlayerAbilities';
+// import PlayerInventory from './footer/PlayerInventory';
+// import Controls from './footer/Controls';
+// import ExamineItem from './footer/ExamineItem';
+
 import Item from './Item';
 
 // Item Buttons
@@ -90,11 +91,11 @@ export {
 	ButtonPray,
 	ButtonRecall,
 	ButtonWarp,
-	PlayerStatus,
-	PlayerAbilities,
-	PlayerInventory,
-	Controls,
-	ExamineItem,
+	// PlayerStatus,
+	// PlayerAbilities,
+	// PlayerInventory,
+	// Controls,
+	// ExamineItem,
 	Item,
 	ButtonExamine,
 	ButtonTakeDrop,

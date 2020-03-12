@@ -10,7 +10,7 @@ import {
 	ButtonWear,
 	ButtonTransmogrify,
 	ButtonCarry,
-} from './';
+} from '.';
 
 export default function Item({ item, action, inInventory }) {
 	const {

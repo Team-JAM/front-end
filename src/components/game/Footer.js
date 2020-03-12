@@ -7,7 +7,7 @@ import {
 	PlayerStatus,
 	PlayerAbilities,
 	PlayerInventory,
-} from '..';
+} from '../footer';
 
 export default function Footer() {
 	return (
