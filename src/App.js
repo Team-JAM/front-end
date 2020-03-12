@@ -1,26 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Route } from 'react-router-dom';
 import './App.css';
+import GlobalStyle from './styled-components/GlobalStyle';
+
+import DataProvider from './contexts/DataContext';
+
+import { NavBar, Game, About } from './components/main';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className='App'>
+			<GlobalStyle />
+			<DataProvider>
+				<NavBar />
+				<Route exact path='/' component={Game} />
+				<Route path='/about' component={About} />
+			</DataProvider>
+		</div>
+	);
 }
 
 export default App;

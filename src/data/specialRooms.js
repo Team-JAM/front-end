@@ -1,0 +1,15 @@
+export const specialRooms = {
+	"Linh's Shrine": 461,
+	"Glasowyn's Grave": 499,
+	'Fully Shrine': 374,
+	"Arron's Athenaeum": 486,
+	'Wishing Well': 55,
+	'JKMT Donuts': 15,
+	"Pirate Ry's": 467,
+	'The Peak of Mt. Holloway': 22,
+	'The Transmogriphier': 495,
+	"Sandofsky's Sanctum": 492,
+	Shop: 1,
+	'Underworld Wishing Well': 555,
+	'Snitch Board': 986,
+};
