@@ -9,13 +9,13 @@
 // import InputToken from './navbar/InputToken';
 // import PlayerName from './navbar/PlayerName';
 
-// Game Components
-import Map from './Map';
-import PanelRight from './PanelRight';
-import Footer from './Footer';
+// // Game Components
+// import Map from './game/Map';
+// import PanelRight from './game/PanelRight';
+// import Footer from './game/Footer';
 
-// Team Components
-import IconAttrib from './team/IconAttrib';
+// // Team Components
+// import IconAttrib from './team/IconAttrib';
 
 // Map Components
 import MapRow from './MapRow';
@@ -68,10 +68,10 @@ export {
 	// Logo,
 	// InputToken,
 	// PlayerName,
-	Map,
-	PanelRight,
-	Footer,
-	IconAttrib,
+	// Map,
+	// PanelRight,
+	// Footer,
+	// IconAttrib,
 	MapRow,
 	ButtonToggleMap,
 	CooldownTimer,

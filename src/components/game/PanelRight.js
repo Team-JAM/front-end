@@ -8,7 +8,7 @@ import {
 	// RoomWithSnitch,
 	Messages,
 	RoomInfo,
-} from './';
+} from '..';
 
 export default function PanelRight() {
 	return (

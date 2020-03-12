@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Map, PanelRight, Footer } from '..';
+import { Map, PanelRight, Footer } from '../game';
 
 export default function Game() {
 	return (

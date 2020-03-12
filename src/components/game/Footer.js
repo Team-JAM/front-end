@@ -3,19 +3,17 @@ import styled from 'styled-components';
 
 import {
 	ExamineItem,
-	// PlayerInfo,
 	Controls,
 	PlayerStatus,
 	PlayerAbilities,
 	PlayerInventory,
-} from './';
+} from '..';
 
 export default function Footer() {
 	return (
 		<StyledFooter>
 			<Controls />
 			<ExamineItem />
-			{/* <PlayerInfo /> */}
 			<PlayerStatus />
 			<PlayerAbilities />
 			<PlayerInventory />
