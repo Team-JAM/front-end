@@ -1,9 +1,9 @@
 import React from 'react';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { useDataContext } from '../contexts/DataContext';
-import { specialRooms } from '../data/specialRooms';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { useDataContext } from '../../contexts/DataContext';
+import { specialRooms } from '../../data/specialRooms';
 
-export default function ButtonExamineBook() {
+export default function ButtonExamineBoard() {
 	const {
 		data: { roomData },
 		dispatch,
@@ -13,7 +13,7 @@ export default function ButtonExamineBook() {
 		dispatch({ type: 'GET_DATA_START' });
 
 		axiosWithAuth()
-			.post('/adv/examine/', { name: 'book' })
+			.post('/adv/examine/', { name: 'board' })
 			.then(res => {
 				console.log(res.data);
 				dispatch({ type: 'EXAMINE_ITEM_SUCCESS', payload: res.data });
@@ -26,8 +26,8 @@ export default function ButtonExamineBook() {
 
 	return (
 		<div>
-			{roomData.room_id === specialRooms["Arron's Athenaeum"] && (
-				<button onClick={handleClick}>Examine Book</button>
+			{roomData.room_id === specialRooms['Snitch Board'] && (
+				<button onClick={handleClick}>Examine Board</button>
 			)}
 		</div>
 	);

@@ -1,6 +1,6 @@
 import React from 'react';
-import { useDataContext } from '../contexts/DataContext';
-import { useRecall } from '../hooks/useRecall';
+import { useDataContext } from '../../contexts/DataContext';
+import { useRecall } from '../../hooks/useRecall';
 
 export default function ButtonRecall() {
 	const {

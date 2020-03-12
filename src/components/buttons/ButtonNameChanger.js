@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { useDataContext } from '../contexts/DataContext';
-import { useGetStatus } from '../hooks/useGetStatus';
-import { specialRooms } from '../data/specialRooms';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { useDataContext } from '../../contexts/DataContext';
+import { useGetStatus } from '../../hooks/useGetStatus';
+import { specialRooms } from '../../data/specialRooms';
 
 export default function ButtonNameChanger() {
 	const {

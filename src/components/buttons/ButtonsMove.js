@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { useDataContext } from '../contexts/DataContext';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { useDataContext } from '../../contexts/DataContext';
 
 // This component is used for both Moving (Walking) and Flying, depending on the endpoint specified
 export default function ButtonsMove({ endpoint, header }) {

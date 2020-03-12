@@ -1,7 +1,7 @@
 import React from 'react';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { useDataContext } from '../contexts/DataContext';
-import { useGetStatus } from '../hooks/useGetStatus';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { useDataContext } from '../../contexts/DataContext';
+import { useGetStatus } from '../../hooks/useGetStatus';
 
 export default function ButtonPray() {
 	const { dispatch } = useDataContext();

@@ -30,16 +30,16 @@
 // import Messages from './panelright/Messages';
 // import RoomInfo from './panelright/RoomInfo';
 
-// Buttons
-import ButtonsMove from './ButtonsMove';
-import ButtonNameChanger from './ButtonNameChanger';
-import ButtonBuyDonut from './ButtonBuyDonut';
-import ButtonExamineWell from './ButtonExamineWell';
-import ButtonExamineBook from './ButtonExamineBook';
-import ButtonExamineBoard from './ButtonExamineBoard';
-import ButtonPray from './ButtonPray';
-import ButtonRecall from './ButtonRecall';
-import ButtonWarp from './ButtonWarp';
+// // Buttons
+// import ButtonsMove from './buttons/ButtonsMove';
+// import ButtonPray from './buttons/ButtonPray';
+// import ButtonNameChanger from './buttons/ButtonNameChanger';
+// import ButtonBuyDonut from './buttons/ButtonBuyDonut';
+// import ButtonExamineWell from './buttons/ButtonExamineWell';
+// import ButtonExamineBook from './buttons/ButtonExamineBook';
+// import ButtonExamineBoard from './buttons/ButtonExamineBoard';
+// import ButtonRecall from './buttons/ButtonRecall';
+// import ButtonWarp from './buttons/ButtonWarp';
 
 // // Footer Components
 // import PlayerStatus from './footer/PlayerStatus';
@@ -61,50 +61,50 @@ import ButtonWarp from './ButtonWarp';
 // import ButtonReceive from './item/ButtonReceive';
 // import ButtonSellAllItems from './item/ButtonSellAllItems';
 
-export {
-	// NavBar,
-	// Game,
-	// About,
-	// Logo,
-	// InputToken,
-	// PlayerName,
-	// Map,
-	// PanelRight,
-	// Footer,
-	// IconAttrib,
-	// MapRow,
-	// ButtonToggleMap,
-	// CooldownTimer,
-	// LambdaCoin,
-	// LocateRoom,
-	// RoomToMine,
-	// RoomWithSnitch,
-	// Messages,
-	// RoomInfo,
-	ButtonsMove,
-	ButtonNameChanger,
-	ButtonBuyDonut,
-	ButtonExamineWell,
-	ButtonExamineBook,
-	ButtonExamineBoard,
-	ButtonPray,
-	ButtonRecall,
-	ButtonWarp,
-	// PlayerStatus,
-	// PlayerAbilities,
-	// PlayerInventory,
-	// Controls,
-	// ExamineItem,
-	// Item,
-	// ButtonExamine,
-	// ButtonTakeDrop,
-	// ButtonPrice,
-	// ButtonSell,
-	// ButtonWear,
-	// ButtonUndress,
-	// ButtonTransmogrify,
-	// ButtonCarry,
-	// ButtonReceive,
-	// ButtonSellAllItems,
-	// Login,
-};
+// export {
+// NavBar,
+// Game,
+// About,
+// Logo,
+// InputToken,
+// PlayerName,
+// Map,
+// PanelRight,
+// Footer,
+// IconAttrib,
+// MapRow,
+// ButtonToggleMap,
+// CooldownTimer,
+// LambdaCoin,
+// LocateRoom,
+// RoomToMine,
+// RoomWithSnitch,
+// Messages,
+// RoomInfo,
+// ButtonsMove,
+// ButtonNameChanger,
+// ButtonBuyDonut,
+// ButtonExamineWell,
+// ButtonExamineBook,
+// ButtonExamineBoard,
+// ButtonPray,
+// ButtonRecall,
+// ButtonWarp,
+// PlayerStatus,
+// PlayerAbilities,
+// PlayerInventory,
+// Controls,
+// ExamineItem,
+// Item,
+// ButtonExamine,
+// ButtonTakeDrop,
+// ButtonPrice,
+// ButtonSell,
+// ButtonWear,
+// ButtonUndress,
+// ButtonTransmogrify,
+// ButtonCarry,
+// ButtonReceive,
+// ButtonSellAllItems,
+// Login,
+// };

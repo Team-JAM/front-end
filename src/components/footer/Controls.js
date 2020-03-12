@@ -13,7 +13,7 @@ import {
 	ButtonPray,
 	ButtonRecall,
 	ButtonWarp,
-} from '..';
+} from '../buttons';
 
 export default function Controls() {
 	const {

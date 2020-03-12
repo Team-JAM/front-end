@@ -1,6 +1,6 @@
 import React from 'react';
-import { useDataContext } from '../contexts/DataContext';
-import { useWarp } from '../hooks/useWarp';
+import { useDataContext } from '../../contexts/DataContext';
+import { useWarp } from '../../hooks/useWarp';
 
 export default function ButtonWarp() {
 	const {

@@ -1,8 +1,8 @@
 import React from 'react';
 // import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { axiosTeamJamBackEnd } from '../utils/axiosTeamJamBackEnd';
-import { useDataContext } from '../contexts/DataContext';
-import { specialRooms } from '../data/specialRooms';
+import { axiosTeamJamBackEnd } from '../../utils/axiosTeamJamBackEnd';
+import { useDataContext } from '../../contexts/DataContext';
+import { specialRooms } from '../../data/specialRooms';
 
 export default function ButtonExamineWell() {
 	const {
